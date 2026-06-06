@@ -3,7 +3,7 @@ import logoAsset from "@/assets/logo.png.asset.json";
 import heroImg from "@/assets/hero-connection.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
-import { Sparkles, MessageCircleHeart, Compass, ShieldCheck, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Flame, Gamepad2, Lightbulb } from "lucide-react";
+import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Landing,
@@ -17,7 +17,6 @@ function Landing() {
       <Marquee />
       <Why />
       <Patterns />
-      <Features />
       <Journey />
       <Testimonials />
       <CTA />
@@ -37,9 +36,9 @@ function Nav() {
           </span>
         </a>
         <div className="hidden md:flex items-center gap-9 text-sm text-foreground/70">
-          <a href="#why" className="hover:text-foreground transition">Why we&apos;re lonely</a>
-          <a href="#journey" className="hover:text-foreground transition">The journey</a>
-          <a href="#stories" className="hover:text-foreground transition">Stories</a>
+          <a href="#why" className="hover:text-foreground transition-colors">Why we&apos;re lonely</a>
+          <a href="#journey" className="hover:text-foreground transition-colors">The journey</a>
+          <a href="#stories" className="hover:text-foreground transition-colors">Stories</a>
         </div>
         <a
           href="#download"
@@ -77,13 +76,13 @@ function Hero() {
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
               href="#download"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-gold)] transition-all"
+              className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-gold)] transition-all duration-500"
             >
               Start connecting
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition" />
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="#how" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground">
-              <span className="h-10 w-10 rounded-full border border-border grid place-items-center bg-card">
+            <a href="#journey" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+              <span className="h-10 w-10 rounded-full border border-border grid place-items-center bg-card hover:bg-muted transition-colors">
                 <ArrowRight className="h-4 w-4" />
               </span>
               See how it works
@@ -147,57 +146,6 @@ function Marquee() {
   );
 }
 
-function Features() {
-  const features = [
-    {
-      icon: Compass,
-      title: "Conversation guides",
-      desc: "Gentle scripts and openers for moments your mind goes blank. No more dreading the awkward pause.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Anxiety-safe spaces",
-      desc: "Practice in low-pressure rooms before stepping into busier ones. We pace it with you.",
-    },
-    {
-      icon: MessageCircleHeart,
-      title: "Daily tiny hellos",
-      desc: "One small nudge a day to reach out, reply back, or simply notice someone. Connection compounds.",
-    },
-    {
-      icon: Sparkles,
-      title: "Match by warmth",
-      desc: "Find people who get it — matched on energy and interests, never on looks or hot takes.",
-    },
-  ];
-  return (
-    <section id="features" className="py-28 lg:py-36">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="max-w-2xl">
-          <p className="text-sm font-medium text-primary uppercase tracking-[0.2em]">What&apos;s inside</p>
-          <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
-            Built for the people who&apos;d rather <span className="italic font-script text-primary text-6xl">stay home</span>
-            <span className="block">— and still want to belong.</span>
-          </h2>
-        </div>
-
-        <div className="mt-16 grid md:grid-cols-2 gap-6">
-          {features.map((f, i) => (
-            <div key={i} className="group relative rounded-3xl border border-border bg-card p-8 hover:shadow-[var(--shadow-elegant)] transition-all duration-500 hover:-translate-y-1">
-              <div className="absolute top-8 right-8 h-12 w-12 rounded-2xl bg-primary/10 grid place-items-center group-hover:bg-primary group-hover:text-primary-foreground transition-all">
-                <f.icon className="h-5 w-5 text-primary group-hover:text-primary-foreground" />
-              </div>
-              <h3 className="text-2xl font-display pr-16">{f.title}</h3>
-              <p className="mt-3 text-muted-foreground leading-relaxed">{f.desc}</p>
-              <div className="mt-8 h-px w-12 bg-gold" />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Why() {
   return (
     <section id="why" className="py-28 lg:py-36 bg-secondary/40 relative overflow-hidden">
@@ -224,12 +172,12 @@ function Why() {
             When you expect a real meal of connection and get a snack instead — a like, a dry &ldquo;hey,&rdquo; a half-listening chat — the hunger grows. Sometimes connection doesn&apos;t drip away; it crashes, like a market correction. One move, one loss, one quiet season, and your portfolio of closeness halves overnight.
           </p>
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="rounded-2xl border border-border bg-card p-5">
+            <div className="rounded-2xl border border-border bg-card p-5 hover:shadow-[var(--shadow-soft)] transition-shadow duration-500">
               <Utensils className="h-5 w-5 text-primary" />
               <p className="mt-3 font-display text-lg">The hunger model</p>
               <p className="mt-1 text-sm text-muted-foreground">Light connection can&apos;t feed deep need. We help you find the right meal.</p>
             </div>
-            <div className="rounded-2xl border border-border bg-card p-5">
+            <div className="rounded-2xl border border-border bg-card p-5 hover:shadow-[var(--shadow-soft)] transition-shadow duration-500">
               <TrendingDown className="h-5 w-5 text-gold" />
               <p className="mt-3 font-display text-lg">The crash model</p>
               <p className="mt-1 text-sm text-muted-foreground">When connection drops fast, recovery needs structure — not just willpower.</p>
@@ -260,7 +208,7 @@ function Patterns() {
         </div>
         <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {items.map((p, i) => (
-            <div key={i} className="rounded-3xl border border-border bg-card p-7 hover:shadow-[var(--shadow-soft)] transition">
+            <div key={i} className="rounded-3xl border border-border bg-card p-7 hover:shadow-[var(--shadow-soft)] transition-all duration-500 hover:-translate-y-1">
               <div className="h-11 w-11 rounded-2xl bg-primary/10 grid place-items-center">
                 <p.icon className="h-5 w-5 text-primary" />
               </div>
@@ -268,6 +216,21 @@ function Patterns() {
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: p.d }} />
             </div>
           ))}
+        </div>
+
+        {/* Contact note */}
+        <div className="mt-16 rounded-2xl border border-dashed border-gold/40 bg-gold/[0.04] p-8 text-center max-w-2xl mx-auto">
+          <Mail className="h-6 w-6 text-gold mx-auto mb-3" />
+          <p className="font-display text-lg text-foreground">None of these quite fit?</p>
+          <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+            That&apos;s perfectly fine. Loneliness wears many faces — and the app is designed to meet you where you are, no matter your story.
+          </p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Reach out directly at{" "}
+            <a href="mailto:pahal.bhatti11@gmail.com" className="text-primary font-medium hover:underline underline-offset-4 transition-colors">
+              pahal.bhatti11@gmail.com
+            </a>
+          </p>
         </div>
       </div>
     </section>
@@ -298,7 +261,7 @@ function Journey() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {stages.map((s, i) => (
-            <div key={i} className="relative rounded-3xl bg-card border border-border p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500">
+            <div key={i} className="relative rounded-3xl bg-card border border-border p-7 overflow-hidden hover:-translate-y-1 hover:shadow-[var(--shadow-soft)] transition-all duration-500">
               <div className="absolute -top-6 -right-2 font-display text-[6rem] leading-none text-primary/10 select-none">{String(i+1).padStart(2,"0")}</div>
               <div className="relative">
                 <div className="h-11 w-11 rounded-2xl bg-primary/10 grid place-items-center">
@@ -322,15 +285,15 @@ function Journey() {
             { n: "4.9★", t: "average user rating" },
             { n: "12k+", t: "real conversations weekly" },
           ].map((s, i) => (
-            <div key={i} className="rounded-2xl bg-card border border-border p-6">
+            <div key={i} className="rounded-2xl bg-card border border-border p-6 hover:shadow-[var(--shadow-soft)] transition-all duration-500">
               <div className="font-display text-3xl text-primary">{s.n}</div>
               <p className="mt-2 text-sm text-muted-foreground">{s.t}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-16 rounded-[2rem] overflow-hidden relative h-80 shadow-[var(--shadow-elegant)]">
-          <img src={featureMeet} alt="Two people meeting for coffee" loading="lazy" className="w-full h-full object-cover" />
+        <div className="mt-16 rounded-[2rem] overflow-hidden relative h-80 shadow-[var(--shadow-elegant)] group">
+          <img src={featureMeet} alt="Two people meeting for coffee" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
           <div className="absolute inset-0 bg-gradient-to-r from-forest/85 via-forest/40 to-transparent" />
           <div className="absolute inset-0 flex items-center p-10 lg:p-16">
             <div className="max-w-md text-cream">
@@ -361,7 +324,7 @@ function Testimonials() {
 
         <div className="mt-16 grid md:grid-cols-3 gap-6">
           {quotes.map((q, i) => (
-            <figure key={i} className="rounded-3xl border border-cream/15 bg-cream/5 backdrop-blur p-8 hover:bg-cream/10 transition">
+            <figure key={i} className="rounded-3xl border border-cream/15 bg-cream/5 backdrop-blur p-8 hover:bg-cream/10 hover:border-cream/25 transition-all duration-500">
               <Sparkles className="h-5 w-5 text-gold" />
               <blockquote className="mt-6 font-display text-2xl leading-snug" dangerouslySetInnerHTML={{ __html: `&ldquo;${q.q}&rdquo;` }} />
               <figcaption className="mt-6 text-sm text-cream/60">— {q.a}</figcaption>
@@ -389,10 +352,10 @@ function CTA() {
               Download Let&apos;s Connect. Take the tiny first step. We&apos;ll be right here.
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <a href="#" className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-7 py-4 font-medium shadow-[var(--shadow-soft)] hover:scale-[1.02] transition">
+              <a href="#" className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-7 py-4 font-medium shadow-[var(--shadow-soft)] hover:scale-[1.02] transition-transform">
                 Download for iOS
               </a>
-              <a href="#" className="inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-7 py-4 font-medium shadow-[var(--shadow-gold)] hover:scale-[1.02] transition">
+              <a href="#" className="inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-7 py-4 font-medium shadow-[var(--shadow-gold)] hover:scale-[1.02] transition-transform">
                 Download for Android
               </a>
             </div>
@@ -415,8 +378,8 @@ function Footer() {
         </div>
         <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Let&apos;s Connect — made with care, for the quiet ones.</p>
         <div className="flex gap-6 text-sm text-muted-foreground">
-          <a href="#" className="hover:text-foreground">Privacy</a>
-          <a href="#" className="hover:text-foreground">Contact</a>
+          <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
+          <a href="#" className="hover:text-foreground transition-colors">Contact</a>
         </div>
       </div>
     </footer>
