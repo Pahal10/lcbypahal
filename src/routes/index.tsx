@@ -37,8 +37,8 @@ function Nav() {
           </span>
         </a>
         <div className="hidden md:flex items-center gap-9 text-sm text-foreground/70">
-          <a href="#features" className="hover:text-foreground transition">Features</a>
-          <a href="#how" className="hover:text-foreground transition">How it works</a>
+          <a href="#why" className="hover:text-foreground transition">Why we&apos;re lonely</a>
+          <a href="#journey" className="hover:text-foreground transition">The journey</a>
           <a href="#stories" className="hover:text-foreground transition">Stories</a>
         </div>
         <a
