@@ -44,27 +44,27 @@
 :root {
   --radius: 1rem;
 
-  /* Cream paper background */
-  --background: oklch(0.985 0.012 95);
+  /* Warm light gold background */
+  --background: oklch(0.96 0.018 85);
   --foreground: oklch(0.22 0.04 155);
 
-  --card: oklch(0.99 0.008 95);
+  --card: oklch(0.955 0.015 85);
   --card-foreground: oklch(0.22 0.04 155);
 
-  --popover: oklch(0.99 0.008 95);
+  --popover: oklch(0.955 0.015 85);
   --popover-foreground: oklch(0.22 0.04 155);
 
   /* Deep emerald primary (matches logo green) */
   --primary: oklch(0.46 0.13 155);
   --primary-foreground: oklch(0.985 0.012 95);
 
-  --secondary: oklch(0.94 0.025 130);
+  --secondary: oklch(0.91 0.028 85);
   --secondary-foreground: oklch(0.28 0.06 155);
 
-  --muted: oklch(0.95 0.015 100);
+  --muted: oklch(0.92 0.02 85);
   --muted-foreground: oklch(0.45 0.03 150);
 
-  --accent: oklch(0.92 0.035 130);
+  --accent: oklch(0.88 0.04 85);
   --accent-foreground: oklch(0.28 0.06 155);
 
   /* Warm muted gold */
@@ -77,8 +77,8 @@
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.985 0.012 95);
 
-  --border: oklch(0.88 0.02 130);
-  --input: oklch(0.88 0.02 130);
+  --border: oklch(0.85 0.025 85);
+  --input: oklch(0.85 0.025 85);
   --ring: oklch(0.46 0.13 155);
 
   /* Gradients & shadows */
