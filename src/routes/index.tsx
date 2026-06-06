@@ -15,9 +15,10 @@ function Landing() {
       <Nav />
       <Hero />
       <Marquee />
+      <Why />
+      <Patterns />
       <Features />
-      <Story />
-      <Steps />
+      <Journey />
       <Testimonials />
       <CTA />
       <Footer />
