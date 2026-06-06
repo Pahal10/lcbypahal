@@ -156,10 +156,10 @@ function Why() {
           </div>
           <div className="absolute -bottom-8 -right-4 lg:-right-12 bg-card border border-border rounded-2xl p-6 max-w-[280px] shadow-[var(--shadow-soft)]">
             <div className="flex items-center gap-2 text-gold mb-2">
-              <Utensils className="h-4 w-4" />
-              <span className="text-xs uppercase tracking-widest font-medium">Social hunger</span>
+              <Heart className="h-4 w-4" />
+              <span className="text-xs uppercase tracking-widest font-medium">Real talk</span>
             </div>
-            <p className="font-script text-2xl text-primary leading-tight">&ldquo;A snack won&apos;t fix starvation.&rdquo;</p>
+            <p className="font-script text-2xl text-primary leading-tight">&ldquo;Honestly? It just helped.&rdquo;</p>
           </div>
         </div>
 
@@ -169,18 +169,18 @@ function Why() {
             Loneliness is <span className="font-script text-primary text-6xl">social hunger</span>.
           </h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            When you expect a real meal of connection and get a snack instead — a like, a dry &ldquo;hey,&rdquo; a half-listening chat — the hunger grows. Sometimes connection doesn&apos;t drip away; it crashes, like a market correction. One move, one loss, one quiet season, and your portfolio of closeness halves overnight.
+            We researched patterns in various cases and came up with an understanding of loneliness. To explain, we break it down into two analogies.
           </p>
           <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div className="rounded-2xl border border-border bg-card p-5 hover:shadow-[var(--shadow-soft)] transition-shadow duration-500">
               <Utensils className="h-5 w-5 text-primary" />
               <p className="mt-3 font-display text-lg">The hunger model</p>
-              <p className="mt-1 text-sm text-muted-foreground">Light connection can&apos;t feed deep need. We help you find the right meal.</p>
+              <p className="mt-1 text-sm text-muted-foreground">Loneliness is like social hunger. When you expect food (connection) but don&apos;t get it — or get a snack when you&apos;re starving — you feel lonely.</p>
             </div>
             <div className="rounded-2xl border border-border bg-card p-5 hover:shadow-[var(--shadow-soft)] transition-shadow duration-500">
               <TrendingDown className="h-5 w-5 text-gold" />
               <p className="mt-3 font-display text-lg">The crash model</p>
-              <p className="mt-1 text-sm text-muted-foreground">When connection drops fast, recovery needs structure — not just willpower.</p>
+              <p className="mt-1 text-sm text-muted-foreground">You can also think of it like a stock market crash. A sudden crash of connection causes loneliness.</p>
             </div>
           </div>
         </div>
