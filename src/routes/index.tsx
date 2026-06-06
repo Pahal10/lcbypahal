@@ -3,7 +3,7 @@ import logoAsset from "@/assets/logo.png.asset.json";
 import heroImg from "@/assets/hero-connection.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
-import { Sparkles, MessageCircleHeart, Compass, ShieldCheck, ArrowRight, Heart, Leaf } from "lucide-react";
+import { Sparkles, MessageCircleHeart, Compass, ShieldCheck, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepap, Flame, Coffee as CoffeeIcon, Gamepad2, Lightbulb } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Landing,
