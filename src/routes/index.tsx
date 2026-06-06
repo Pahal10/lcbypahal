@@ -198,40 +198,42 @@ function Features() {
   );
 }
 
-function Story() {
+function Why() {
   return (
-    <section className="py-28 lg:py-36 bg-secondary/40 relative">
+    <section id="why" className="py-28 lg:py-36 bg-secondary/40 relative overflow-hidden">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
-        <div className="relative">
+        <div className="relative order-2 lg:order-1">
           <div className="rounded-[2rem] overflow-hidden shadow-[var(--shadow-elegant)]">
             <img src={featureCalm} alt="A calm moment" loading="lazy" className="w-full h-[560px] object-cover" />
           </div>
-          <div className="absolute -bottom-8 -right-4 lg:-right-12 bg-card border border-border rounded-2xl p-6 max-w-[260px] shadow-[var(--shadow-soft)]">
-            <p className="font-script text-3xl text-primary leading-none">&ldquo;Today felt easier.&rdquo;</p>
-            <p className="mt-3 text-sm text-muted-foreground">— Sam, 23, joined last spring</p>
+          <div className="absolute -bottom-8 -right-4 lg:-right-12 bg-card border border-border rounded-2xl p-6 max-w-[280px] shadow-[var(--shadow-soft)]">
+            <div className="flex items-center gap-2 text-gold mb-2">
+              <Utensils className="h-4 w-4" />
+              <span className="text-xs uppercase tracking-widest font-medium">Social hunger</span>
+            </div>
+            <p className="font-script text-2xl text-primary leading-tight">&ldquo;A snack won&apos;t fix starvation.&rdquo;</p>
           </div>
         </div>
 
-        <div>
-          <p className="text-sm font-medium text-primary uppercase tracking-[0.2em]">Our story</p>
+        <div className="order-1 lg:order-2">
+          <p className="text-sm font-medium text-primary uppercase tracking-[0.2em]">The why</p>
           <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
-            We made the app we wished existed when we couldn&apos;t leave the house.
+            Loneliness is <span className="font-script text-primary text-6xl">social hunger</span>.
           </h2>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            Loneliness isn&apos;t a personality flaw. It&apos;s a signal — that you&apos;re wired for closeness and the world made closeness hard.
-            Let&apos;s Connect is the gentle in-between: a place to practice, to be heard, and to find the people who&apos;d show up for you.
+            When you expect a real meal of connection and get a snack instead — a like, a dry &ldquo;hey,&rdquo; a half-listening chat — the hunger grows. Sometimes connection doesn&apos;t drip away; it crashes, like a market correction. One move, one loss, one quiet season, and your portfolio of closeness halves overnight.
           </p>
-          <div className="mt-10 grid grid-cols-3 gap-6">
-            {[
-              { n: "92%", t: "feel less alone in 30 days" },
-              { n: "4.9★", t: "average user rating" },
-              { n: "12k+", t: "real conversations weekly" },
-            ].map((s, i) => (
-              <div key={i}>
-                <div className="font-display text-3xl lg:text-4xl text-primary">{s.n}</div>
-                <p className="mt-2 text-xs text-muted-foreground leading-snug">{s.t}</p>
-              </div>
-            ))}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="rounded-2xl border border-border bg-card p-5">
+              <Utensils className="h-5 w-5 text-primary" />
+              <p className="mt-3 font-display text-lg">The hunger model</p>
+              <p className="mt-1 text-sm text-muted-foreground">Light connection can&apos;t feed deep need. We help you find the right meal.</p>
+            </div>
+            <div className="rounded-2xl border border-border bg-card p-5">
+              <TrendingDown className="h-5 w-5 text-gold" />
+              <p className="mt-3 font-display text-lg">The crash model</p>
+              <p className="mt-1 text-sm text-muted-foreground">When connection drops fast, recovery needs structure — not just willpower.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -239,38 +241,97 @@ function Story() {
   );
 }
 
-function Steps() {
-  const steps = [
-    { n: "01", t: "Tell us where you are", d: "A short, kind questionnaire — no quizzes, no judgement." },
-    { n: "02", t: "Get tiny daily prompts", d: "One soft action a day. Big enough to count, small enough to do." },
-    { n: "03", t: "Meet your people", d: "Slow-matched conversations with humans who&apos;d genuinely show up." },
+function Patterns() {
+  const items = [
+    { icon: Users, t: "I can&apos;t make friends", d: "You show up, you try, the spark never lands. We rebuild the muscle — gently, with words ready when yours aren&apos;t." },
+    { icon: MapPin, t: "I moved cities", d: "Group chats fade. Voice notes get shorter. Online retention isn&apos;t real retention. Start a new local circle, one hello at a time." },
+    { icon: ShieldCheck, t: "Nobody around me gets me", d: "Being surrounded and unseen is its own kind of alone. Get matched on what actually matters to you." },
+    { icon: UserMinus, t: "I lost someone close", d: "A whole shape goes missing. No replacing — only slowly making room for new warmth, at your pace." },
   ];
   return (
-    <section id="how" className="py-28 lg:py-36">
+    <section className="py-28 lg:py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
-          <h2 className="text-4xl lg:text-5xl font-display max-w-xl leading-tight">
-            How it <span className="font-script text-primary text-6xl">works</span>
+        <div className="max-w-2xl">
+          <p className="text-sm font-medium text-primary uppercase tracking-[0.2em]">Sound familiar?</p>
+          <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
+            Four quiet ways loneliness <span className="italic font-script text-primary text-6xl">arrives</span>.
           </h2>
-          <p className="text-muted-foreground max-w-sm">A pace that respects your nervous system. No swipes, no streak guilt — promise.</p>
+          <p className="mt-5 text-muted-foreground">We studied real stories. These patterns came up again and again. If one of them is yours, you&apos;re in good company — and there&apos;s a way through.</p>
+        </div>
+        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {items.map((p, i) => (
+            <div key={i} className="rounded-3xl border border-border bg-card p-7 hover:shadow-[var(--shadow-soft)] transition">
+              <div className="h-11 w-11 rounded-2xl bg-primary/10 grid place-items-center">
+                <p.icon className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="mt-5 font-display text-xl" dangerouslySetInnerHTML={{ __html: p.t }} />
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: p.d }} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Journey() {
+  const stages = [
+    { icon: MessageCircleHeart, n: "Stage 01", t: "Small talk", d: "Low-stakes openers, weather, weekend plans. The reps that make the rest possible.", prompt: "&ldquo;What&apos;s a small thing that made you smile today?&rdquo;" },
+    { icon: Heart, n: "Stage 02", t: "Big talk", d: "Real questions, real answers. Where small talk warms up, big talk lights up.", prompt: "&ldquo;What part of your life feels unfinished right now?&rdquo;" },
+    { icon: Gamepad2, n: "Stage 03", t: "Playtime", d: "Shared activities, inside jokes, doing things together. Friendship moves into the body.", prompt: "&ldquo;Pick a game. Loser picks the next one.&rdquo;" },
+    { icon: Coffee, n: "Stage 04", t: "Hygge", d: "Easy silence. Pajamas on the couch. The friendship has weight now — and it&apos;s warm.", prompt: "&ldquo;Come over. We don&apos;t have to do anything.&rdquo;" },
+  ];
+  return (
+    <section id="journey" className="py-28 lg:py-36 bg-secondary/40">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-display max-w-xl leading-tight">
+            The <span className="font-script text-primary text-6xl">journey</span> — small talk to hygge.
+          </h2>
+          <p className="text-muted-foreground max-w-sm">Every real friendship climbs the same four rungs. We just hand you the ladder.</p>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {steps.map((s, i) => (
-            <div key={i} className="relative rounded-3xl bg-gradient-to-br from-card to-secondary/60 p-10 border border-border overflow-hidden">
-              <div className="absolute -top-6 -right-2 font-display text-[8rem] leading-none text-primary/8 select-none">{s.n}</div>
+        <div className="mb-14 inline-flex items-center gap-3 rounded-full border border-border bg-card px-5 py-2.5 text-sm">
+          <Lightbulb className="h-4 w-4 text-gold" />
+          <span className="text-muted-foreground">Powered by gentle <span className="text-foreground font-medium">nudge engineering</span> — tiny prompts, well-timed insights, never guilt.</span>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {stages.map((s, i) => (
+            <div key={i} className="relative rounded-3xl bg-card border border-border p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500">
+              <div className="absolute -top-6 -right-2 font-display text-[6rem] leading-none text-primary/10 select-none">{String(i+1).padStart(2,"0")}</div>
               <div className="relative">
-                <div className="font-script text-3xl text-gold">{s.n}</div>
-                <h3 className="mt-4 text-2xl font-display">{s.t}</h3>
-                <p className="mt-3 text-muted-foreground" dangerouslySetInnerHTML={{ __html: s.d }} />
+                <div className="h-11 w-11 rounded-2xl bg-primary/10 grid place-items-center">
+                  <s.icon className="h-5 w-5 text-primary" />
+                </div>
+                <p className="mt-5 text-xs uppercase tracking-widest text-muted-foreground">{s.n}</p>
+                <h3 className="mt-1 font-display text-2xl">{s.t}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
+                <div className="mt-5 rounded-2xl border border-dashed border-border bg-secondary/50 p-4">
+                  <p className="text-[10px] uppercase tracking-widest text-primary font-medium">Sample prompt</p>
+                  <p className="mt-1 font-script text-lg text-foreground/90" dangerouslySetInnerHTML={{ __html: s.prompt }} />
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-20 rounded-[2rem] overflow-hidden relative h-80 shadow-[var(--shadow-elegant)]">
+        <div className="mt-12 grid sm:grid-cols-3 gap-6">
+          {[
+            { n: "92%", t: "feel less alone in 30 days" },
+            { n: "4.9★", t: "average user rating" },
+            { n: "12k+", t: "real conversations weekly" },
+          ].map((s, i) => (
+            <div key={i} className="rounded-2xl bg-card border border-border p-6">
+              <div className="font-display text-3xl text-primary">{s.n}</div>
+              <p className="mt-2 text-sm text-muted-foreground">{s.t}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 rounded-[2rem] overflow-hidden relative h-80 shadow-[var(--shadow-elegant)]">
           <img src={featureMeet} alt="Two people meeting for coffee" loading="lazy" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-forest/80 via-forest/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-forest/85 via-forest/40 to-transparent" />
           <div className="absolute inset-0 flex items-center p-10 lg:p-16">
             <div className="max-w-md text-cream">
               <p className="font-script text-4xl text-gold">small steps,</p>
