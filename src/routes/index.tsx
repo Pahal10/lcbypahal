@@ -106,22 +106,6 @@ function Hero() {
               <img src={heroImg} alt="Friends sharing a warm moment" className="w-full h-[520px] object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-forest/40 via-transparent to-transparent" />
             </div>
-            {/* Floating card */}
-            <div className="absolute -left-6 bottom-10 bg-card border border-border rounded-2xl p-4 shadow-[var(--shadow-soft)] w-60 hidden sm:block">
-              <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-full bg-primary/10 grid place-items-center">
-                  <MessageCircleHeart className="h-5 w-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Maya said hi</p>
-                  <p className="text-xs text-muted-foreground">Your daily nudge ✨</p>
-                </div>
-              </div>
-            </div>
-            <div className="absolute -right-4 top-10 bg-gold text-gold-foreground rounded-2xl px-4 py-3 shadow-[var(--shadow-gold)] hidden sm:flex items-center gap-2">
-              <Sparkles className="h-4 w-4" />
-              <span className="text-sm font-medium">Streak · 7 days</span>
-            </div>
           </div>
         </div>
       </div>
