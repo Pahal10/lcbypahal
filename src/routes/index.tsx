@@ -319,7 +319,7 @@ function Testimonials() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <p className="text-sm font-medium text-gold uppercase tracking-[0.2em]">Quiet wins</p>
         <h2 className="mt-4 text-4xl lg:text-5xl font-display max-w-2xl leading-tight">
-          Small messages from people who finally felt <span className="font-script text-gold text-6xl">met</span>.
+          Small messages from people who finally felt <span className="font-script text-gold text-6xl">connected</span>.
         </h2>
 
         <div className="mt-16 grid md:grid-cols-3 gap-6">
@@ -349,7 +349,7 @@ function CTA() {
               The world feels lighter with <span className="font-script text-gold text-7xl">one</span> good hello.
             </h2>
             <p className="mt-6 text-cream/80 max-w-xl mx-auto">
-              Download Let&apos;s Connect. Take the tiny first step. We&apos;ll be right here.
+              Feeling lonely or socially anxious? We are here to help :)
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
               <a href="#" className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-7 py-4 font-medium shadow-[var(--shadow-soft)] hover:scale-[1.02] transition-transform">
