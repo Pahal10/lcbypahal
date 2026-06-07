@@ -53,12 +53,24 @@ function Nav() {
 
 function Hero() {
   return (
-    <section className="relative pt-32 pb-24 lg:pt-44 lg:pb-32" style={{ backgroundImage: "var(--gradient-hero)" }}>
+    <section className="relative pt-32 pb-24 lg:pt-44 lg:pb-32 overflow-hidden" style={{ backgroundImage: "var(--gradient-hero)" }}>
       <div className="absolute inset-0 bg-noise opacity-60 pointer-events-none" />
+
+      {/* Decorative golden orbs */}
+      <div className="absolute -top-32 -left-20 h-96 w-96 rounded-full bg-gold/30 blur-[120px] pointer-events-none" />
+      <div className="absolute top-20 right-1/4 h-72 w-72 rounded-full bg-gold/25 blur-[100px] pointer-events-none animate-float" />
+      <div className="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-primary/15 blur-[120px] pointer-events-none" />
+
+      {/* Floating sparkles */}
+      <Sparkles className="absolute top-32 right-[12%] h-5 w-5 text-gold/70 animate-float" style={{ animationDelay: "0.5s" }} />
+      <Sparkles className="absolute bottom-40 left-[8%] h-4 w-4 text-gold/60 animate-float" style={{ animationDelay: "1.2s" }} />
+      <Heart className="absolute top-1/2 left-[6%] h-4 w-4 text-primary/40 animate-float" style={{ animationDelay: "0.8s" }} />
+      <Leaf className="absolute top-40 left-[15%] h-5 w-5 text-primary/30 animate-float" style={{ animationDelay: "1.5s" }} />
+
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7 animate-fade-up">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 backdrop-blur px-4 py-1.5 text-xs text-muted-foreground">
-            <Leaf className="h-3.5 w-3.5 text-primary" />
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gradient-to-r from-gold/20 via-cream/50 to-gold/20 backdrop-blur px-4 py-1.5 text-xs text-foreground/80 shadow-[var(--shadow-soft)]">
+            <Sparkles className="h-3.5 w-3.5 text-gold" />
             A gentler way to feel less alone
           </div>
           <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.02] tracking-tight">
@@ -76,13 +88,14 @@ function Hero() {
           <div className="mt-9 flex flex-wrap items-center gap-4">
             <a
               href="#download"
-              className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-gold)] transition-all duration-500"
+              className="group relative inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-gold)] transition-all duration-500 overflow-hidden"
             >
-              Start connecting
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <span className="relative">Start connecting</span>
+              <ArrowRight className="relative h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a href="#journey" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
-              <span className="h-10 w-10 rounded-full border border-border grid place-items-center bg-card hover:bg-muted transition-colors">
+              <span className="h-10 w-10 rounded-full border border-gold/40 grid place-items-center bg-card hover:bg-gold/10 transition-colors">
                 <ArrowRight className="h-4 w-4" />
               </span>
               See how it works
@@ -91,7 +104,7 @@ function Hero() {
           <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground">
             <div className="flex -space-x-2">
               {[1,2,3,4].map(i => (
-                <div key={i} className="h-8 w-8 rounded-full border-2 border-background"
+                <div key={i} className="h-8 w-8 rounded-full border-2 border-background shadow-[var(--shadow-soft)]"
                   style={{ background: i % 2 ? "var(--gradient-emerald)" : "var(--gradient-gold)" }} />
               ))}
             </div>
@@ -101,10 +114,24 @@ function Hero() {
 
         <div className="lg:col-span-5 relative">
           <div className="relative animate-float">
-            <div className="absolute -inset-6 rounded-[2.5rem] bg-gold/30 blur-3xl" />
-            <div className="relative rounded-[2rem] overflow-hidden shadow-[var(--shadow-elegant)] border border-border">
+            {/* Glow halos */}
+            <div className="absolute -inset-8 rounded-[2.5rem] bg-gold/40 blur-3xl" />
+            <div className="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-br from-gold/30 via-transparent to-primary/20 blur-2xl" />
+
+            <div className="relative rounded-[2rem] overflow-hidden shadow-[var(--shadow-elegant)] border-2 border-gold/30">
               <img src={heroImg} alt="Friends sharing a warm moment" className="w-full h-[520px] object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-forest/40 via-transparent to-transparent" />
+
+              {/* Cute floating tag */}
+              <div className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-cream/90 backdrop-blur px-3 py-1.5 text-xs font-medium text-foreground shadow-[var(--shadow-soft)] border border-gold/40">
+                <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
+                feeling warmer already
+              </div>
+            </div>
+
+            {/* Decorative gold corner badge */}
+            <div className="absolute -bottom-5 -right-5 h-20 w-20 rounded-full grid place-items-center shadow-[var(--shadow-gold)] border-2 border-cream" style={{ background: "var(--gradient-gold)" }}>
+              <Heart className="h-8 w-8 text-forest" fill="currentColor" />
             </div>
           </div>
         </div>
