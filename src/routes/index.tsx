@@ -69,7 +69,7 @@ function Hero() {
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7 animate-fade-up">
-          <div className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gradient-to-r from-gold/20 via-cream/50 to-gold/20 backdrop-blur px-4 py-1.5 text-xs text-foreground/80 shadow-[var(--shadow-soft)]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold/25 bg-gradient-to-r from-gold/10 via-cream/50 to-gold/10 backdrop-blur px-4 py-1.5 text-xs text-foreground/80 shadow-[var(--shadow-soft)]">
             <Sparkles className="h-3.5 w-3.5 text-gold" />
             A gentler way to feel less alone
           </div>
@@ -95,7 +95,7 @@ function Hero() {
               <ArrowRight className="relative h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a href="#journey" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
-              <span className="h-10 w-10 rounded-full border border-gold/40 grid place-items-center bg-card hover:bg-gold/10 transition-colors">
+              <span className="h-10 w-10 rounded-full border border-gold/25 grid place-items-center bg-card hover:bg-gold/5 transition-colors">
                 <ArrowRight className="h-4 w-4" />
               </span>
               See how it works
@@ -115,22 +115,22 @@ function Hero() {
         <div className="lg:col-span-5 relative">
           <div className="relative animate-float">
             {/* Glow halos */}
-            <div className="absolute -inset-8 rounded-[2.5rem] bg-gold/40 blur-3xl" />
-            <div className="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-br from-gold/30 via-transparent to-primary/20 blur-2xl" />
+            <div className="absolute -inset-8 rounded-[2.5rem] bg-gold/20 blur-3xl" />
+            <div className="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-br from-gold/15 via-transparent to-primary/10 blur-2xl" />
 
-            <div className="relative rounded-[2rem] overflow-hidden shadow-[var(--shadow-elegant)] border-2 border-gold/30">
+            <div className="relative rounded-[2rem] overflow-hidden shadow-[var(--shadow-elegant)] border border-gold/15">
               <img src={heroImg} alt="Friends sharing a warm moment" className="w-full h-[520px] object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest/40 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest/30 via-transparent to-transparent" />
 
               {/* Cute floating tag */}
-              <div className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-cream/90 backdrop-blur px-3 py-1.5 text-xs font-medium text-foreground shadow-[var(--shadow-soft)] border border-gold/40">
+              <div className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-cream/90 backdrop-blur px-3 py-1.5 text-xs font-medium text-foreground shadow-[var(--shadow-soft)] border border-gold/20">
                 <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
                 feeling warmer already
               </div>
             </div>
 
-            {/* Decorative gold corner badge */}
-            <div className="absolute -bottom-5 -right-5 h-20 w-20 rounded-full grid place-items-center shadow-[var(--shadow-gold)] border-2 border-cream" style={{ background: "var(--gradient-gold)" }}>
+            {/* Decorative corner badge */}
+            <div className="absolute -bottom-5 -right-5 h-20 w-20 rounded-full grid place-items-center shadow-[var(--shadow-soft)] border-2 border-cream" style={{ background: "var(--gradient-gold)" }}>
               <Heart className="h-8 w-8 text-forest" fill="currentColor" />
             </div>
           </div>
