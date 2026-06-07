@@ -56,16 +56,16 @@ function Hero() {
     <section className="relative pt-32 pb-24 lg:pt-44 lg:pb-32 overflow-hidden" style={{ backgroundImage: "var(--gradient-hero)" }}>
       <div className="absolute inset-0 bg-noise opacity-60 pointer-events-none" />
 
-      {/* Decorative golden orbs */}
-      <div className="absolute -top-32 -left-20 h-96 w-96 rounded-full bg-gold/30 blur-[120px] pointer-events-none" />
-      <div className="absolute top-20 right-1/4 h-72 w-72 rounded-full bg-gold/25 blur-[100px] pointer-events-none animate-float" />
-      <div className="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-primary/15 blur-[120px] pointer-events-none" />
+      {/* Decorative soft orbs */}
+      <div className="absolute -top-32 -left-20 h-96 w-96 rounded-full bg-gold/15 blur-[120px] pointer-events-none" />
+      <div className="absolute top-20 right-1/4 h-72 w-72 rounded-full bg-gold/12 blur-[100px] pointer-events-none animate-float" />
+      <div className="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
 
       {/* Floating sparkles */}
-      <Sparkles className="absolute top-32 right-[12%] h-5 w-5 text-gold/70 animate-float" style={{ animationDelay: "0.5s" }} />
-      <Sparkles className="absolute bottom-40 left-[8%] h-4 w-4 text-gold/60 animate-float" style={{ animationDelay: "1.2s" }} />
-      <Heart className="absolute top-1/2 left-[6%] h-4 w-4 text-primary/40 animate-float" style={{ animationDelay: "0.8s" }} />
-      <Leaf className="absolute top-40 left-[15%] h-5 w-5 text-primary/30 animate-float" style={{ animationDelay: "1.5s" }} />
+      <Sparkles className="absolute top-32 right-[12%] h-5 w-5 text-gold/40 animate-float" style={{ animationDelay: "0.5s" }} />
+      <Sparkles className="absolute bottom-40 left-[8%] h-4 w-4 text-gold/30 animate-float" style={{ animationDelay: "1.2s" }} />
+      <Heart className="absolute top-1/2 left-[6%] h-4 w-4 text-primary/25 animate-float" style={{ animationDelay: "0.8s" }} />
+      <Leaf className="absolute top-40 left-[15%] h-5 w-5 text-primary/20 animate-float" style={{ animationDelay: "1.5s" }} />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7 animate-fade-up">
