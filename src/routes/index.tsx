@@ -294,18 +294,8 @@ function Journey() {
           ))}
         </div>
 
-        <div className="mt-12 grid sm:grid-cols-3 gap-6">
-          {[
-            { n: "92%", t: "feel less alone in 30 days" },
-            { n: "4.9★", t: "average user rating" },
-            { n: "12k+", t: "real conversations weekly" },
-          ].map((s, i) => (
-            <div key={i} className="rounded-2xl bg-card border border-border p-6 hover:shadow-[var(--shadow-soft)] transition-all duration-500">
-              <div className="font-display text-3xl text-primary">{s.n}</div>
-              <p className="mt-2 text-sm text-muted-foreground">{s.t}</p>
-            </div>
-          ))}
-        </div>
+
+
 
         <div className="mt-16 rounded-[2rem] overflow-hidden relative h-80 shadow-[var(--shadow-elegant)] group">
           <img src={featureMeet} alt="Two people meeting for coffee" loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
