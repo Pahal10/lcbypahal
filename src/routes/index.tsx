@@ -372,21 +372,127 @@ function CTA() {
 }
 
 function Footer() {
+  const [contactOpen, setContactOpen] = useState(false);
   return (
-    <footer className="border-t border-border py-12">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-3">
-          <img src={logoAsset.url} alt="Let's Connect" className="h-9 w-9 rounded-xl" />
-          <span className="font-display text-lg">
-            Let&apos;s <span className="font-script text-primary text-xl">Connect</span>
-          </span>
+    <>
+      <footer className="border-t border-border py-12">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3">
+            <img src={logoAsset.url} alt="Let's Connect" className="h-9 w-9 rounded-xl" />
+            <span className="font-display text-lg">
+              Let&apos;s <span className="font-script text-primary text-xl">Connect</span>
+            </span>
+          </div>
+          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Let&apos;s Connect — made with care, for the quiet ones.</p>
+          <div className="flex gap-6 text-sm text-muted-foreground">
+            <a href="https://www.termsfeed.com/live/c439c7ce-dbd4-4336-88aa-f89cce03625a" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Privacy</a>
+            <button type="button" onClick={() => setContactOpen(true)} className="hover:text-foreground transition-colors">Contact</button>
+          </div>
         </div>
-        <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Let&apos;s Connect — made with care, for the quiet ones.</p>
-        <div className="flex gap-6 text-sm text-muted-foreground">
-          <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-          <a href="#" className="hover:text-foreground transition-colors">Contact</a>
-        </div>
-      </div>
-    </footer>
+      </footer>
+
+      <Dialog open={contactOpen} onOpenChange={setContactOpen}>
+        <DialogContent className="sm:max-w-md border-gold/25 bg-cream">
+          <DialogHeader>
+            <DialogTitle className="font-display text-3xl">
+              Let&apos;s <span className="font-script text-primary text-4xl">talk</span>
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              Reach out — I&apos;d genuinely love to hear from you.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-2 space-y-3">
+            <a href="mailto:pahal.bhatti11@gmail.com" className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 hover:border-gold/40 hover:shadow-[var(--shadow-soft)] transition-all">
+              <div className="h-11 w-11 rounded-xl bg-primary/10 grid place-items-center shrink-0">
+                <Mail className="h-5 w-5 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">Email</p>
+                <p className="font-medium truncate">pahal.bhatti11@gmail.com</p>
+              </div>
+            </a>
+            <a href="https://wa.me/97433720786" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 hover:border-gold/40 hover:shadow-[var(--shadow-soft)] transition-all">
+              <div className="h-11 w-11 rounded-xl bg-primary/10 grid place-items-center shrink-0">
+                <MessageCircle className="h-5 w-5 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">WhatsApp</p>
+                <p className="font-medium">+974 33720786</p>
+              </div>
+            </a>
+            <a href="https://instagram.com/pahal.bhatti11" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 hover:border-gold/40 hover:shadow-[var(--shadow-soft)] transition-all">
+              <div className="h-11 w-11 rounded-xl bg-primary/10 grid place-items-center shrink-0">
+                <Instagram className="h-5 w-5 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">Instagram</p>
+                <p className="font-medium">@pahal.bhatti11</p>
+              </div>
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
+
+function Premium() {
+  return (
+    <section className="py-28 lg:py-36 relative overflow-hidden">
+      <div className="absolute -top-32 right-0 h-96 w-96 rounded-full bg-gold/15 blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-32 left-0 h-96 w-96 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
+        {/* Phone mockup */}
+        <div className="relative flex justify-center order-2 lg:order-1">
+          <div className="absolute -inset-8 rounded-[3rem] bg-gold/15 blur-3xl" />
+          <div className="relative">
+            {/* Phone frame */}
+            <div className="relative w-[300px] h-[610px] rounded-[3rem] bg-gradient-to-b from-neutral-900 to-neutral-800 p-3 shadow-[var(--shadow-elegant)] border border-neutral-700">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-neutral-900 rounded-b-2xl z-10" />
+              <div className="relative w-full h-full rounded-[2.3rem] overflow-hidden bg-black">
+                <img src={premiumRewardAsset.url} alt="Premium reward inside the app" className="w-full h-full object-cover" />
+              </div>
+            </div>
+            {/* Floating gift badge */}
+            <div className="absolute -top-4 -right-4 h-20 w-20 rounded-full grid place-items-center shadow-[var(--shadow-soft)] border-2 border-cream animate-float" style={{ background: "var(--gradient-gold)" }}>
+              <Gift className="h-8 w-8 text-forest" />
+            </div>
+          </div>
+        </div>
+
+        {/* Text */}
+        <div className="order-1 lg:order-2">
+          <p className="text-sm font-medium text-primary uppercase tracking-[0.2em]">Premium rewards</p>
+          <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
+            Hidden perks, <span className="font-script text-primary text-6xl">unlocked</span>.
+          </h2>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            Discover hacks and discounts that live quietly online — the kind most people never find. From airline discounts to secret deals, we surface the ones worth knowing.
+          </p>
+          <div className="mt-8 space-y-4">
+            <div className="flex items-start gap-4 rounded-2xl border border-gold/25 bg-gradient-to-br from-gold/10 to-transparent p-5">
+              <div className="h-11 w-11 rounded-2xl grid place-items-center shrink-0" style={{ background: "var(--gradient-gold)" }}>
+                <Sparkles className="h-5 w-5 text-forest" />
+              </div>
+              <div>
+                <p className="font-display text-lg">Go Premium</p>
+                <p className="mt-1 text-sm text-muted-foreground">Pay a nominal fee and instantly unlock every hidden reward — new ones added weekly.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5">
+              <div className="h-11 w-11 rounded-2xl bg-primary/10 grid place-items-center shrink-0">
+                <CheckCircle2 className="h-5 w-5 text-primary" />
+              </div>
+              <div>
+                <p className="font-display text-lg">Or stay free</p>
+                <p className="mt-1 text-sm text-muted-foreground">Verify the small social tasks you complete and earn rewards in return — no paywall needed.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
