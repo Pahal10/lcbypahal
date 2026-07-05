@@ -21,6 +21,7 @@ function Landing() {
       <Why />
       <Patterns />
       <Journey />
+      <Premium />
       <Testimonials />
       <CTA />
       <Footer />
