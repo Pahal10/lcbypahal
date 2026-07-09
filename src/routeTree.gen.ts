@@ -10,13 +10,26 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as SuccessRouteImport } from './routes/success'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RefundRouteImport } from './routes/refund'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicWebhooksLemonsqueezyRouteImport } from './routes/api/public/webhooks/lemonsqueezy'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuccessRoute = SuccessRouteImport.update({
+  id: '/success',
+  path: '/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RefundRoute = RefundRouteImport.update({
@@ -34,39 +47,79 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicWebhooksLemonsqueezyRoute =
+  ApiPublicWebhooksLemonsqueezyRouteImport.update({
+    id: '/api/public/webhooks/lemonsqueezy',
+    path: '/api/public/webhooks/lemonsqueezy',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
+  '/register': typeof RegisterRoute
+  '/success': typeof SuccessRoute
   '/terms': typeof TermsRoute
+  '/api/public/webhooks/lemonsqueezy': typeof ApiPublicWebhooksLemonsqueezyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
+  '/register': typeof RegisterRoute
+  '/success': typeof SuccessRoute
   '/terms': typeof TermsRoute
+  '/api/public/webhooks/lemonsqueezy': typeof ApiPublicWebhooksLemonsqueezyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
+  '/register': typeof RegisterRoute
+  '/success': typeof SuccessRoute
   '/terms': typeof TermsRoute
+  '/api/public/webhooks/lemonsqueezy': typeof ApiPublicWebhooksLemonsqueezyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/pricing' | '/refund' | '/terms'
+  fullPaths:
+    | '/'
+    | '/pricing'
+    | '/refund'
+    | '/register'
+    | '/success'
+    | '/terms'
+    | '/api/public/webhooks/lemonsqueezy'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/pricing' | '/refund' | '/terms'
-  id: '__root__' | '/' | '/pricing' | '/refund' | '/terms'
+  to:
+    | '/'
+    | '/pricing'
+    | '/refund'
+    | '/register'
+    | '/success'
+    | '/terms'
+    | '/api/public/webhooks/lemonsqueezy'
+  id:
+    | '__root__'
+    | '/'
+    | '/pricing'
+    | '/refund'
+    | '/register'
+    | '/success'
+    | '/terms'
+    | '/api/public/webhooks/lemonsqueezy'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PricingRoute: typeof PricingRoute
   RefundRoute: typeof RefundRoute
+  RegisterRoute: typeof RegisterRoute
+  SuccessRoute: typeof SuccessRoute
   TermsRoute: typeof TermsRoute
+  ApiPublicWebhooksLemonsqueezyRoute: typeof ApiPublicWebhooksLemonsqueezyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -76,6 +129,20 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/success': {
+      id: '/success'
+      path: '/success'
+      fullPath: '/success'
+      preLoaderRoute: typeof SuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/refund': {
@@ -99,6 +166,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/webhooks/lemonsqueezy': {
+      id: '/api/public/webhooks/lemonsqueezy'
+      path: '/api/public/webhooks/lemonsqueezy'
+      fullPath: '/api/public/webhooks/lemonsqueezy'
+      preLoaderRoute: typeof ApiPublicWebhooksLemonsqueezyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -106,18 +180,11 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PricingRoute: PricingRoute,
   RefundRoute: RefundRoute,
+  RegisterRoute: RegisterRoute,
+  SuccessRoute: SuccessRoute,
   TermsRoute: TermsRoute,
+  ApiPublicWebhooksLemonsqueezyRoute: ApiPublicWebhooksLemonsqueezyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
