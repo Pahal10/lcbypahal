@@ -91,12 +91,12 @@ function PricingPage() {
             Cancel anytime. No hidden fees. Just a small thanks that keeps the hidden perks flowing.
           </p>
 
-          <a
-            href="#signup"
+          <Link
+            to="/register"
             className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-[color:var(--gold-foreground)] shadow-[0_20px_50px_-15px_oklch(0.7_0.14_70/0.6)] transition hover:brightness-105"
           >
             <Sparkles className="h-4 w-4" /> Sign up for Premium
-          </a>
+          </Link>
 
           <div className="mt-5 flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-cream/50">
             <Link to="/terms" className="hover:text-cream/80">Terms of service</Link>
