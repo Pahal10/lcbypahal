@@ -82,17 +82,17 @@ function RegisterPage() {
 
       <div className="relative mx-auto max-w-md px-6 py-14">
         <div className="mb-8 flex items-center justify-between">
-          <Link to="/pricing" className="text-sm text-cream/70 hover:text-cream">← Back</Link>
+          <Link to="/" className="text-sm text-cream/70 hover:text-cream">← Back</Link>
           <img src={logo.url} alt="Let's Connect" className="h-9 w-auto" />
         </div>
 
         <div className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs uppercase tracking-widest text-gold">
-            <Sparkles className="h-3.5 w-3.5" /> Premium — $1/mo
+            <Sparkles className="h-3.5 w-3.5" /> Free to join
           </span>
           <h1 className="mt-4 font-display text-3xl text-cream sm:text-4xl">Create your account</h1>
           <p className="mt-2 text-sm text-cream/70">
-            Sign up, then complete checkout. Use these same credentials to sign in on the mobile app.
+            Sign up here, then sign in on the mobile app with the same username and password.
           </p>
         </div>
 
