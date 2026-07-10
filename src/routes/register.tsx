@@ -16,9 +16,8 @@ export const Route = createFileRoute("/register")({
 });
 
 function RegisterPage() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const doRegister = useServerFn(registerUser);
-  const doCheckout = useServerFn(createCheckout);
 
   const [form, setForm] = useState({
     username: "",
@@ -57,13 +56,13 @@ function RegisterPage() {
           promo_code: form.promo_code.trim() || null,
         },
       });
-      const { url } = await doCheckout({ data: { userId, email } });
-      window.location.href = url;
+      await navigate({ to: "/offer", search: { userId, email } });
     } catch (err: any) {
       setError(err?.message ?? "Something went wrong");
       setLoading(false);
     }
   }
+
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[color:var(--forest)] text-cream">
