@@ -14,6 +14,7 @@ import { Route as SuccessRouteImport } from './routes/success'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RefundRouteImport } from './routes/refund'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as OfferRouteImport } from './routes/offer'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiPublicWebhooksLemonsqueezyRouteImport } from './routes/api/public/webhooks/lemonsqueezy'
 
@@ -42,6 +43,11 @@ const PricingRoute = PricingRouteImport.update({
   path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OfferRoute = OfferRouteImport.update({
+  id: '/offer',
+  path: '/offer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -56,6 +62,7 @@ const ApiPublicWebhooksLemonsqueezyRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/offer': typeof OfferRoute
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
   '/register': typeof RegisterRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/offer': typeof OfferRoute
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
   '/register': typeof RegisterRoute
@@ -75,6 +83,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/offer': typeof OfferRoute
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
   '/register': typeof RegisterRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/offer'
     | '/pricing'
     | '/refund'
     | '/register'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/offer'
     | '/pricing'
     | '/refund'
     | '/register'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/offer'
     | '/pricing'
     | '/refund'
     | '/register'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  OfferRoute: typeof OfferRoute
   PricingRoute: typeof PricingRoute
   RefundRoute: typeof RefundRoute
   RegisterRoute: typeof RegisterRoute
@@ -159,6 +172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/offer': {
+      id: '/offer'
+      path: '/offer'
+      fullPath: '/offer'
+      preLoaderRoute: typeof OfferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  OfferRoute: OfferRoute,
   PricingRoute: PricingRoute,
   RefundRoute: RefundRoute,
   RegisterRoute: RegisterRoute,

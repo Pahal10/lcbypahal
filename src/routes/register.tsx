@@ -1,24 +1,23 @@
-import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Sparkles, Loader2, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
-import { registerUser, createCheckout } from "@/lib/registration.functions";
+import { registerUser } from "@/lib/registration.functions";
 
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Sign up for Premium — Let's Connect" },
-      { name: "description", content: "Create your Let's Connect account and unlock Premium." },
+      { title: "Create your account — Let's Connect" },
+      { name: "description", content: "Create your Let's Connect account." },
     ],
   }),
   component: RegisterPage,
 });
 
 function RegisterPage() {
-  const router = useRouter();
+  const navigate = useNavigate();
   const doRegister = useServerFn(registerUser);
-  const doCheckout = useServerFn(createCheckout);
 
   const [form, setForm] = useState({
     username: "",
@@ -57,13 +56,13 @@ function RegisterPage() {
           promo_code: form.promo_code.trim() || null,
         },
       });
-      const { url } = await doCheckout({ data: { userId, email } });
-      window.location.href = url;
+      await navigate({ to: "/offer", search: { userId, email } });
     } catch (err: any) {
       setError(err?.message ?? "Something went wrong");
       setLoading(false);
     }
   }
+
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[color:var(--forest)] text-cream">
@@ -83,17 +82,17 @@ function RegisterPage() {
 
       <div className="relative mx-auto max-w-md px-6 py-14">
         <div className="mb-8 flex items-center justify-between">
-          <Link to="/pricing" className="text-sm text-cream/70 hover:text-cream">← Back</Link>
+          <Link to="/" className="text-sm text-cream/70 hover:text-cream">← Back</Link>
           <img src={logo.url} alt="Let's Connect" className="h-9 w-auto" />
         </div>
 
         <div className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs uppercase tracking-widest text-gold">
-            <Sparkles className="h-3.5 w-3.5" /> Premium — $1/mo
+            <Sparkles className="h-3.5 w-3.5" /> Free to join
           </span>
           <h1 className="mt-4 font-display text-3xl text-cream sm:text-4xl">Create your account</h1>
           <p className="mt-2 text-sm text-cream/70">
-            Sign up, then complete checkout. Use these same credentials to sign in on the mobile app.
+            Sign up here, then sign in on the mobile app with the same username and password.
           </p>
         </div>
 
@@ -124,7 +123,7 @@ function RegisterPage() {
               </>
             ) : (
               <>
-                Continue to payment <ArrowRight className="h-4 w-4" />
+                Create account <ArrowRight className="h-4 w-4" />
               </>
             )}
           </button>
