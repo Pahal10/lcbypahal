@@ -342,6 +342,16 @@ function Testimonials() {
 }
 
 function CTA() {
+  const IOS_URL = "#";
+  const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share";
+  const [open, setOpen] = useState(false);
+  const [target, setTarget] = useState<string>("");
+
+  function ask(url: string) {
+    setTarget(url);
+    setOpen(true);
+  }
+
   return (
     <section id="download" className="py-28 lg:py-36">
       <div className="mx-auto max-w-5xl px-6 lg:px-10">
@@ -357,16 +367,50 @@ function CTA() {
               Feeling lonely or socially anxious? We are here to help :)
             </p>
             <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <a href="#" className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-7 py-4 font-medium shadow-[var(--shadow-soft)] hover:scale-[1.02] transition-transform">
+              <button onClick={() => ask(IOS_URL)} className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-7 py-4 font-medium shadow-[var(--shadow-soft)] hover:scale-[1.02] transition-transform">
                 Download for iOS
-              </a>
-              <a href="https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-7 py-4 font-medium shadow-[var(--shadow-gold)] hover:scale-[1.02] transition-transform">
+              </button>
+              <button onClick={() => ask(ANDROID_URL)} className="inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-7 py-4 font-medium shadow-[var(--shadow-gold)] hover:scale-[1.02] transition-transform">
                 Download for Android
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </div>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="sm:max-w-md border-gold/25 bg-cream">
+          <DialogHeader>
+            <DialogTitle className="font-display text-2xl">
+              One quick step
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground pt-1">
+              We do not have sign up in the app. You can register here and then access the app. Are you registered?
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter className="mt-2 flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+            <Link
+              to="/register"
+              onClick={() => setOpen(false)}
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 bg-primary/10 text-primary px-5 py-2.5 text-sm font-medium hover:bg-primary/15 transition"
+            >
+              <UserPlus className="h-4 w-4" /> No, register
+            </Link>
+            <a
+              href={target || "#"}
+              target={target && target !== "#" ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              onClick={(e) => {
+                if (!target || target === "#") e.preventDefault();
+                setOpen(false);
+              }}
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium hover:opacity-95 transition"
+            >
+              <Smartphone className="h-4 w-4" /> Yes, take me to the app
+            </a>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
