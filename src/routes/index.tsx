@@ -44,12 +44,12 @@ function Nav() {
           <a href="#journey" className="hover:text-foreground transition-colors">The journey</a>
           <a href="#stories" className="hover:text-foreground transition-colors">Stories</a>
         </div>
-        <a
-          href="#download"
+        <Link
+          to="/register"
           className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-[var(--shadow-soft)] hover:opacity-95 transition"
         >
-          Get the app <ArrowRight className="h-4 w-4" />
-        </a>
+          Get started <ArrowRight className="h-4 w-4" />
+        </Link>
       </nav>
     </header>
   );
