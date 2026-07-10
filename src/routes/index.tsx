@@ -90,14 +90,14 @@ function Hero() {
             Tiny prompts, real conversations, and a steady hand when the world feels loud.
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <a
-              href="#download"
+            <Link
+              to="/register"
               className="group relative inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-gold)] transition-all duration-500 overflow-hidden"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              <span className="relative">Start connecting</span>
+              <span className="relative">Get started</span>
               <ArrowRight className="relative h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
             <a href="#journey" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
               <span className="h-10 w-10 rounded-full border border-gold/25 grid place-items-center bg-card hover:bg-gold/5 transition-colors">
                 <ArrowRight className="h-4 w-4" />
