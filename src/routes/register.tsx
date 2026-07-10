@@ -123,7 +123,7 @@ function RegisterPage() {
               </>
             ) : (
               <>
-                Continue to payment <ArrowRight className="h-4 w-4" />
+                Create account <ArrowRight className="h-4 w-4" />
               </>
             )}
           </button>
