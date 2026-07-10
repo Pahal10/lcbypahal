@@ -1,15 +1,15 @@
-import { createFileRoute, Link, useRouter } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Sparkles, Loader2, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
-import { registerUser, createCheckout } from "@/lib/registration.functions";
+import { registerUser } from "@/lib/registration.functions";
 
 export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
-      { title: "Sign up for Premium — Let's Connect" },
-      { name: "description", content: "Create your Let's Connect account and unlock Premium." },
+      { title: "Create your account — Let's Connect" },
+      { name: "description", content: "Create your Let's Connect account." },
     ],
   }),
   component: RegisterPage,
