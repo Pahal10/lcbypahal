@@ -51,19 +51,44 @@ export const registerUser = createServerFn({ method: "POST" })
       .maybeSingle();
     if (existingEmail) throw new Error("An account with this email already exists");
 
+    // Validate optional referral code (matches ANOTHER user's promo_code)
+    const referral = data.promo_code && data.promo_code.trim().length > 0 ? data.promo_code.trim() : null;
+    let referrer: { id: any; pending_rewards: number | null } | null = null;
+    if (referral) {
+      const { data: found } = await supabase
+        .from("users")
+        .select("id, pending_rewards")
+        .eq("promo_code", referral)
+        .maybeSingle();
+      if (!found) throw new Error("Invalid promo code");
+      referrer = found as any;
+    }
+
+    // Generate this user's own unique promo code
+    const myPromoCode = await generateUniquePromoCode(supabase);
+
     const { data: inserted, error } = await supabase
       .from("users")
       .insert({
         username: data.username,
         email: data.email,
         password: data.password,
-        promo_code: data.promo_code && data.promo_code.length > 0 ? data.promo_code : null,
+        promo_code: myPromoCode,
         premium: false,
       })
       .select("id, email")
       .single();
 
     if (error || !inserted) throw new Error(error?.message ?? "Could not create account");
+
+    // Credit the referrer
+    if (referrer) {
+      const current = Number(referrer.pending_rewards ?? 0);
+      await supabase
+        .from("users")
+        .update({ pending_rewards: current + 1 })
+        .eq("id", referrer.id);
+    }
 
     return { userId: String(inserted.id), email: inserted.email as string };
   });
