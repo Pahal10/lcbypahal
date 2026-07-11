@@ -39,10 +39,10 @@ function SuccessPage() {
         </p>
 
         <a
-          href="https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share"
+          href="/#download"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 text-sm font-semibold text-[color:var(--gold-foreground)] shadow-[0_20px_50px_-15px_oklch(0.7_0.14_70/0.6)] transition hover:brightness-105"
         >
-          <Smartphone className="h-4 w-4" /> Open the app
+          <Smartphone className="h-4 w-4" /> Download the app
         </a>
 
         <Link to="/" className="mt-4 text-sm text-cream/60 hover:text-cream">← Back to home</Link>
