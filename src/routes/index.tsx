@@ -254,10 +254,11 @@ function Patterns() {
 
 function Journey() {
   const stages = [
-    { icon: MessageCircleHeart, n: "Stage 01", t: "Small talk", d: "Low-stakes openers, weather, weekend plans. The reps that make the rest possible.", prompt: "&ldquo;What&apos;s a small thing that made you smile today?&rdquo;" },
-    { icon: Heart, n: "Stage 02", t: "Big talk", d: "Real questions, real answers. Where small talk warms up, big talk lights up.", prompt: "&ldquo;What part of your life feels unfinished right now?&rdquo;" },
-    { icon: Gamepad2, n: "Stage 03", t: "Playtime", d: "Shared activities, inside jokes, doing things together. Friendship moves into the body.", prompt: "&ldquo;Pick a game. Loser picks the next one.&rdquo;" },
-    { icon: Coffee, n: "Stage 04", t: "Hygge", d: "Easy silence. Pajamas on the couch. The friendship has weight now — and it&apos;s warm.", prompt: "&ldquo;Come over. We don&apos;t have to do anything.&rdquo;" },
+    { icon: MessageCircleHeart, n: "Stage 01", t: "Small talk", d: "Low-stakes openers, weather, weekend plans. The reps that make the rest possible.", prompt: "&ldquo;Ask someone what the time is&rdquo;" },
+    { icon: Heart, n: "Stage 02", t: "Big talk", d: "Real questions, real answers. Where small talk warms up, big talk lights up.", prompt: "&ldquo;If you could recreate a memory with me, which one would you want to recreate&rdquo;" },
+    { icon: Gamepad2, n: "Stage 03", t: "Playtime", d: "Shared activities, inside jokes, doing things together. Friendship moves into the body.", prompt: "&ldquo;Learn a new card game together and play it&rdquo;" },
+    { icon: Coffee, n: "Stage 04", t: "Hygge", d: "Easy silence. Pajamas on the couch - Routines that focus on comfort.", prompt: "&ldquo;Come over. We don&apos;t have to do anything.&rdquo;" },
+
   ];
   return (
     <section id="journey" className="py-28 lg:py-36 bg-secondary/40">
