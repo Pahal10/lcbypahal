@@ -112,39 +112,34 @@ export const verifyConnection = createServerFn({ method: "POST" })
       verified_at: new Date().toISOString(),
     });
 
-    const emails = [first.email, second.email].filter(Boolean) as string[];
-    await callSendReward(supabase, emails, "verification");
+    await callSendReward(supabase, [first.username, second.username]);
 
-    return { ok: true, emails };
+    return { ok: true };
   });
 
-const spinSchema = z.object({
-  user1: z.string().trim().min(1),
-  user2: z.string().trim().min(1).optional().nullable(),
+// Spin outcome is decided server-side before the wheel animates.
+export const spinReward = createServerFn({ method: "POST" }).handler(async () => {
+  return { won: Math.random() < 0.05 };
 });
 
-export const spinReward = createServerFn({ method: "POST" })
-  .inputValidator((input: unknown) => spinSchema.parse(input))
-  .handler(async ({ data }) => {
-    const won = Math.random() < 0.05;
-    if (!won) return { won: false as const };
+const claimSchema = z.object({ username: z.string().trim().min(1) });
 
+export const claimWheelReward = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) => claimSchema.parse(input))
+  .handler(async ({ data }) => {
     const { getAppSupabase } = await import("./app-supabase.server");
     const supabase = getAppSupabase();
 
-    const usernames = [data.user1, data.user2].filter(Boolean) as string[];
-    const { data: rows } = await supabase
+    const { data: rows, error } = await supabase
       .from("users")
-      .select("username, email")
-      .in("username", usernames);
+      .select("username")
+      .eq("username", data.username)
+      .limit(1);
 
-    const emails = (rows ?? [])
-      .map((r: any) => r.email)
-      .filter(Boolean) as string[];
+    if (error) throw new Error(error.message);
+    if (!rows || rows.length === 0) throw new Error("That username doesn't exist.");
 
-    if (emails.length > 0) {
-      await callSendReward(supabase, emails, "wheel");
-    }
-
-    return { won: true as const, emails };
+    await callSendReward(supabase, [rows[0].username as string]);
+    return { ok: true };
   });
+
