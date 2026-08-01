@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { BadgeCheck, Loader2, ArrowRight, Sparkles, Gift, Frown } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
-import { verifyConnection, spinReward } from "@/lib/verify.functions";
+import { verifyConnection, spinReward, claimWheelReward } from "@/lib/verify.functions";
 
 export const Route = createFileRoute("/verify")({
   head: () => ({
