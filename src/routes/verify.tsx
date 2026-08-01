@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { BadgeCheck, Loader2, ArrowRight, Sparkles, Gift, Frown } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
-import { verifyConnection, spinReward } from "@/lib/verify.functions";
+import { verifyConnection, spinReward, claimWheelReward } from "@/lib/verify.functions";
 
 export const Route = createFileRoute("/verify")({
   head: () => ({
@@ -260,9 +260,19 @@ function Field({
   );
 }
 
+const SLICES = [
+  { label: "Premium\nReward", reward: true },
+  { label: "Better Luck\nNext Time", reward: false },
+  { label: "Bonus\nReward", reward: true },
+  { label: "Almost\nThere!", reward: false },
+  { label: "Secret\nSurprise", reward: true },
+  { label: "Try\nAgain", reward: false },
+  { label: "Mini\nReward", reward: true },
+  { label: "Keep\nConnecting!", reward: false },
+];
+
 function WheelView({
   user1,
-  user2,
   onWin,
   onLose,
 }: {
@@ -272,34 +282,29 @@ function WheelView({
   onLose: () => void;
 }) {
   const doSpin = useServerFn(spinReward);
+  const doClaim = useServerFn(claimWheelReward);
   const [spinning, setSpinning] = useState(false);
   const [angle, setAngle] = useState(0);
   const [error, setError] = useState<string | null>(null);
+  const [claimName, setClaimName] = useState(user1 ?? "");
+  const [claiming, setClaiming] = useState(false);
+  const [needsClaim, setNeedsClaim] = useState(false);
 
   async function spin() {
-    if (spinning) return;
+    if (spinning || needsClaim) return;
     setError(null);
-    if (!user1.trim()) {
-      setError("Please enter your username on the previous step.");
-      return;
-    }
     setSpinning(true);
     try {
-      const result = await doSpin({
-        data: { user1: user1.trim(), user2: user2.trim() || null },
-      });
-      const sliceDeg = 360 / 8;
-      // 8 slices: reward slices are even indices (0,2,4,6)
+      const result = await doSpin();
       const won = result.won;
-      const candidates = [0, 1, 2, 3, 4, 5, 6, 7].filter(
-        (i) => (i % 2 === 0) === won,
-      );
+      const candidates = [0, 1, 2, 3, 4, 5, 6, 7].filter((i) => SLICES[i].reward === won);
       const target = candidates[Math.floor(Math.random() * candidates.length)];
       const spins = 5 + Math.floor(Math.random() * 4);
-      const total = (angle - (angle % 360)) + spins * 360 + target * sliceDeg;
-      setAngle(total);
+      const base = angle - (angle % 360);
+      setAngle(base + spins * 360 - target * 45);
       window.setTimeout(() => {
-        if (won) onWin();
+        setSpinning(false);
+        if (won) setNeedsClaim(true);
         else onLose();
       }, 4600);
     } catch (err: any) {
@@ -308,16 +313,25 @@ function WheelView({
     }
   }
 
-  const slices = [
-    { label: "Premium", reward: true },
-    { label: "Next time", reward: false },
-    { label: "Bonus", reward: true },
-    { label: "Almost", reward: false },
-    { label: "Surprise", reward: true },
-    { label: "Try again", reward: false },
-    { label: "Mini", reward: true },
-    { label: "Keep going", reward: false },
-  ];
+  async function claim(e: React.FormEvent) {
+    e.preventDefault();
+    setError(null);
+    if (!claimName.trim()) {
+      setError("Please enter your username.");
+      return;
+    }
+    setClaiming(true);
+    try {
+      await doClaim({ data: { username: claimName.trim() } });
+      onWin();
+    } catch (err: any) {
+      setError(err?.message ?? "Something went wrong");
+    } finally {
+      setClaiming(false);
+    }
+  }
+
+  const R = 108;
 
   return (
     <div className="text-center">
@@ -332,47 +346,131 @@ function WheelView({
         <span className="text-cream/60">Chance of winning: 5%</span>
       </p>
 
-      <div className="relative mx-auto mt-8 h-[300px] w-[300px]">
+      <div className="relative mx-auto mt-8 h-[320px] w-[320px]">
         {/* pointer */}
         <div
-          className="absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1"
+          className="absolute left-1/2 top-[2px] z-20 -translate-x-1/2"
           style={{
             width: 0,
             height: 0,
-            borderLeft: "12px solid transparent",
-            borderRight: "12px solid transparent",
-            borderTop: "20px solid oklch(0.7 0.14 70)",
+            borderLeft: "13px solid transparent",
+            borderRight: "13px solid transparent",
+            borderTop: "24px solid oklch(0.78 0.14 85)",
+            filter: "drop-shadow(0 2px 3px oklch(0 0 0 / 0.5))",
           }}
         />
+
+        {/* outer gold ring */}
         <div
-          className="h-full w-full rounded-full border-4 border-gold/50 shadow-[0_20px_60px_-15px_oklch(0.7_0.14_70/0.5)]"
+          className="absolute inset-0 rounded-full"
           style={{
-            transition: spinning ? "transform 4.5s cubic-bezier(0.15,0.7,0.15,1)" : "none",
-            transform: `rotate(${-angle}deg)`,
-            background: `conic-gradient(${slices
-              .map((s, i) => {
-                const color = s.reward ? "oklch(0.7 0.14 70)" : "oklch(0.25 0.05 155)";
-                const start = (i * 100) / 8;
-                const end = ((i + 1) * 100) / 8;
-                return `${color} ${start}% ${end}%`;
-              })
-              .join(", ")})`,
+            background:
+              "conic-gradient(oklch(0.85 0.13 88), oklch(0.58 0.12 70), oklch(0.9 0.12 90), oklch(0.55 0.11 65), oklch(0.85 0.13 88))",
+            boxShadow: "0 25px 70px -20px oklch(0.7 0.14 70 / 0.7)",
           }}
         >
-          {slices.map((s, i) => (
-            <div
-              key={i}
-              className="absolute left-1/2 top-1/2 origin-left text-[10px] font-semibold uppercase tracking-wider"
-              style={{
-                transform: `rotate(${i * 45 + 22.5}deg) translateX(60px)`,
-                color: s.reward ? "oklch(0.2 0.05 70)" : "oklch(0.95 0.02 90)",
-              }}
-            >
-              {s.label}
-            </div>
-          ))}
+          {/* bulbs */}
+          {Array.from({ length: 20 }).map((_, i) => {
+            const a = (i * 360) / 20;
+            return (
+              <span
+                key={i}
+                className="absolute left-1/2 top-1/2 block h-[7px] w-[7px] rounded-full"
+                style={{
+                  background: "oklch(0.95 0.09 95)",
+                  boxShadow: "0 0 6px oklch(0.9 0.13 90)",
+                  transform: `translate(-50%,-50%) rotate(${a}deg) translateY(-152px)`,
+                }}
+              />
+            );
+          })}
         </div>
+
+        {/* rotating face */}
+        <div
+          className="absolute inset-[18px] rounded-full overflow-hidden"
+          style={{
+            transition: spinning ? "transform 4.5s cubic-bezier(0.15,0.7,0.15,1)" : "none",
+            transform: `rotate(${angle}deg)`,
+            background: `conic-gradient(from -22.5deg, ${SLICES.map((s, i) => {
+              const color = s.reward ? "oklch(0.97 0.03 90)" : "oklch(0.32 0.14 305)";
+              return `${color} ${(i * 100) / 8}% ${((i + 1) * 100) / 8}%`;
+            }).join(", ")})`,
+            boxShadow: "inset 0 0 0 3px oklch(0.75 0.13 85)",
+          }}
+        >
+          {SLICES.map((s, i) => {
+            const a = (i * 45 * Math.PI) / 180;
+            const x = 50 + (R / 2.84) * Math.sin(a);
+            const y = 50 - (R / 2.84) * Math.cos(a);
+            return (
+              <div
+                key={i}
+                className="absolute w-[86px] -translate-x-1/2 -translate-y-1/2 whitespace-pre-line text-[11px] font-bold leading-tight"
+                style={{
+                  left: `${x}%`,
+                  top: `${y}%`,
+                  color: s.reward ? "oklch(0.28 0.12 305)" : "oklch(0.97 0.02 90)",
+                }}
+              >
+                <span className="mb-1 block text-base">{s.reward ? "🎁" : "🙁"}</span>
+                {s.label}
+              </div>
+            );
+          })}
+        </div>
+
+        {/* center spin button */}
+        <button
+          onClick={spin}
+          disabled={spinning || needsClaim}
+          aria-label="Spin the wheel"
+          className="absolute left-1/2 top-1/2 z-10 h-[104px] w-[104px] -translate-x-1/2 -translate-y-1/2 rounded-full transition hover:brightness-110 active:scale-95 disabled:cursor-not-allowed"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 35%, oklch(0.42 0.16 305), oklch(0.22 0.1 305))",
+            border: "5px solid oklch(0.8 0.13 87)",
+            boxShadow: "0 10px 30px -8px oklch(0 0 0 / 0.6), inset 0 0 20px oklch(0 0 0 / 0.5)",
+          }}
+        >
+          {spinning ? (
+            <Loader2 className="mx-auto h-7 w-7 animate-spin text-gold" />
+          ) : (
+            <>
+              <span className="block font-display text-2xl tracking-wide text-gold">SPIN</span>
+              <span className="mt-0.5 block text-[10px] text-gold/70">Good luck!</span>
+            </>
+          )}
+        </button>
       </div>
+
+      {needsClaim && (
+        <form
+          onSubmit={claim}
+          className="mt-8 space-y-4 rounded-3xl border border-cream/10 bg-cream/[0.04] p-6 text-left backdrop-blur-sm"
+        >
+          <p className="text-center text-sm text-cream/80">
+            You won 🎉 Enter the username linked to your Let&apos;s Connect account so we can
+            send your reward.
+          </p>
+          <Field label="Your username" value={claimName} onChange={setClaimName} />
+          <button
+            type="submit"
+            disabled={claiming}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-[color:var(--gold-foreground)] transition hover:brightness-105 disabled:opacity-60"
+          >
+            {claiming ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" /> Sending…
+              </>
+            ) : (
+              <>
+                Claim reward <ArrowRight className="h-4 w-4" />
+              </>
+            )}
+          </button>
+        </form>
+      )}
 
       {error && (
         <div className="mt-4 rounded-lg border border-red-400/40 bg-red-400/10 px-3 py-2 text-sm text-red-100">
@@ -380,22 +478,13 @@ function WheelView({
         </div>
       )}
 
-      <button
-        onClick={spin}
-        disabled={spinning}
-        className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-[color:var(--gold-foreground)] shadow-[0_20px_50px_-15px_oklch(0.7_0.14_70/0.6)] transition hover:brightness-105 disabled:opacity-60"
-      >
-        {spinning ? (
-          <>
-            <Loader2 className="h-4 w-4 animate-spin" /> Spinning…
-          </>
-        ) : (
-          "SPIN"
-        )}
-      </button>
+      {!needsClaim && (
+        <p className="mt-6 text-sm text-cream/60">Tap the wheel&apos;s centre to spin.</p>
+      )}
     </div>
   );
 }
+
 
 function ResultView({
   icon,

@@ -20,7 +20,9 @@ function Landing() {
       <Marquee />
       <Why />
       <Patterns />
+      <Different />
       <Journey />
+
       <Premium />
       <Testimonials />
       <CTA />
@@ -252,12 +254,69 @@ function Patterns() {
   );
 }
 
+function Different() {
+  const nots = [
+    { icon: Smartphone, t: "Not a social media platform", d: "No feed, no followers, no performing. Nothing here is built to keep you scrolling." },
+    { icon: MessageCircleHeart, t: "Not an AI chatbot friend", d: "We won&apos;t pretend to be your friend. We help you find real ones." },
+  ];
+  return (
+    <section className="py-28 lg:py-36 bg-forest text-cream relative overflow-hidden">
+      <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-gold/10 blur-3xl" />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          <div>
+            <p className="text-sm font-medium text-gold uppercase tracking-[0.2em]">What makes us different</p>
+            <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
+              We push you <span className="font-script text-gold text-6xl">offline</span>, on purpose.
+            </h2>
+            <p className="mt-5 text-cream/75 leading-relaxed">
+              Research is consistent on this: face-to-face conversation lowers loneliness far more
+              than online contact does. Screens can maintain a friendship — they rarely build one.
+              So Let&apos;s Connect isn&apos;t another place to talk to people through glass. It&apos;s a
+              guide that walks you out the door.
+            </p>
+            <div className="mt-8 rounded-2xl border border-gold/25 bg-gold/[0.06] p-6">
+              <p className="font-script text-2xl text-gold">The whole point</p>
+              <p className="mt-1 text-sm text-cream/80">
+                Every prompt ends with you talking to an actual human, in an actual room.
+              </p>
+            </div>
+          </div>
+          <div className="space-y-5">
+            {nots.map((n, i) => (
+              <div key={i} className="rounded-3xl border border-cream/12 bg-cream/[0.04] p-7 transition-all duration-500 hover:-translate-y-1 hover:bg-cream/[0.07]">
+                <div className="h-11 w-11 rounded-2xl bg-gold/15 grid place-items-center">
+                  <n.icon className="h-5 w-5 text-gold" />
+                </div>
+                <h3 className="mt-5 font-display text-xl">{n.t}</h3>
+                <p className="mt-2 text-sm text-cream/70 leading-relaxed" dangerouslySetInnerHTML={{ __html: n.d }} />
+              </div>
+            ))}
+            <div className="rounded-3xl border border-cream/12 bg-cream/[0.04] p-7">
+              <div className="h-11 w-11 rounded-2xl bg-gold/15 grid place-items-center">
+                <Users className="h-5 w-5 text-gold" />
+              </div>
+              <h3 className="mt-5 font-display text-xl">A coach for real-life connection</h3>
+              <p className="mt-2 text-sm text-cream/70 leading-relaxed">
+                Prompts, nudges and small missions that take you from a stranger&apos;s hello all the
+                way to easy, comfortable friendship.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 function Journey() {
   const stages = [
-    { icon: MessageCircleHeart, n: "Stage 01", t: "Small talk", d: "Low-stakes openers, weather, weekend plans. The reps that make the rest possible.", prompt: "&ldquo;What&apos;s a small thing that made you smile today?&rdquo;" },
-    { icon: Heart, n: "Stage 02", t: "Big talk", d: "Real questions, real answers. Where small talk warms up, big talk lights up.", prompt: "&ldquo;What part of your life feels unfinished right now?&rdquo;" },
-    { icon: Gamepad2, n: "Stage 03", t: "Playtime", d: "Shared activities, inside jokes, doing things together. Friendship moves into the body.", prompt: "&ldquo;Pick a game. Loser picks the next one.&rdquo;" },
-    { icon: Coffee, n: "Stage 04", t: "Hygge", d: "Easy silence. Pajamas on the couch. The friendship has weight now — and it&apos;s warm.", prompt: "&ldquo;Come over. We don&apos;t have to do anything.&rdquo;" },
+    { icon: MessageCircleHeart, n: "Stage 01", t: "Small talk", d: "Low-stakes openers, weather, weekend plans. The reps that make the rest possible.", prompt: "&ldquo;Ask someone what the time is&rdquo;" },
+    { icon: Heart, n: "Stage 02", t: "Big talk", d: "Real questions, real answers. Where small talk warms up, big talk lights up.", prompt: "&ldquo;If you could recreate a memory with me, which one would you want to recreate&rdquo;" },
+    { icon: Gamepad2, n: "Stage 03", t: "Playtime", d: "Shared activities, inside jokes, doing things together. Friendship moves into the body.", prompt: "&ldquo;Learn a new card game together and play it&rdquo;" },
+    { icon: Coffee, n: "Stage 04", t: "Hygge", d: "Easy silence. Pajamas on the couch - Routines that focus on comfort.", prompt: "&ldquo;Come over. We don&apos;t have to do anything.&rdquo;" },
+
   ];
   return (
     <section id="journey" className="py-28 lg:py-36 bg-secondary/40">
@@ -269,10 +328,16 @@ function Journey() {
           <p className="text-muted-foreground max-w-sm">Every real friendship climbs the same four rungs. We just hand you the ladder.</p>
         </div>
 
-        <div className="mb-14 inline-flex items-center gap-3 rounded-full border border-border bg-card px-5 py-2.5 text-sm">
+        <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-border bg-card px-5 py-2.5 text-sm">
           <Lightbulb className="h-4 w-4 text-gold" />
           <span className="text-muted-foreground">Powered by gentle <span className="text-foreground font-medium">nudge engineering</span> — tiny prompts, well-timed insights, never guilt.</span>
         </div>
+        <p className="mb-14 max-w-2xl text-sm text-muted-foreground leading-relaxed">
+          The prompts aren&apos;t there to be read and scrolled past. Each one is something to go and
+          <span className="text-foreground font-medium"> actually try with a real person</span> — a stranger for small talk,
+          then the same people again as you deepen those connections stage by stage.
+        </p>
+
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {stages.map((s, i) => (
