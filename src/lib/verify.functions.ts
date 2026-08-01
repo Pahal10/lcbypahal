@@ -19,18 +19,20 @@ function distanceMeters(lat1: number, lon1: number, lat2: number, lon2: number) 
 
 async function callSendReward(
   supabase: ReturnType<typeof import("./app-supabase.server").getAppSupabase>,
-  emails: string[],
-  reason: string,
+  usernames: string[],
 ) {
-  try {
-    const { error } = await supabase.functions.invoke("send-reward", {
-      body: { emails, reason },
-    });
-    if (error) console.error("send-reward invoke error", error);
-  } catch (e) {
-    console.error("send-reward invoke threw", e);
+  for (const username of usernames) {
+    try {
+      const { error } = await supabase.functions.invoke("send-reward", {
+        body: { username },
+      });
+      if (error) console.error("send-reward invoke error", username, error);
+    } catch (e) {
+      console.error("send-reward invoke threw", username, e);
+    }
   }
 }
+
 
 export const verifyConnection = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => verifySchema.parse(input))
