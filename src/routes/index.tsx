@@ -20,7 +20,9 @@ function Landing() {
       <Marquee />
       <Why />
       <Patterns />
+      <Different />
       <Journey />
+
       <Premium />
       <Testimonials />
       <CTA />
