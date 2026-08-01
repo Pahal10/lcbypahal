@@ -270,10 +270,16 @@ function Journey() {
           <p className="text-muted-foreground max-w-sm">Every real friendship climbs the same four rungs. We just hand you the ladder.</p>
         </div>
 
-        <div className="mb-14 inline-flex items-center gap-3 rounded-full border border-border bg-card px-5 py-2.5 text-sm">
+        <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-border bg-card px-5 py-2.5 text-sm">
           <Lightbulb className="h-4 w-4 text-gold" />
           <span className="text-muted-foreground">Powered by gentle <span className="text-foreground font-medium">nudge engineering</span> — tiny prompts, well-timed insights, never guilt.</span>
         </div>
+        <p className="mb-14 max-w-2xl text-sm text-muted-foreground leading-relaxed">
+          The prompts aren&apos;t there to be read and scrolled past. Each one is something to go and
+          <span className="text-foreground font-medium"> actually try with a real person</span> — a stranger for small talk,
+          then the same people again as you deepen those connections stage by stage.
+        </p>
+
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
           {stages.map((s, i) => (
