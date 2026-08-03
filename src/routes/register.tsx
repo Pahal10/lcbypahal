@@ -4,6 +4,8 @@ import { useServerFn } from "@tanstack/react-start";
 import { Sparkles, Loader2, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
 import { registerUser } from "@/lib/registration.functions";
+import { SocialAuthButtons } from "@/components/SocialAuthButtons";
+
 
 export const Route = createFileRoute("/register")({
   head: () => ({
@@ -96,10 +98,21 @@ function RegisterPage() {
           </p>
         </div>
 
+        <div className="mt-8">
+          <SocialAuthButtons />
+        </div>
+
+        <div className="my-6 flex items-center gap-4">
+          <span className="h-px flex-1 bg-cream/15" />
+          <span className="text-xs uppercase tracking-widest text-cream/50">or</span>
+          <span className="h-px flex-1 bg-cream/15" />
+        </div>
+
         <form
           onSubmit={onSubmit}
-          className="mt-8 space-y-4 rounded-3xl border border-cream/10 bg-cream/[0.04] p-6 backdrop-blur-sm"
+          className="space-y-4 rounded-3xl border border-cream/10 bg-cream/[0.04] p-6 backdrop-blur-sm"
         >
+
           <Field label="Username" value={form.username} onChange={(v) => upd("username", v)} autoComplete="username" required />
           <Field label="Email" type="email" value={form.email} onChange={(v) => upd("email", v)} autoComplete="email" required />
           <Field label="Password" type="password" value={form.password} onChange={(v) => upd("password", v)} autoComplete="new-password" required />
