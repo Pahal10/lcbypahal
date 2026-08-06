@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { Loader2, ArrowRight, Sparkles } from "lucide-react";
+import { Loader2, ArrowRight, Sparkles, Info } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { resolveOAuthUser, completeOAuthSignup } from "@/lib/oauth.functions";
@@ -27,6 +27,8 @@ function CallbackPage() {
   const [accessToken, setAccessToken] = useState("");
   const [email, setEmail] = useState<string | null>(null);
   const [username, setUsername] = useState("");
+  const [promoCode, setPromoCode] = useState("");
+  const [showInfo, setShowInfo] = useState(false);
   const [saving, setSaving] = useState(false);
 
   function finish(name: string) {
@@ -75,7 +77,7 @@ function CallbackPage() {
     setSaving(true);
     try {
       const { username: created } = await doComplete({
-        data: { accessToken, username: username.trim() },
+        data: { accessToken, username: username.trim(), promo_code: promoCode.trim() || null },
       });
       finish(created);
     } catch (err: any) {
@@ -147,6 +149,32 @@ function CallbackPage() {
                   className="w-full rounded-xl border border-cream/15 bg-cream/[0.06] px-4 py-3 text-cream placeholder-cream/40 outline-none transition focus:border-gold/60 focus:bg-cream/[0.09]"
                 />
               </label>
+
+              <label className="block">
+                <span className="mb-1.5 flex items-center gap-1.5 text-xs uppercase tracking-widest text-cream/60">
+                  Promo code (optional)
+                  <button
+                    type="button"
+                    onClick={() => setShowInfo((v) => !v)}
+                    aria-label="What is this?"
+                    className="grid h-4 w-4 place-items-center rounded-full border border-gold/50 text-gold transition hover:bg-gold/15"
+                  >
+                    <Info className="h-2.5 w-2.5" />
+                  </button>
+                </span>
+                {showInfo && (
+                  <p className="mb-2 rounded-lg border border-gold/30 bg-gold/10 px-3 py-2 text-[11px] normal-case tracking-normal text-cream/80">
+                    Enter a promo code if you have one.
+                  </p>
+                )}
+                <input
+                  value={promoCode}
+                  onChange={(e) => setPromoCode(e.target.value)}
+                  className="w-full rounded-xl border border-cream/15 bg-cream/[0.06] px-4 py-3 text-cream placeholder-cream/40 outline-none transition focus:border-gold/60 focus:bg-cream/[0.09]"
+                />
+              </label>
+
+
 
               {error && (
                 <div className="rounded-lg border border-red-400/40 bg-red-400/10 px-3 py-2 text-sm text-red-100">
