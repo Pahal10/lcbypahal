@@ -71,6 +71,19 @@ export const completeOAuthSignup = createServerFn({ method: "POST" })
       .maybeSingle();
     if (taken) throw new Error("Username is already taken");
 
+    // Optional referral promo code — must belong to another user
+    const referral = data.promo_code && data.promo_code.trim().length > 0 ? data.promo_code.trim() : null;
+    let referrer: { id: any; username: string; pending_rewards: number | null } | null = null;
+    if (referral) {
+      const { data: found } = await supabase
+        .from("users")
+        .select("id, username, pending_rewards")
+        .eq("promo_code", referral)
+        .maybeSingle();
+      if (!found) throw new Error("Invalid promo code");
+      referrer = found as any;
+    }
+
     const promoCode = await generateUniquePromoCode(supabase);
 
     const { data: inserted, error } = await supabase
@@ -98,6 +111,19 @@ export const completeOAuthSignup = createServerFn({ method: "POST" })
       .single();
 
     if (error || !inserted) throw new Error(error?.message ?? "Could not create your account");
+
+    if (referrer) {
+      const current = Number(referrer.pending_rewards ?? 0);
+      await supabase.from("users").update({ pending_rewards: current + 1 }).eq("id", referrer.id);
+      try {
+        const { error: fnError } = await supabase.functions.invoke("send-reward", {
+          body: { username: referrer.username },
+        });
+        if (fnError) console.error("send-reward invoke error", referrer.username, fnError);
+      } catch (e) {
+        console.error("send-reward invoke threw", e);
+      }
+    }
 
     return { username: inserted.username as string };
   });
