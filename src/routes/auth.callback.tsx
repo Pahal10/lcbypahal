@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { Loader2, ArrowRight, Sparkles } from "lucide-react";
+import { Loader2, ArrowRight, Sparkles, Info } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
 import { resolveOAuthUser, completeOAuthSignup } from "@/lib/oauth.functions";
