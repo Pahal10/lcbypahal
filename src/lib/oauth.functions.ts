@@ -19,6 +19,7 @@ const usernameSchema = z.object({
     .min(3)
     .max(40)
     .regex(/^[a-zA-Z0-9_.-]+$/, "Only letters, numbers, . _ -"),
+  promo_code: z.string().trim().max(64).optional().nullable(),
 });
 
 /** Looks up the app row for the signed-in OAuth user. */
