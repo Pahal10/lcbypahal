@@ -27,6 +27,8 @@ function CallbackPage() {
   const [accessToken, setAccessToken] = useState("");
   const [email, setEmail] = useState<string | null>(null);
   const [username, setUsername] = useState("");
+  const [promoCode, setPromoCode] = useState("");
+  const [showInfo, setShowInfo] = useState(false);
   const [saving, setSaving] = useState(false);
 
   function finish(name: string) {
