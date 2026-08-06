@@ -1,7 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { Sparkles, Loader2, ArrowRight } from "lucide-react";
+import { Sparkles, Loader2, ArrowRight, UserPlus, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
 import { registerUser } from "@/lib/registration.functions";
 import { SocialAuthButtons } from "@/components/SocialAuthButtons";
