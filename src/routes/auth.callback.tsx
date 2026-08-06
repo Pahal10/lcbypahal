@@ -77,7 +77,7 @@ function CallbackPage() {
     setSaving(true);
     try {
       const { username: created } = await doComplete({
-        data: { accessToken, username: username.trim() },
+        data: { accessToken, username: username.trim(), promo_code: promoCode.trim() || null },
       });
       finish(created);
     } catch (err: any) {
