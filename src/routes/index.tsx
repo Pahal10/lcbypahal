@@ -265,15 +265,18 @@ function Different() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           <div>
-            <p className="text-sm font-medium text-gold uppercase tracking-[0.2em]">What makes us different</p>
+            <p className="text-sm font-medium text-gold uppercase tracking-[0.2em]">The rough solution</p>
             <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
-              We push you <span className="font-script text-gold text-6xl">offline</span>, on purpose.
+              Make <span className="font-script text-gold text-6xl">new</span> connections.
             </h2>
             <p className="mt-5 text-cream/75 leading-relaxed">
-              Research is consistent on this: face-to-face conversation lowers loneliness far more
-              than online contact does. Screens can maintain a friendship — they rarely build one.
-              So Let&apos;s Connect isn&apos;t another place to talk to people through glass. It&apos;s a
-              guide that walks you out the door.
+              Our research points to one thing: forming new connections is what actually helps.
+              So that&apos;s what we help you do — start conversations with strangers, then deepen
+              them, one prompt at a time.
+            </p>
+            <p className="mt-4 text-cream/75 leading-relaxed">
+              That means Let&apos;s Connect isn&apos;t a social media platform, and it isn&apos;t an
+              AI chatbot. It&apos;s a guide that walks you out the door.
             </p>
             <div className="mt-8 rounded-2xl border border-gold/25 bg-gold/[0.06] p-6">
               <p className="font-script text-2xl text-gold">The whole point</p>
