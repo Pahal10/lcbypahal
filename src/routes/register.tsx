@@ -51,7 +51,7 @@ function RegisterPage() {
 
     setLoading(true);
     try {
-      const { userId, email } = await doRegister({
+      await doRegister({
         data: {
           username: form.username.trim(),
           email: form.email.trim(),
@@ -59,7 +59,7 @@ function RegisterPage() {
           promo_code: form.promo_code.trim() || null,
         },
       });
-      await navigate({ to: "/offer", search: { userId, email } });
+      await navigate({ to: "/success" });
     } catch (err: any) {
       setError(err?.message ?? "Something went wrong");
       setLoading(false);

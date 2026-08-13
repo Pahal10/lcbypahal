@@ -410,7 +410,7 @@ function Testimonials() {
 }
 
 function CTA() {
-  const IOS_URL = "#";
+  const IOS_URL = "https://apps.apple.com/qa/app/lc-lets-connect/id6792295616";
   const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share";
   const [open, setOpen] = useState(false);
   const [target, setTarget] = useState<string>("");
