@@ -35,7 +35,7 @@ function SuccessPage() {
         </div>
         <h1 className="mt-6 font-display text-4xl text-cream sm:text-5xl">You're in ✨</h1>
         <p className="mt-3 text-cream/75">
-          Your Premium account is ready. Open the Let's Connect app and sign in with the username and password you just created — Premium rewards, hacks and discounts are unlocked.
+          Your account is ready. Open the Let's Connect app and sign in with the username and password you just created.
         </p>
 
         <a
