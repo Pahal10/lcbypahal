@@ -5,8 +5,9 @@ import heroImg from "@/assets/hero-connection.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
 import premiumRewardAsset from "@/assets/premium-reward.jpg.asset.json";
-import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, UserPlus } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+
 
 export const Route = createFileRoute("/")({
   component: Landing,
