@@ -463,21 +463,56 @@ function Footer() {
   const [contactOpen, setContactOpen] = useState(false);
   return (
     <>
-      <footer className="border-t border-border py-12">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <img src={logoAsset.url} alt="Let's Connect" className="h-9 w-9 rounded-xl" />
-            <span className="font-display text-lg">
-              Let&apos;s <span className="font-script text-primary text-xl">Connect</span>
-            </span>
+      <footer className="border-t border-border bg-cream/40">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <div className="flex items-center gap-3">
+              <img src={logoAsset.url} alt="Let's Connect" className="h-9 w-9 rounded-xl" />
+              <span className="font-display text-lg">
+                Let&apos;s <span className="font-script text-primary text-xl">Connect</span>
+              </span>
+            </div>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
+              A quiet companion that helps you start real conversations and turn them into
+              lasting connection — offline, at your own pace.
+            </p>
+            <p className="mt-5 text-xs leading-relaxed text-muted-foreground/80">
+              Operated by Tesserae Holdings LLC
+              <br />
+              A Wyoming limited liability company
+              <br />
+              30 N Gould St, Ste R, Sheridan, WY 82801, USA
+            </p>
           </div>
-          <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Let&apos;s Connect — made with care, for the quiet ones.</p>
-          <div className="flex gap-6 text-sm text-muted-foreground">
-            <a href="https://www.termsfeed.com/live/c439c7ce-dbd4-4336-88aa-f89cce03625a" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Privacy</a>
-            <button type="button" onClick={() => setContactOpen(true)} className="hover:text-foreground transition-colors">Contact</button>
+
+          <div className="md:col-span-3">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-foreground/60">Product</p>
+            <div className="mt-4 flex flex-col gap-2.5 text-sm text-muted-foreground">
+              <a href="#why" className="hover:text-foreground transition-colors">Why we&apos;re lonely</a>
+              <a href="#journey" className="hover:text-foreground transition-colors">The journey</a>
+              <a href="#download" className="hover:text-foreground transition-colors">Download the app</a>
+            </div>
+          </div>
+
+          <div className="md:col-span-4">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-foreground/60">Legal &amp; support</p>
+            <div className="mt-4 flex flex-col gap-2.5 text-sm text-muted-foreground">
+              <a href="https://www.termsfeed.com/live/c439c7ce-dbd4-4336-88aa-f89cce03625a" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Privacy policy</a>
+              <Link to="/terms" className="hover:text-foreground transition-colors">Terms of service</Link>
+              <Link to="/refund" className="hover:text-foreground transition-colors">Refund policy</Link>
+              <button type="button" onClick={() => setContactOpen(true)} className="text-left hover:text-foreground transition-colors">Contact us</button>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-border">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+            <p>© {new Date().getFullYear()} Tesserae Holdings LLC. All rights reserved.</p>
+            <p>Let&apos;s Connect is a product of Tesserae Holdings LLC.</p>
           </div>
         </div>
       </footer>
+
 
       <Dialog open={contactOpen} onOpenChange={setContactOpen}>
         <DialogContent className="sm:max-w-md border-gold/25 bg-cream">
