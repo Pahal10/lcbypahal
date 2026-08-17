@@ -397,7 +397,20 @@ function Testimonials() {
           Small messages from people who finally felt <span className="font-script text-gold text-6xl">connected</span>.
         </h2>
 
-        <div className="mt-16 grid md:grid-cols-3 gap-6">
+        <div className="mt-14 grid sm:grid-cols-3 gap-6">
+          {[
+            { v: "100", l: "Net Promoter Score" },
+            { v: "89%", l: "of the time, users said they felt less lonely after doing a suggested task" },
+            { v: "75%", l: "of users would be very disappointed if the platform disappeared" },
+          ].map((m, i) => (
+            <div key={i} className="rounded-3xl border border-gold/25 bg-gold/[0.07] p-8 text-center transition-all duration-500 hover:bg-gold/[0.12]">
+              <p className="font-display text-5xl text-gold">{m.v}</p>
+              <p className="mt-3 text-sm leading-relaxed text-cream/70">{m.l}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 grid md:grid-cols-3 gap-6">
           {quotes.map((q, i) => (
             <figure key={i} className="rounded-3xl border border-cream/15 bg-cream/5 backdrop-blur p-8 hover:bg-cream/10 hover:border-cream/25 transition-all duration-500">
               <Sparkles className="h-5 w-5 text-gold" />
@@ -406,6 +419,7 @@ function Testimonials() {
             </figure>
           ))}
         </div>
+
       </div>
     </section>
   );
