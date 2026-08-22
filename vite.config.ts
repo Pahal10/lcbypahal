@@ -19,4 +19,13 @@ export default defineConfig({
       failOnError: true,
     },
   },
+  nitro: {
+    // Make the Nitro server bundle filename match the preview/entry name expected
+    // by TanStack Start's prerender preview server, so build-time prerendering works.
+    rollupConfig: {
+      output: {
+        entryFileNames: "server.js",
+      },
+    },
+  },
 });
