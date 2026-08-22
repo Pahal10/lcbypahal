@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SuccessRouteImport } from './routes/success'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as RefundRouteImport } from './routes/refund'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -33,6 +34,11 @@ const TermsRoute = TermsRouteImport.update({
 const SuccessRoute = SuccessRouteImport.update({
   id: '/success',
   path: '/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -78,6 +84,7 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
   '/register': typeof RegisterRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success': typeof SuccessRoute
   '/terms': typeof TermsRoute
   '/verify': typeof VerifyRoute
@@ -90,6 +97,7 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
   '/register': typeof RegisterRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success': typeof SuccessRoute
   '/terms': typeof TermsRoute
   '/verify': typeof VerifyRoute
@@ -103,6 +111,7 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
   '/register': typeof RegisterRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success': typeof SuccessRoute
   '/terms': typeof TermsRoute
   '/verify': typeof VerifyRoute
@@ -117,6 +126,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/refund'
     | '/register'
+    | '/sitemap.xml'
     | '/success'
     | '/terms'
     | '/verify'
@@ -129,6 +139,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/refund'
     | '/register'
+    | '/sitemap.xml'
     | '/success'
     | '/terms'
     | '/verify'
@@ -141,6 +152,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/refund'
     | '/register'
+    | '/sitemap.xml'
     | '/success'
     | '/terms'
     | '/verify'
@@ -154,6 +166,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   RefundRoute: typeof RefundRoute
   RegisterRoute: typeof RegisterRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SuccessRoute: typeof SuccessRoute
   TermsRoute: typeof TermsRoute
   VerifyRoute: typeof VerifyRoute
@@ -182,6 +195,13 @@ declare module '@tanstack/react-router' {
       path: '/success'
       fullPath: '/success'
       preLoaderRoute: typeof SuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -242,6 +262,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   RefundRoute: RefundRoute,
   RegisterRoute: RegisterRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SuccessRoute: SuccessRoute,
   TermsRoute: TermsRoute,
   VerifyRoute: VerifyRoute,
