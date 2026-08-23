@@ -14,9 +14,17 @@ export default defineConfig({
     // Pre-render static marketing pages at build time so crawlers receive fully-rendered HTML.
     prerender: {
       enabled: true,
-      crawlLinks: true,
-      concurrency: 14,
+      crawlLinks: false,
+      concurrency: 4,
       failOnError: true,
     },
+    // Only static marketing/legal pages are prerendered. App-flow routes
+    // (/offer, /register, /verify, /success, /auth/callback) stay SSR-only.
+    pages: [
+      { path: "/", prerender: { enabled: true } },
+      { path: "/pricing", prerender: { enabled: true } },
+      { path: "/terms", prerender: { enabled: true } },
+      { path: "/refund", prerender: { enabled: true } },
+    ],
   },
 });
