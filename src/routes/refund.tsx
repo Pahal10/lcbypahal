@@ -5,8 +5,12 @@ export const Route = createFileRoute("/refund")({
   head: () => ({
     meta: [
       { title: "Refund Policy — Let's Connect" },
-      { name: "description", content: "Refund policy for Let's Connect Premium." },
+      { name: "description", content: "Refund policy for Let's Connect Premium subscriptions — cancel anytime, payments are non-refundable." },
+      { property: "og:title", content: "Refund Policy — Let's Connect" },
+      { property: "og:description", content: "How refunds and cancellations work for Let's Connect Premium." },
+      { property: "og:url", content: "https://lcbypahal.lovable.app/refund" },
     ],
+    links: [{ rel: "canonical", href: "https://lcbypahal.lovable.app/refund" }],
   }),
   component: RefundPage,
 });
