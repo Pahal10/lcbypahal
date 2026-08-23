@@ -11,20 +11,8 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
-    // Pre-render static marketing pages at build time so crawlers receive fully-rendered HTML.
-    prerender: {
-      enabled: true,
-      crawlLinks: false,
-      concurrency: 4,
-      failOnError: true,
-    },
-    // Only static marketing/legal pages are prerendered. App-flow routes
-    // (/offer, /register, /verify, /success, /auth/callback) stay SSR-only.
-    pages: [
-      { path: "/", prerender: { enabled: true } },
-      { path: "/pricing", prerender: { enabled: true } },
-      { path: "/terms", prerender: { enabled: true } },
-      { path: "/refund", prerender: { enabled: true } },
-    ],
+    // Build-time prerendering is disabled: the prerender preview server expects
+    // dist/server/server.js while the Cloudflare/nitro build emits index.mjs,
+    // which makes the prerender step fail. SSR already serves crawlers full HTML.
   },
 });
