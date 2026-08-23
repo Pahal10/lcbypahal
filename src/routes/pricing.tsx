@@ -9,7 +9,9 @@ export const Route = createFileRoute("/pricing")({
       { name: "description", content: "Unlock premium rewards, hidden online hacks and discounts for $1/month." },
       { property: "og:title", content: "Premium — Let's Connect" },
       { property: "og:description", content: "Premium rewards, hidden hacks and discounts for $1/month." },
+      { property: "og:url", content: "https://lcbypahal.lovable.app/pricing" },
     ],
+    links: [{ rel: "canonical", href: "https://lcbypahal.lovable.app/pricing" }],
   }),
   component: PricingPage,
 });
