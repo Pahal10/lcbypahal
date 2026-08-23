@@ -9,7 +9,23 @@ import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, Trendi
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 
+const TITLE = "Let's Connect — Make Friends & Beat Loneliness | Social Anxiety Support App";
+const DESCRIPTION =
+  "Make friends as an adult with guided real-world prompts. Social anxiety help and gentle nudges that help you feel less lonely, one conversation at a time.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESCRIPTION },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESCRIPTION },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://lcbypahal.lovable.app/" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "https://lcbypahal.lovable.app/" }],
+  }),
   component: Landing,
 });
 
