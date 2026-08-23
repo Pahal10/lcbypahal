@@ -15,9 +15,13 @@ export const Route = createFileRoute("/offer")({
   validateSearch: (s) => searchSchema.parse(s),
   head: () => ({
     meta: [
-      { title: "You're in — pick your plan" },
-      { name: "description", content: "Continue free or unlock premium rewards." },
+      { title: "Pick your plan — Let's Connect" },
+      { name: "description", content: "Continue free or unlock Let's Connect Premium rewards, hidden hacks and discounts for $1/month." },
+      { property: "og:title", content: "Pick your plan — Let's Connect" },
+      { property: "og:description", content: "Continue free or unlock premium rewards for $1/month." },
+      { property: "og:url", content: "https://lcbypahal.lovable.app/offer" },
     ],
+    links: [{ rel: "canonical", href: "https://lcbypahal.lovable.app/offer" }],
   }),
   component: OfferPage,
 });
