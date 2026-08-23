@@ -11,8 +11,12 @@ export const Route = createFileRoute("/register")({
   head: () => ({
     meta: [
       { title: "Create your account — Let's Connect" },
-      { name: "description", content: "Create your Let's Connect account." },
+      { name: "description", content: "Sign up for Let's Connect and start making friends with guided prompts built for social anxiety." },
+      { property: "og:title", content: "Create your account — Let's Connect" },
+      { property: "og:description", content: "Sign up here, then sign in on the mobile app." },
+      { property: "og:url", content: "https://lcbypahal.lovable.app/register" },
     ],
+    links: [{ rel: "canonical", href: "https://lcbypahal.lovable.app/register" }],
   }),
   component: RegisterPage,
 });

@@ -5,8 +5,11 @@ import logo from "@/assets/logo.png.asset.json";
 export const Route = createFileRoute("/success")({
   head: () => ({
     meta: [
-      { title: "You're in — Let's Connect Premium" },
-      { name: "description", content: "Your Premium subscription is active." },
+      { title: "You're in — Let's Connect" },
+      { name: "description", content: "Your Let's Connect account is ready. Download the app and sign in to start connecting." },
+      { property: "og:title", content: "You're in — Let's Connect" },
+      { property: "og:description", content: "Your account is ready — download the app and sign in." },
+      { name: "robots", content: "noindex" },
     ],
   }),
   component: SuccessPage,

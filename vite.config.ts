@@ -11,21 +11,8 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
-    // Pre-render static marketing pages at build time so crawlers receive fully-rendered HTML.
-    prerender: {
-      enabled: true,
-      crawlLinks: true,
-      concurrency: 14,
-      failOnError: true,
-    },
-  },
-  nitro: {
-    // Make the Nitro server bundle filename match the preview/entry name expected
-    // by TanStack Start's prerender preview server, so build-time prerendering works.
-    rollupConfig: {
-      output: {
-        entryFileNames: "server.js",
-      },
-    },
+    // Build-time prerendering is disabled: the prerender preview server expects
+    // dist/server/server.js while the Cloudflare/nitro build emits index.mjs,
+    // which makes the prerender step fail. SSR already serves crawlers full HTML.
   },
 });

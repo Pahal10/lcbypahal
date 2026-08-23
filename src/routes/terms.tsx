@@ -4,8 +4,12 @@ export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
       { title: "Terms of Service — Let's Connect" },
-      { name: "description", content: "Terms of service for Let's Connect." },
+      { name: "description", content: "Terms of service for Let's Connect, the app that helps you make friends and feel less lonely." },
+      { property: "og:title", content: "Terms of Service — Let's Connect" },
+      { property: "og:description", content: "The terms that govern your use of Let's Connect." },
+      { property: "og:url", content: "https://lcbypahal.lovable.app/terms" },
     ],
+    links: [{ rel: "canonical", href: "https://lcbypahal.lovable.app/terms" }],
   }),
   component: TermsPage,
 });

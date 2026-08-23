@@ -8,9 +8,13 @@ import { verifyConnection, spinReward, claimWheelReward } from "@/lib/verify.fun
 export const Route = createFileRoute("/verify")({
   head: () => ({
     meta: [
-      { title: "Verify Connection — Let's Connect" },
-      { name: "description", content: "Verify a real-world connection to unlock a Premium reward." },
+      { title: "Verify a Connection — Let's Connect" },
+      { name: "description", content: "Verify a real-world meetup with a friend to unlock rewards on Let's Connect." },
+      { property: "og:title", content: "Verify a Connection — Let's Connect" },
+      { property: "og:description", content: "Confirm you met up in real life and unlock a reward." },
+      { property: "og:url", content: "https://lcbypahal.lovable.app/verify" },
     ],
+    links: [{ rel: "canonical", href: "https://lcbypahal.lovable.app/verify" }],
   }),
   component: VerifyPage,
 });
