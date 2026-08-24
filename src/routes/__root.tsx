@@ -77,6 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "IARPiI_NaZpJ8viqH9hBQ5WQiAz-wamqi7-CaRUI7v4" },
       { title: "Let's Connect — Make Friends & Beat Loneliness | Social Anxiety Support App" },
       { name: "description", content: "Make friends as an adult with guided real-world prompts. Social anxiety help and gentle nudges that help you feel less lonely, one conversation at a time." },
       { name: "author", content: "Let's Connect" },
