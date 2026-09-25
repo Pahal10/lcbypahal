@@ -6,7 +6,6 @@ import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
 import premiumRewardAsset from "@/assets/premium-reward.jpg.asset.json";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart } from "lucide-react";
-import type { FormEvent } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 
@@ -639,48 +638,36 @@ function Premium() {
 }
 
 function Loyalty() {
-  const [open, setOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [sent, setSent] = useState(false);
-
   const tiers = [
-    { icon: Coins, amount: "$0", label: "Fewer than 3 tasks this quarter", note: "No payout — but the price of a coffee isn't a bad bet on your social life.", featured: false },
-    { icon: Banknote, amount: "$20.20", label: "3 or more tasks this quarter", note: "Do the little tasks we suggest, and more than you paid comes straight back.", featured: true },
-    { icon: BadgeCheck, amount: "$21", label: "3 or more verified tasks this quarter", note: "Verify what you actually did, and the payout grows again.", featured: false },
+    { icon: Coins, amount: "$0", label: "Fewer than 3 tasks this quarter", note: "No payout — but the price of a coffee isn't a bad bet on your social life." },
+    { icon: Banknote, amount: "$20.20", label: "3 or more tasks this quarter", note: "Do the little tasks we suggest, and more than you paid comes straight back." },
+    { icon: BadgeCheck, amount: "$21", label: "3 or more verified tasks this quarter", note: "Verify what you actually did, and the payout grows again." },
   ];
 
-  const showInterest = (e: FormEvent) => {
-    e.preventDefault();
-    const subject = encodeURIComponent("Loyalty program — count me in!");
-    const body = encodeURIComponent(`Hi Pahal,\n\nI'm interested in the $20/quarter loyalty program when it launches.\n\nMy email: ${email}`);
-    window.location.href = `mailto:pahal.bhatti11@gmail.com?subject=${subject}&body=${body}`;
-    setSent(true);
-  };
-
   return (
-    <section className="py-28 lg:py-36 relative overflow-hidden">
+    <section className="relative overflow-hidden bg-primary py-28 lg:py-36 text-cream">
       <div className="absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-gold/15 blur-[120px] pointer-events-none" />
-      <div className="absolute -bottom-32 right-1/4 h-80 w-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-32 right-1/4 h-80 w-80 rounded-full bg-forest/40 blur-[120px] pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs uppercase tracking-widest text-foreground/80">
+          <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-4 py-1.5 text-xs uppercase tracking-widest text-cream">
             <Ticket className="h-3.5 w-3.5 text-gold" /> The loyalty program
           </span>
-          <h2 className="mt-6 text-4xl lg:text-5xl font-display leading-tight">
-            Go make friends. <span className="font-script text-primary text-6xl">Get paid back.</span>
+          <h2 className="mt-6 text-4xl lg:text-5xl font-display leading-tight text-cream">
+            Go make friends. <span className="font-script text-gold text-6xl">Get paid back.</span>
           </h2>
-          <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-            Pay <span className="text-foreground font-medium">$20 for the quarter</span> — then just show up. Do the small
+          <p className="mt-5 text-lg text-cream/75 leading-relaxed">
+            Pay <span className="text-cream font-medium">$20 for the quarter</span> — then just show up. Do the small
             connection tasks we suggest, and we hand the money straight back to you. Real cash. Some quarters, more than you paid.
           </p>
         </div>
 
         {/* Coupon card */}
-        <div className="relative mt-14 max-w-4xl mx-auto">
+        <div className="relative mt-14 max-w-3xl mx-auto">
           <div className="absolute -inset-4 rounded-[2.5rem] bg-gold/15 blur-2xl pointer-events-none" />
-          <div className="relative rounded-[2rem] border-2 border-dashed border-gold/50 bg-cream p-8 lg:p-10 shadow-[var(--shadow-elegant)]">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-8 border-b border-dashed border-gold/30">
+          <div className="relative rounded-[2rem] border-2 border-dashed border-gold/60 bg-white p-8 lg:p-10 shadow-[var(--shadow-elegant)] text-foreground">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-8 border-b border-dashed border-gold/40">
               <div>
                 <p className="text-xs uppercase tracking-widest text-muted-foreground">Entry price</p>
                 <p className="mt-1 font-display text-3xl">$20 <span className="text-base text-muted-foreground font-sans">/ quarter</span></p>
@@ -690,28 +677,22 @@ function Loyalty() {
               </div>
             </div>
 
-            <div className="mt-8 grid md:grid-cols-3 gap-5">
+            <div className="mt-8 flex flex-col gap-5">
               {tiers.map((tier, i) => (
-                <div
-                  key={i}
-                  className={
-                    tier.featured
-                      ? "relative rounded-2xl border border-gold/40 p-6 shadow-[var(--shadow-gold)]"
-                      : "relative rounded-2xl border border-border bg-card p-6"
-                  }
-                  style={tier.featured ? { background: "var(--gradient-gold)" } : undefined}
-                >
-                  {tier.featured && (
-                    <span className="absolute -top-3 right-4 rounded-full bg-forest text-cream text-[10px] uppercase tracking-widest px-3 py-1">
-                      The sweet spot
-                    </span>
-                  )}
-                  <div className={tier.featured ? "h-11 w-11 rounded-2xl bg-forest/15 grid place-items-center" : "h-11 w-11 rounded-2xl bg-primary/10 grid place-items-center"}>
-                    <tier.icon className={tier.featured ? "h-5 w-5 text-forest" : "h-5 w-5 text-primary"} />
+                <div key={i} className="rounded-2xl border border-border bg-white p-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                    <div className="h-11 w-11 shrink-0 rounded-2xl bg-primary/10 grid place-items-center">
+                      <tier.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="sm:w-32 shrink-0">
+                      <p className="text-[10px] uppercase tracking-widest text-muted-foreground">You get back</p>
+                      <p className="font-display text-3xl text-foreground">{tier.amount}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground/90">{tier.label}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{tier.note}</p>
+                    </div>
                   </div>
-                  <p className={`mt-4 font-display text-4xl ${tier.featured ? "text-forest" : "text-foreground"}`}>{tier.amount}</p>
-                  <p className={`mt-1 text-sm font-medium ${tier.featured ? "text-forest/90" : "text-foreground/90"}`}>back — {tier.label}</p>
-                  <p className={`mt-2 text-sm leading-relaxed ${tier.featured ? "text-forest/70" : "text-muted-foreground"}`}>{tier.note}</p>
                 </div>
               ))}
             </div>
@@ -725,63 +706,26 @@ function Loyalty() {
 
         {/* Interest CTA */}
         <div className="mt-12 text-center">
-          <button
-            type="button"
-            onClick={() => { setOpen(true); setSent(false); }}
-            className="group relative inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-gold)] transition-all duration-500 overflow-hidden"
+          <a
+            href="https://forms.gle/XzazRPugRzwu1uWS6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-gold-foreground font-medium shadow-[var(--shadow-gold)] transition-all duration-500 overflow-hidden"
           >
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             <HandHeart className="relative h-4 w-4" />
             <span className="relative">Show your interest</span>
-          </button>
-          <p className="mt-3 text-sm text-muted-foreground">
-            Showing interest is <span className="text-foreground font-medium">completely free</span> — no card, no commitment, just a raised hand.
+          </a>
+          <p className="mt-3 text-sm text-cream/75">
+            Showing interest is <span className="text-cream font-medium">completely free</span> — no card, no commitment, just a raised hand.
           </p>
-          <p className="mt-1 text-xs text-muted-foreground/70">
+          <p className="mt-1 text-xs text-cream/60">
             Not launched yet — early interest gets first access when it goes live.
           </p>
         </div>
       </div>
-
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="sm:max-w-md border-gold/25 bg-cream">
-          <DialogHeader>
-            <DialogTitle className="font-display text-3xl">
-              Count me <span className="font-script text-primary text-4xl">in</span>
-            </DialogTitle>
-            <DialogDescription className="text-muted-foreground">
-              Showing interest is free — you&apos;re just raising your hand so we can tell you the moment the loyalty program launches.
-            </DialogDescription>
-          </DialogHeader>
-          {sent ? (
-            <div className="rounded-2xl border border-gold/30 bg-gold/10 p-6 text-center">
-              <CheckCircle2 className="h-8 w-8 text-primary mx-auto" />
-              <p className="mt-3 font-medium">Your email app should have opened.</p>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Hit send and you&apos;re on the list — or write to us directly at pahal.bhatti11@gmail.com.
-              </p>
-            </div>
-          ) : (
-            <form onSubmit={showInterest} className="mt-2 space-y-3">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                className="w-full rounded-xl border border-input bg-card px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-ring"
-              />
-              <button
-                type="submit"
-                className="w-full rounded-full bg-primary py-3 font-medium text-primary-foreground transition hover:opacity-95"
-              >
-                Raise my hand — it&apos;s free
-              </button>
-            </form>
-          )}
-        </DialogContent>
-      </Dialog>
     </section>
   );
 }
+
 
