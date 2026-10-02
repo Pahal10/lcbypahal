@@ -92,6 +92,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Q4U7ei3whmWUUGNPHgUQRVgHQxq2/social-images/social-1780781673773-Screenshot_2026-05-22_120730.webp" },
       { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/Q4U7ei3whmWUUGNPHgUQRVgHQxq2/social-images/social-1780781673773-Screenshot_2026-05-22_120730.webp" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "Let's Connect",
+          alternateName: "LC — Let's Connect",
+          url: "https://lcbypahal.lovable.app",
+        }),
+      },
+    ],
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
