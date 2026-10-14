@@ -1,0 +1,682 @@
+import { useState } from "react";
+import logoAsset from "@/assets/logo.png.asset.json";
+import heroImg from "@/assets/hero-connection.jpg";
+import featureCalm from "@/assets/feature-calm.jpg";
+import featureMeet from "@/assets/feature-meet.jpg";
+import premiumRewardAsset from "@/assets/premium-reward.jpg.asset.json";
+import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { LLink, LangSwitcher, useT } from "@/lib/i18n";
+
+export function HomePage() {
+  return (
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Nav />
+      <Hero />
+      <Marquee />
+      <Why />
+      <Patterns />
+      <Different />
+      <Journey />
+      <Premium />
+      <Loyalty />
+      <Testimonials />
+      <CTA />
+      <Footer />
+    </div>
+  );
+}
+
+function Nav() {
+  const t = useT();
+  return (
+    <header className="absolute top-0 inset-x-0 z-30">
+      <nav className="mx-auto max-w-7xl px-6 lg:px-10 py-6 flex items-center justify-between">
+        <a href="#" className="flex items-center gap-3">
+          <img src={logoAsset.url} alt="Let's Connect" className="h-10 w-10 rounded-xl shadow-[var(--shadow-soft)]" />
+          <span className="font-display text-xl tracking-tight">
+            Let&apos;s <span className="font-script text-primary text-2xl">Connect</span>
+          </span>
+        </a>
+        <div className="hidden md:flex items-center gap-9 text-sm text-foreground/70">
+          <a href="#why" className="hover:text-foreground transition-colors">{t("Why we're lonely")}</a>
+          <a href="#journey" className="hover:text-foreground transition-colors">{t("The journey")}</a>
+          <a href="#stories" className="hover:text-foreground transition-colors">{t("Stories")}</a>
+        </div>
+        <div className="flex items-center gap-5">
+          <LangSwitcher className="text-foreground/80" />
+          <a
+            href="#download"
+            className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-[var(--shadow-soft)] hover:opacity-95 transition"
+          >
+            {t("Get started")} <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
+      </nav>
+    </header>
+  );
+}
+
+function Hero() {
+  const t = useT();
+  return (
+    <section className="relative pt-32 pb-24 lg:pt-44 lg:pb-32 overflow-hidden" style={{ backgroundImage: "var(--gradient-hero)" }}>
+      <div className="absolute inset-0 bg-noise opacity-60 pointer-events-none" />
+      <div className="absolute -top-32 -left-20 h-96 w-96 rounded-full bg-gold/15 blur-[120px] pointer-events-none" />
+      <div className="absolute top-20 right-1/4 h-72 w-72 rounded-full bg-gold/12 blur-[100px] pointer-events-none animate-float" />
+      <div className="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
+      <Sparkles className="absolute top-32 right-[12%] h-5 w-5 text-gold/40 animate-float" style={{ animationDelay: "0.5s" }} />
+      <Sparkles className="absolute bottom-40 left-[8%] h-4 w-4 text-gold/30 animate-float" style={{ animationDelay: "1.2s" }} />
+      <Heart className="absolute top-1/2 left-[6%] h-4 w-4 text-primary/25 animate-float" style={{ animationDelay: "0.8s" }} />
+      <Leaf className="absolute top-40 left-[15%] h-5 w-5 text-primary/20 animate-float" style={{ animationDelay: "1.5s" }} />
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center">
+        <div className="lg:col-span-7 animate-fade-up">
+          <div className="inline-flex items-center gap-2 rounded-full border border-gold/25 bg-gradient-to-r from-gold/10 via-cream/50 to-gold/10 backdrop-blur px-4 py-1.5 text-xs text-foreground/80 shadow-[var(--shadow-soft)]">
+            <Sparkles className="h-3.5 w-3.5 text-gold" />
+            {t("A gentler way to feel less alone")}
+          </div>
+          <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.02] tracking-tight">
+            {t("Connection,")}
+            <br />
+            <span className="italic font-script text-gradient-emerald text-6xl sm:text-7xl lg:text-[7rem] block leading-none mt-3">
+              {t("one small hello")}
+            </span>
+            <span className="block mt-2 text-foreground/80">{t("at a time.")}</span>
+          </h1>
+          <p className="mt-7 max-w-xl text-lg text-muted-foreground leading-relaxed">
+            {t("Let's Connect is a quiet companion for anyone who finds being social hard. Tiny prompts, real conversations, and a steady hand when the world feels loud.")}
+          </p>
+          <div className="mt-9 flex flex-wrap items-center gap-4">
+            <a
+              href="#download"
+              className="group relative inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-gold)] transition-all duration-500 overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <span className="relative">{t("Get started")}</span>
+              <ArrowRight className="relative h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a href="#journey" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+              <span className="h-10 w-10 rounded-full border border-gold/25 grid place-items-center bg-card hover:bg-gold/5 transition-colors">
+                <ArrowRight className="h-4 w-4" />
+              </span>
+              {t("See how it works")}
+            </a>
+          </div>
+          <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground">
+            <div className="flex -space-x-2">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="h-8 w-8 rounded-full border-2 border-background shadow-[var(--shadow-soft)]"
+                  style={{ background: i % 2 ? "var(--gradient-emerald)" : "var(--gradient-gold)" }} />
+              ))}
+            </div>
+            <span>{t("Joined by")} <strong className="text-foreground">2,400+</strong> {t("kind humans this month")}</span>
+          </div>
+        </div>
+
+        <div className="lg:col-span-5 relative">
+          <div className="relative animate-float">
+            <div className="absolute -inset-8 rounded-[2.5rem] bg-gold/20 blur-3xl" />
+            <div className="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-br from-gold/15 via-transparent to-primary/10 blur-2xl" />
+            <div className="relative rounded-[2rem] overflow-hidden shadow-[var(--shadow-elegant)] border border-gold/15">
+              <img src={heroImg} alt={t("Friends sharing a warm moment")} className="w-full h-[520px] object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest/30 via-transparent to-transparent" />
+              <div className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-cream/90 backdrop-blur px-3 py-1.5 text-xs font-medium text-foreground shadow-[var(--shadow-soft)] border border-gold/20">
+                <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
+                {t("feeling warmer already")}
+              </div>
+            </div>
+            <div className="absolute -bottom-5 -right-5 h-20 w-20 rounded-full grid place-items-center shadow-[var(--shadow-soft)] border-2 border-cream" style={{ background: "var(--gradient-gold)" }}>
+              <Heart className="h-8 w-8 text-forest" fill="currentColor" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Marquee() {
+  const t = useT();
+  const items = ["Build real friendships", "Calm the social nerves", "Tiny daily prompts", "Conversation guides", "Find your people", "Go at your pace"];
+  return (
+    <div className="border-y border-border bg-secondary/40 py-5 overflow-hidden">
+      <div className="flex gap-12 animate-[float-soft_0s] whitespace-nowrap text-sm font-medium text-muted-foreground">
+        <div className="flex gap-12 animate-[marquee_30s_linear_infinite]" style={{ animation: "none" }}>
+          {[...items, ...items].map((x, i) => (
+            <span key={i} className="flex items-center gap-3">
+              <Heart className="h-3.5 w-3.5 text-gold" /> {t(x)}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function Why() {
+  const t = useT();
+  return (
+    <section id="why" className="py-28 lg:py-36 bg-secondary/40 relative overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="relative order-2 lg:order-1">
+          <div className="rounded-[2rem] overflow-hidden shadow-[var(--shadow-elegant)]">
+            <img src={featureCalm} alt={t("A calm moment")} loading="lazy" className="w-full h-[560px] object-cover" />
+          </div>
+          <div className="absolute -bottom-8 -right-4 lg:-right-12 bg-card border border-border rounded-2xl p-6 max-w-[280px] shadow-[var(--shadow-soft)]">
+            <div className="flex items-center gap-2 text-gold mb-2">
+              <Heart className="h-4 w-4" />
+              <span className="text-xs uppercase tracking-widest font-medium">{t("Real talk")}</span>
+            </div>
+            <p className="font-script text-2xl text-primary leading-tight">&ldquo;{t("Honestly? It just helped.")}&rdquo;</p>
+          </div>
+        </div>
+
+        <div className="order-1 lg:order-2">
+          <p className="text-sm font-medium text-primary uppercase tracking-[0.2em]">{t("The why")}</p>
+          <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
+            {t("Loneliness is")} <span className="font-script text-primary text-6xl">{t("social hunger")}</span>.
+          </h2>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            {t("We researched patterns in various cases and came up with an understanding of loneliness. To explain, we break it down into two analogies.")}
+          </p>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="rounded-2xl border border-border bg-card p-5 hover:shadow-[var(--shadow-soft)] transition-shadow duration-500">
+              <Utensils className="h-5 w-5 text-primary" />
+              <p className="mt-3 font-display text-lg">{t("The hunger model")}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{t("Loneliness is like social hunger. When you expect food (connection) but don't get it — or get a snack when you're starving — you feel lonely.")}</p>
+            </div>
+            <div className="rounded-2xl border border-border bg-card p-5 hover:shadow-[var(--shadow-soft)] transition-shadow duration-500">
+              <TrendingDown className="h-5 w-5 text-gold" />
+              <p className="mt-3 font-display text-lg">{t("The crash model")}</p>
+              <p className="mt-1 text-sm text-muted-foreground">{t("You can also think of it like a stock market crash. A sudden crash of connection causes loneliness.")}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Patterns() {
+  const t = useT();
+  const items = [
+    { icon: Users, t: "I can't make friends", d: "You show up, you try, the spark never lands. We rebuild the muscle — gently, with words ready when yours aren't." },
+    { icon: MapPin, t: "I moved cities", d: "Group chats fade. Voice notes get shorter. Online retention isn't real retention. Start a new local circle, one hello at a time." },
+    { icon: ShieldCheck, t: "Nobody around me gets me", d: "Being surrounded and unseen is its own kind of alone. Get matched on what actually matters to you." },
+    { icon: UserMinus, t: "I lost someone close", d: "A whole shape goes missing. No replacing — only slowly making room for new warmth, at your pace." },
+  ];
+  return (
+    <section className="py-28 lg:py-36">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="max-w-2xl">
+          <p className="text-sm font-medium text-primary uppercase tracking-[0.2em]">{t("Sound familiar?")}</p>
+          <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
+            {t("Four quiet ways loneliness")} <span className="italic font-script text-primary text-6xl">{t("arrives")}</span>.
+          </h2>
+          <p className="mt-5 text-muted-foreground">{t("We studied real stories. These patterns came up again and again. If one of them is yours, you're in good company — and there's a way through.")}</p>
+        </div>
+        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {items.map((p, i) => (
+            <div key={i} className="rounded-3xl border border-border bg-card p-7 hover:shadow-[var(--shadow-soft)] transition-all duration-500 hover:-translate-y-1">
+              <div className="h-11 w-11 rounded-2xl bg-primary/10 grid place-items-center">
+                <p.icon className="h-5 w-5 text-primary" />
+              </div>
+              <h3 className="mt-5 font-display text-xl">{t(p.t)}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(p.d)}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 rounded-2xl border border-dashed border-gold/40 bg-gold/[0.04] p-8 text-center max-w-2xl mx-auto">
+          <Mail className="h-6 w-6 text-gold mx-auto mb-3" />
+          <p className="font-display text-lg text-foreground">{t("None of these quite fit?")}</p>
+          <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+            {t("That's perfectly fine. Loneliness wears many faces — and the app is designed to meet you where you are, no matter your story.")}
+          </p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            {t("Reach out directly at")}{" "}
+            <a href="mailto:pahal.bhatti11@gmail.com" className="text-primary font-medium hover:underline underline-offset-4 transition-colors">
+              pahal.bhatti11@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Different() {
+  const t = useT();
+  const nots = [
+    { icon: Smartphone, t: "Not a social media platform", d: "No feed, no followers, no performing. Nothing here is built to keep you scrolling." },
+    { icon: MessageCircleHeart, t: "Not an AI chatbot friend", d: "We won't pretend to be your friend. We help you find real ones." },
+  ];
+  return (
+    <section className="py-28 lg:py-36 bg-forest text-cream relative overflow-hidden">
+      <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-gold/10 blur-3xl" />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+          <div>
+            <p className="text-sm font-medium text-gold uppercase tracking-[0.2em]">{t("The rough solution")}</p>
+            <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
+              {t("Make")} <span className="font-script text-gold text-6xl">{t("new")}</span> {t("connections.")}
+            </h2>
+            <p className="mt-5 text-cream/75 leading-relaxed">
+              {t("Our research points to one thing: forming new connections is what actually helps. So that's what we help you do — start conversations with strangers, then deepen them, one prompt at a time.")}
+            </p>
+            <p className="mt-4 text-cream/75 leading-relaxed">
+              {t("That means Let's Connect isn't a social media platform, and it isn't an AI chatbot. It's a guide that walks you out the door.")}
+            </p>
+            <div className="mt-8 rounded-2xl border border-gold/25 bg-gold/[0.06] p-6">
+              <p className="font-script text-2xl text-gold">{t("The whole point")}</p>
+              <p className="mt-1 text-sm text-cream/80">
+                {t("Every prompt ends with you talking to an actual human, in an actual room.")}
+              </p>
+            </div>
+          </div>
+          <div className="space-y-5">
+            {nots.map((n, i) => (
+              <div key={i} className="rounded-3xl border border-cream/12 bg-cream/[0.04] p-7 transition-all duration-500 hover:-translate-y-1 hover:bg-cream/[0.07]">
+                <div className="h-11 w-11 rounded-2xl bg-gold/15 grid place-items-center">
+                  <n.icon className="h-5 w-5 text-gold" />
+                </div>
+                <h3 className="mt-5 font-display text-xl">{t(n.t)}</h3>
+                <p className="mt-2 text-sm text-cream/70 leading-relaxed">{t(n.d)}</p>
+              </div>
+            ))}
+            <div className="rounded-3xl border border-cream/12 bg-cream/[0.04] p-7">
+              <div className="h-11 w-11 rounded-2xl bg-gold/15 grid place-items-center">
+                <Users className="h-5 w-5 text-gold" />
+              </div>
+              <h3 className="mt-5 font-display text-xl">{t("A coach for real-life connection")}</h3>
+              <p className="mt-2 text-sm text-cream/70 leading-relaxed">
+                {t("Prompts, nudges and small missions that take you from a stranger's hello all the way to easy, comfortable friendship.")}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Journey() {
+  const t = useT();
+  const stages = [
+    { icon: MessageCircleHeart, n: "Stage 01", t: "Small talk", d: "Low-stakes openers, weather, weekend plans. The reps that make the rest possible.", prompt: "Ask someone what the time is" },
+    { icon: Heart, n: "Stage 02", t: "Big talk", d: "Real questions, real answers. Where small talk warms up, big talk lights up.", prompt: "If you could recreate a memory with me, which one would you want to recreate" },
+    { icon: Gamepad2, n: "Stage 03", t: "Playtime", d: "Shared activities, inside jokes, doing things together. Friendship moves into the body.", prompt: "Learn a new card game together and play it" },
+    { icon: Coffee, n: "Stage 04", t: "Hygge", d: "Easy silence. Pajamas on the couch - Routines that focus on comfort.", prompt: "Come over. We don't have to do anything." },
+  ];
+  return (
+    <section id="journey" className="py-28 lg:py-36 bg-secondary/40">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-6">
+          <h2 className="text-4xl lg:text-5xl font-display max-w-xl leading-tight">
+            {t("The")} <span className="font-script text-primary text-6xl">{t("journey")}</span> {t("— small talk to hygge.")}
+          </h2>
+          <p className="text-muted-foreground max-w-sm">{t("Every real friendship climbs the same four rungs. We just hand you the ladder.")}</p>
+        </div>
+
+        <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-border bg-card px-5 py-2.5 text-sm">
+          <Lightbulb className="h-4 w-4 text-gold" />
+          <span className="text-muted-foreground">{t("Powered by gentle")} <span className="text-foreground font-medium">{t("nudge engineering")}</span> {t("— tiny prompts, well-timed insights, never guilt.")}</span>
+        </div>
+        <p className="mb-14 max-w-2xl text-sm text-muted-foreground leading-relaxed">
+          {t("The prompts aren't there to be read and scrolled past. Each one is something to go and")}
+          <span className="text-foreground font-medium"> {t("actually try with a real person")}</span> {t("— a stranger for small talk, then the same people again as you deepen those connections stage by stage.")}
+        </p>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          {stages.map((s, i) => (
+            <div key={i} className="relative rounded-3xl bg-card border border-border p-7 overflow-hidden hover:-translate-y-1 hover:shadow-[var(--shadow-soft)] transition-all duration-500">
+              <div className="absolute -top-6 -right-2 font-display text-[6rem] leading-none text-primary/10 select-none">{String(i + 1).padStart(2, "0")}</div>
+              <div className="relative">
+                <div className="h-11 w-11 rounded-2xl bg-primary/10 grid place-items-center">
+                  <s.icon className="h-5 w-5 text-primary" />
+                </div>
+                <p className="mt-5 text-xs uppercase tracking-widest text-muted-foreground">{t(s.n)}</p>
+                <h3 className="mt-1 font-display text-2xl">{t(s.t)}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{t(s.d)}</p>
+                <div className="mt-5 rounded-2xl border border-dashed border-border bg-secondary/50 p-4">
+                  <p className="text-[10px] uppercase tracking-widest text-primary font-medium">{t("Sample prompt")}</p>
+                  <p className="mt-1 font-script text-lg text-foreground/90">&ldquo;{t(s.prompt)}&rdquo;</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-16 rounded-[2rem] overflow-hidden relative h-80 shadow-[var(--shadow-elegant)] group">
+          <img src={featureMeet} alt={t("Two people meeting for coffee")} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-r from-forest/85 via-forest/40 to-transparent" />
+          <div className="absolute inset-0 flex items-center p-10 lg:p-16">
+            <div className="max-w-md text-cream">
+              <p className="font-script text-4xl text-gold">{t("small steps,")}</p>
+              <h3 className="font-display text-3xl lg:text-4xl mt-2">{t("big, ordinary, beautiful moments.")}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Testimonials() {
+  const t = useT();
+  const quotes = [
+    { q: "I used to script every text for an hour. Now I just send it.", a: "Priya, 27" },
+    { q: "The daily nudge feels like a friend checking in — not an app.", a: "Marcus, 19" },
+    { q: "Made my first real friend in three years. I'm crying writing this.", a: "Ellie, 34" },
+  ];
+  return (
+    <section id="stories" className="py-28 lg:py-36 bg-forest text-cream relative overflow-hidden">
+      <div className="absolute inset-0 bg-noise opacity-30" />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <p className="text-sm font-medium text-gold uppercase tracking-[0.2em]">{t("Quiet wins")}</p>
+        <h2 className="mt-4 text-4xl lg:text-5xl font-display max-w-2xl leading-tight">
+          {t("Small messages from people who finally felt")} <span className="font-script text-gold text-6xl">{t("connected")}</span>.
+        </h2>
+
+        <div className="mt-14 grid sm:grid-cols-3 gap-6">
+          {[
+            { v: "100", l: "Net Promoter Score" },
+            { v: "89%", l: "of the time, users said they felt less lonely after doing a suggested task" },
+            { v: "75%", l: "of users would be very disappointed if the platform disappeared" },
+          ].map((m, i) => (
+            <div key={i} className="rounded-3xl border border-gold/25 bg-gold/[0.07] p-8 text-center transition-all duration-500 hover:bg-gold/[0.12]">
+              <p className="font-display text-5xl text-gold">{m.v}</p>
+              <p className="mt-3 text-sm leading-relaxed text-cream/70">{t(m.l)}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 grid md:grid-cols-3 gap-6">
+          {quotes.map((q, i) => (
+            <figure key={i} className="rounded-3xl border border-cream/15 bg-cream/5 backdrop-blur p-8 hover:bg-cream/10 hover:border-cream/25 transition-all duration-500">
+              <Sparkles className="h-5 w-5 text-gold" />
+              <blockquote className="mt-6 font-display text-2xl leading-snug">&ldquo;{t(q.q)}&rdquo;</blockquote>
+              <figcaption className="mt-6 text-sm text-cream/60">— {q.a}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CTA() {
+  const t = useT();
+  const IOS_URL = "https://apps.apple.com/qa/app/lc-lets-connect/id6792295616";
+  const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share";
+  return (
+    <section id="download" className="py-28 lg:py-36">
+      <div className="mx-auto max-w-5xl px-6 lg:px-10">
+        <div className="relative rounded-[2.5rem] p-12 lg:p-20 text-center overflow-hidden border border-border" style={{ background: "var(--gradient-emerald)" }}>
+          <div className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-gold/30 blur-3xl" />
+          <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-cream/10 blur-3xl" />
+          <div className="relative text-cream">
+            <img src={logoAsset.url} alt="" className="h-16 w-16 mx-auto rounded-2xl shadow-[var(--shadow-gold)]" />
+            <h2 className="mt-8 font-display text-4xl lg:text-6xl leading-tight">
+              {t("The world feels lighter with")} <span className="font-script text-gold text-7xl">{t("one")}</span> {t("good hello.")}
+            </h2>
+            <p className="mt-6 text-cream/80 max-w-xl mx-auto">
+              {t("Feeling lonely or socially anxious? We are here to help :)")}
+            </p>
+            <div className="mt-10 flex flex-wrap justify-center gap-3">
+              <a href={IOS_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-7 py-4 font-medium shadow-[var(--shadow-soft)] hover:scale-[1.02] transition-transform">
+                <Smartphone className="h-4 w-4" /> {t("Download for iOS")}
+              </a>
+              <a href={ANDROID_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-7 py-4 font-medium shadow-[var(--shadow-gold)] hover:scale-[1.02] transition-transform">
+                <Smartphone className="h-4 w-4" /> {t("Download for Android")}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer() {
+  const t = useT();
+  const [contactOpen, setContactOpen] = useState(false);
+  return (
+    <>
+      <footer className="border-t border-border bg-cream/40">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <div className="flex items-center gap-3">
+              <img src={logoAsset.url} alt="Let's Connect" className="h-9 w-9 rounded-xl" />
+              <span className="font-display text-lg">
+                Let&apos;s <span className="font-script text-primary text-xl">Connect</span>
+              </span>
+            </div>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
+              {t("A quiet companion that helps you start real conversations and turn them into lasting connection — offline, at your own pace.")}
+            </p>
+            <p className="mt-5 text-xs leading-relaxed text-muted-foreground/80">
+              {t("Operated by Tesserae Holdings LLC")}
+              <br />
+              {t("A Wyoming limited liability company")}
+              <br />
+              30 N Gould St, Ste R, Sheridan, WY 82801, USA
+            </p>
+          </div>
+
+          <div className="md:col-span-3">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-foreground/60">{t("Product")}</p>
+            <div className="mt-4 flex flex-col gap-2.5 text-sm text-muted-foreground">
+              <a href="#why" className="hover:text-foreground transition-colors">{t("Why we're lonely")}</a>
+              <a href="#journey" className="hover:text-foreground transition-colors">{t("The journey")}</a>
+              <a href="#download" className="hover:text-foreground transition-colors">{t("Download the app")}</a>
+            </div>
+          </div>
+
+          <div className="md:col-span-4">
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-foreground/60">{t("Legal & support")}</p>
+            <div className="mt-4 flex flex-col gap-2.5 text-sm text-muted-foreground">
+              <a href="https://www.termsfeed.com/live/c439c7ce-dbd4-4336-88aa-f89cce03625a" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">{t("Privacy policy")}</a>
+              <LLink to="/terms" className="hover:text-foreground transition-colors">{t("Terms of service")}</LLink>
+              <LLink to="/refund" className="hover:text-foreground transition-colors">{t("Refund policy")}</LLink>
+              <button type="button" onClick={() => setContactOpen(true)} className="text-left hover:text-foreground transition-colors">{t("Contact us")}</button>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-border">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+            <p>© {new Date().getFullYear()} Tesserae Holdings LLC. {t("All rights reserved.")}</p>
+            <LangSwitcher className="text-foreground/70" />
+            <p>{t("Let's Connect is a product of Tesserae Holdings LLC.")}</p>
+          </div>
+        </div>
+      </footer>
+
+      <Dialog open={contactOpen} onOpenChange={setContactOpen}>
+        <DialogContent className="sm:max-w-md border-gold/25 bg-cream">
+          <DialogHeader>
+            <DialogTitle className="font-display text-3xl">
+              {t("Let's")} <span className="font-script text-primary text-4xl">{t("talk")}</span>
+            </DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              {t("Reach out — I'd genuinely love to hear from you.")}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="mt-2 space-y-3">
+            <a href="mailto:pahal.bhatti11@gmail.com" className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 hover:border-gold/40 hover:shadow-[var(--shadow-soft)] transition-all">
+              <div className="h-11 w-11 rounded-xl bg-primary/10 grid place-items-center shrink-0">
+                <Mail className="h-5 w-5 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">{t("Email")}</p>
+                <p className="font-medium truncate">pahal.bhatti11@gmail.com</p>
+              </div>
+            </a>
+            <a href="https://wa.me/97433720786" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 hover:border-gold/40 hover:shadow-[var(--shadow-soft)] transition-all">
+              <div className="h-11 w-11 rounded-xl bg-primary/10 grid place-items-center shrink-0">
+                <MessageCircle className="h-5 w-5 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">WhatsApp</p>
+                <p className="font-medium">+974 33720786</p>
+              </div>
+            </a>
+            <a href="https://instagram.com/pahal.bhatti11" target="_blank" rel="noopener noreferrer" className="group flex items-center gap-4 rounded-2xl border border-border bg-card p-4 hover:border-gold/40 hover:shadow-[var(--shadow-soft)] transition-all">
+              <div className="h-11 w-11 rounded-xl bg-primary/10 grid place-items-center shrink-0">
+                <Instagram className="h-5 w-5 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">Instagram</p>
+                <p className="font-medium">@pahal.bhatti11</p>
+              </div>
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+}
+
+function Premium() {
+  const t = useT();
+  return (
+    <section className="py-28 lg:py-36 relative overflow-hidden">
+      <div className="absolute -top-32 right-0 h-96 w-96 rounded-full bg-gold/15 blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-32 left-0 h-96 w-96 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="relative flex justify-center order-2 lg:order-1">
+          <div className="absolute -inset-8 rounded-[3rem] bg-gold/15 blur-3xl" />
+          <div className="relative">
+            <div className="relative w-[300px] h-[610px] rounded-[3rem] bg-gradient-to-b from-neutral-900 to-neutral-800 p-3 shadow-[var(--shadow-elegant)] border border-neutral-700">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-neutral-900 rounded-b-2xl z-10" />
+              <div className="relative w-full h-full rounded-[2.3rem] overflow-hidden bg-black">
+                <img src={premiumRewardAsset.url} alt={t("Premium reward inside the app")} className="w-full h-full object-cover" />
+              </div>
+            </div>
+            <div className="absolute -top-4 -right-4 h-20 w-20 rounded-full grid place-items-center shadow-[var(--shadow-soft)] border-2 border-cream animate-float" style={{ background: "var(--gradient-gold)" }}>
+              <Gift className="h-8 w-8 text-forest" />
+            </div>
+          </div>
+        </div>
+
+        <div className="order-1 lg:order-2">
+          <p className="text-sm font-medium text-primary uppercase tracking-[0.2em]">{t("Premium rewards")}</p>
+          <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
+            {t("Hidden perks,")} <span className="font-script text-primary text-6xl">{t("unlocked")}</span>.
+          </h2>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            {t("Discover hacks and discounts that live quietly online — the kind most people never find. From airline discounts to secret deals, we surface the ones worth knowing.")}
+          </p>
+          <div className="mt-8 space-y-4">
+            <div className="flex items-start gap-4 rounded-2xl border border-gold/25 bg-gradient-to-br from-gold/10 to-transparent p-5">
+              <div className="h-11 w-11 rounded-2xl grid place-items-center shrink-0" style={{ background: "var(--gradient-gold)" }}>
+                <Sparkles className="h-5 w-5 text-forest" />
+              </div>
+              <div>
+                <p className="font-display text-lg">{t("Go Premium")}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{t("Pay a nominal fee and instantly unlock every hidden reward — new ones added weekly.")}</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5">
+              <div className="h-11 w-11 rounded-2xl bg-primary/10 grid place-items-center shrink-0">
+                <CheckCircle2 className="h-5 w-5 text-primary" />
+              </div>
+              <div>
+                <p className="font-display text-lg">{t("Or stay free")}</p>
+                <p className="mt-1 text-sm text-muted-foreground">{t("Verify the small social tasks you complete and earn rewards in return — no paywall needed.")}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Loyalty() {
+  const t = useT();
+  const tiers = [
+    { icon: Coins, amount: "$0", label: "Fewer than 3 tasks this quarter", note: "No payout — but the price of a coffee isn't a bad bet on your social life." },
+    { icon: Banknote, amount: "$20.20", label: "3 or more tasks this quarter", note: "Do the little tasks we suggest, and more than you paid comes straight back." },
+    { icon: BadgeCheck, amount: "$21", label: "3 or more verified tasks this quarter", note: "Verify what you actually did, and the payout grows again." },
+  ];
+  return (
+    <section className="relative overflow-hidden bg-primary py-28 lg:py-36 text-cream">
+      <div className="absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-gold/15 blur-[120px] pointer-events-none" />
+      <div className="absolute -bottom-32 right-1/4 h-80 w-80 rounded-full bg-forest/40 blur-[120px] pointer-events-none" />
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="text-center max-w-2xl mx-auto">
+          <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-4 py-1.5 text-xs uppercase tracking-widest text-cream">
+            <Ticket className="h-3.5 w-3.5 text-gold" /> {t("The loyalty program")}
+          </span>
+          <h2 className="mt-6 text-4xl lg:text-5xl font-display leading-tight text-cream">
+            {t("Go make friends.")} <span className="font-script text-gold text-6xl">{t("Get paid back.")}</span>
+          </h2>
+          <p className="mt-5 text-lg text-cream/75 leading-relaxed">
+            {t("Pay")} <span className="text-cream font-medium">{t("$20 for the quarter")}</span> {t("— then just show up. Do the small connection tasks we suggest, and we hand the money straight back to you. Real cash. Some quarters, more than you paid.")}
+          </p>
+        </div>
+
+        <div className="relative mt-14 max-w-3xl mx-auto">
+          <div className="absolute -inset-4 rounded-[2.5rem] bg-gold/15 blur-2xl pointer-events-none" />
+          <div className="relative rounded-[2rem] border-2 border-dashed border-gold/60 bg-white p-8 lg:p-10 shadow-[var(--shadow-elegant)] text-foreground">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-8 border-b border-dashed border-gold/40">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground">{t("Entry price")}</p>
+                <p className="mt-1 font-display text-3xl">$20 <span className="text-base text-muted-foreground font-sans">{t("/ quarter")}</span></p>
+              </div>
+              <div className="rounded-full bg-gold/15 border border-gold/30 px-4 py-2 text-sm font-medium text-foreground/80">
+                {t("Cash payout, every quarter")}
+              </div>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-5">
+              {tiers.map((tier, i) => (
+                <div key={i} className="rounded-2xl border border-border bg-white p-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+                    <div className="h-11 w-11 shrink-0 rounded-2xl bg-primary/10 grid place-items-center">
+                      <tier.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="sm:w-32 shrink-0">
+                      <p className="text-[10px] uppercase tracking-widest text-muted-foreground">{t("You get back")}</p>
+                      <p className="font-display text-3xl text-foreground">{tier.amount}</p>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground/90">{t(tier.label)}</p>
+                      <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{t(tier.note)}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <p className="mt-8 text-center text-sm text-muted-foreground max-w-xl mx-auto">
+              {t("Yes — $20.20 and $21 are")} <span className="text-foreground font-medium">{t("more than you paid")}</span>{t(". Real money back in your pocket for doing the thing that actually helps: going out and connecting with people.")}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <a
+            href="https://forms.gle/XzazRPugRzwu1uWS6"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-gold-foreground font-medium shadow-[var(--shadow-gold)] transition-all duration-500 overflow-hidden"
+          >
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+            <HandHeart className="relative h-4 w-4" />
+            <span className="relative">{t("Show your interest")}</span>
+          </a>
+          <p className="mt-3 text-sm text-cream/75">
+            {t("Showing interest is")} <span className="text-cream font-medium">{t("completely free")}</span> {t("— no card, no commitment, just a raised hand.")}
+          </p>
+          <p className="mt-1 text-xs text-cream/60">
+            {t("Not launched yet — early interest gets first access when it goes live.")}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
