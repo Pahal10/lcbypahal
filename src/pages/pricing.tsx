@@ -1,20 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Check, Sparkles, Gift, Tag, Lock, ShieldCheck } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
+import { LLink, LangSwitcher, useT, useLocalePath } from "@/lib/i18n";
 
-export const Route = createFileRoute("/pricing")({
-  head: () => ({
-    meta: [
-      { title: "Premium — Let's Connect" },
-      { name: "description", content: "Unlock premium rewards, hidden online hacks and discounts for $1/month." },
-      { property: "og:title", content: "Premium — Let's Connect" },
-      { property: "og:description", content: "Premium rewards, hidden hacks and discounts for $1/month." },
-      { property: "og:url", content: "https://lcbypahal.lovable.app/pricing" },
-    ],
-    links: [{ rel: "canonical", href: "https://lcbypahal.lovable.app/pricing" }],
-  }),
-  component: PricingPage,
-});
 
 const perks = [
   { icon: Gift, title: "Premium rewards", desc: "Exclusive in-app rewards reserved for premium members." },
@@ -24,7 +12,8 @@ const perks = [
   { icon: Lock, title: "Members only", desc: "A private stash that keeps growing every month." },
 ];
 
-function PricingPage() {
+export function PricingPage() {
+  const t = useT();
   return (
     <div className="relative min-h-screen overflow-hidden bg-[color:var(--forest)] text-cream">
       {/* Green gradient background */}
@@ -45,19 +34,19 @@ function PricingPage() {
 
       <div className="relative mx-auto max-w-3xl px-6 py-14 sm:py-20">
         <div className="mb-10 flex items-center justify-between">
-          <Link to="/" className="text-sm text-cream/70 hover:text-cream">← Back</Link>
-          <img src={logo.url} alt="Let's Connect" className="h-9 w-auto" />
+          <LLink to="/" className="text-sm text-cream/70 hover:text-cream">{t("← Back")}</LLink>
+          <div className="flex items-center gap-4"><LangSwitcher className="text-cream/80" /><img src={logo.url} alt="Let's Connect" className="h-9 w-auto" /></div>
         </div>
 
         <div className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs uppercase tracking-widest text-gold">
-            <Sparkles className="h-3.5 w-3.5" /> Premium
+            <Sparkles className="h-3.5 w-3.5" /> {t("Premium")}
           </span>
           <h1 className="mt-5 font-display text-4xl leading-tight text-cream sm:text-6xl">
-            The good stuff, <span className="text-gold">quietly unlocked.</span>
+            {t("The good stuff,")} <span className="text-gold">{t("quietly unlocked.")}</span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-cream/75">
-            A tiny monthly fee for a stash of rewards, hacks and discounts that live on the internet — just very well hidden.
+            {t("A tiny monthly fee for a stash of rewards, hacks and discounts that live on the internet — just very well hidden.")}
           </p>
         </div>
 
@@ -73,10 +62,10 @@ function PricingPage() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="font-display text-lg text-cream">{title}</h3>
+                  <h3 className="font-display text-lg text-cream">{t(title)}</h3>
                   <Check className="h-4 w-4 text-gold" />
                 </div>
-                <p className="mt-0.5 text-sm text-cream/70">{desc}</p>
+                <p className="mt-0.5 text-sm text-cream/70">{t(desc)}</p>
               </div>
             </li>
           ))}
@@ -84,28 +73,28 @@ function PricingPage() {
 
         {/* Price card */}
         <div className="mt-12 overflow-hidden rounded-3xl border border-gold/30 bg-gradient-to-b from-cream/[0.06] to-cream/[0.02] p-8 text-center backdrop-blur">
-          <p className="text-sm uppercase tracking-widest text-cream/60">Only</p>
+          <p className="text-sm uppercase tracking-widest text-cream/60">{t("Only")}</p>
           <div className="mt-2 flex items-baseline justify-center gap-2">
             <span className="font-display text-6xl text-gold sm:text-7xl">$1</span>
-            <span className="text-cream/70">/ month</span>
+            <span className="text-cream/70">{t("/ month")}</span>
           </div>
           <p className="mx-auto mt-3 max-w-sm text-sm text-cream/70">
-            Cancel anytime. No hidden fees. Just a small thanks that keeps the hidden perks flowing.
+            {t("Cancel anytime. No hidden fees. Just a small thanks that keeps the hidden perks flowing.")}
           </p>
 
-          <Link
+          <LLink
             to="/register"
             className="mt-7 inline-flex items-center justify-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-[color:var(--gold-foreground)] shadow-[0_20px_50px_-15px_oklch(0.7_0.14_70/0.6)] transition hover:brightness-105"
           >
-            <Sparkles className="h-4 w-4" /> Sign up for Premium
-          </Link>
+            <Sparkles className="h-4 w-4" /> {t("Sign up for Premium")}
+          </LLink>
 
           <div className="mt-5 flex flex-wrap justify-center gap-x-4 gap-y-1 text-xs text-cream/50">
-            <Link to="/terms" className="hover:text-cream/80">Terms of service</Link>
+            <LLink to="/terms" className="hover:text-cream/80">{t("Terms of service")}</LLink>
             <span>·</span>
-            <Link to="/refund" className="hover:text-cream/80">Refund policy</Link>
+            <LLink to="/refund" className="hover:text-cream/80">{t("Refund policy")}</LLink>
             <span>·</span>
-            <a href="https://www.termsfeed.com/live/c439c7ce-dbd4-4336-88aa-f89cce03625a" className="hover:text-cream/80">Privacy</a>
+            <a href="https://www.termsfeed.com/live/c439c7ce-dbd4-4336-88aa-f89cce03625a" className="hover:text-cream/80">{t("Privacy")}</a>
           </div>
         </div>
       </div>

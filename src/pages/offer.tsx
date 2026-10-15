@@ -1,30 +1,17 @@
-import { createFileRoute, Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { Sparkles, Check, Gift, Tag, Lock, ShieldCheck, Loader2, ArrowRight } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
 import { createCheckout } from "@/lib/registration.functions";
+import { LLink, LangSwitcher, useT, useLocalePath } from "@/lib/i18n";
 
 const searchSchema = z.object({
   userId: z.string().min(1),
   email: z.string().email(),
 });
 
-export const Route = createFileRoute("/offer")({
-  validateSearch: (s) => searchSchema.parse(s),
-  head: () => ({
-    meta: [
-      { title: "Pick your plan — Let's Connect" },
-      { name: "description", content: "Continue free or unlock Let's Connect Premium rewards, hidden hacks and discounts for $1/month." },
-      { property: "og:title", content: "Pick your plan — Let's Connect" },
-      { property: "og:description", content: "Continue free or unlock premium rewards for $1/month." },
-      { property: "og:url", content: "https://lcbypahal.lovable.app/offer" },
-    ],
-    links: [{ rel: "canonical", href: "https://lcbypahal.lovable.app/offer" }],
-  }),
-  component: OfferPage,
-});
 
 const perks = [
   { icon: Gift, title: "Premium rewards", desc: "Exclusive in-app rewards reserved for premium members." },
@@ -34,9 +21,11 @@ const perks = [
   { icon: Lock, title: "Members only", desc: "A private stash that keeps growing every month." },
 ];
 
-function OfferPage() {
-  const { userId, email } = useSearch({ from: "/offer" });
+export function OfferPage() {
+  const t = useT();
+  const { userId, email } = useSearch({ strict: false }) as { userId: string; email: string };
   const navigate = useNavigate();
+  const lp = useLocalePath();
   const doCheckout = useServerFn(createCheckout);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -48,7 +37,7 @@ function OfferPage() {
       const { url } = await doCheckout({ data: { userId, email } });
       window.location.href = url;
     } catch (e: any) {
-      setError(e?.message ?? "Could not start checkout");
+      setError(t(e?.message ?? "Could not start checkout"));
       setLoading(false);
     }
   }
@@ -71,19 +60,19 @@ function OfferPage() {
 
       <div className="relative mx-auto max-w-3xl px-6 py-14 sm:py-20">
         <div className="mb-10 flex items-center justify-between">
-          <Link to="/" className="text-sm text-cream/70 hover:text-cream">← Home</Link>
-          <img src={logo.url} alt="Let's Connect" className="h-9 w-auto" />
+          <LLink to="/" className="text-sm text-cream/70 hover:text-cream">{t("← Home")}</LLink>
+          <div className="flex items-center gap-4"><LangSwitcher className="text-cream/80" /><img src={logo.url} alt="Let's Connect" className="h-9 w-auto" /></div>
         </div>
 
         <div className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs uppercase tracking-widest text-gold">
-            <Sparkles className="h-3.5 w-3.5" /> Account created
+            <Sparkles className="h-3.5 w-3.5" /> {t("Account created")}
           </span>
           <h1 className="mt-5 font-display text-4xl leading-tight text-cream sm:text-6xl">
-            One last choice — <span className="text-gold">go premium?</span>
+            {t("One last choice —")} <span className="text-gold">{t("go premium?")}</span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-cream/75">
-            You can continue for free right now, or unlock the hidden stash of rewards, hacks and discounts for just $1/month.
+            {t("You can continue for free right now, or unlock the hidden stash of rewards, hacks and discounts for just $1/month.")}
           </p>
         </div>
 
@@ -98,10 +87,10 @@ function OfferPage() {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="font-display text-lg text-cream">{title}</h3>
+                  <h3 className="font-display text-lg text-cream">{t(title)}</h3>
                   <Check className="h-4 w-4 text-gold" />
                 </div>
-                <p className="mt-0.5 text-sm text-cream/70">{desc}</p>
+                <p className="mt-0.5 text-sm text-cream/70">{t(desc)}</p>
               </div>
             </li>
           ))}
@@ -109,11 +98,11 @@ function OfferPage() {
 
         <div className="mt-10 grid gap-3 sm:grid-cols-2">
           <button
-            onClick={() => navigate({ to: "/success" })}
+            onClick={() => navigate({ to: lp("/success") as "/success" })}
             disabled={loading}
             className="rounded-full border border-cream/25 bg-cream/[0.06] px-6 py-3.5 text-sm font-semibold text-cream transition hover:bg-cream/[0.12] disabled:opacity-60"
           >
-            Continue with free
+            {t("Continue with free")}
           </button>
           <button
             onClick={onPremium}
@@ -121,9 +110,9 @@ function OfferPage() {
             className="inline-flex items-center justify-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-[color:var(--gold-foreground)] shadow-[0_20px_50px_-15px_oklch(0.7_0.14_70/0.6)] transition hover:brightness-105 disabled:opacity-60"
           >
             {loading ? (
-              <><Loader2 className="h-4 w-4 animate-spin" /> Starting checkout…</>
+              <><Loader2 className="h-4 w-4 animate-spin" /> {t("Starting checkout…")}</>
             ) : (
-              <>Sign up for Premium — $1/mo <ArrowRight className="h-4 w-4" /></>
+              <>{t("Sign up for Premium — $1/mo")} <ArrowRight className="h-4 w-4" /></>
             )}
           </button>
         </div>
@@ -135,7 +124,7 @@ function OfferPage() {
         )}
 
         <p className="mt-6 text-center text-xs text-cream/50">
-          You can always upgrade later from the app.
+          {t("You can always upgrade later from the app.")}
         </p>
       </div>
     </div>

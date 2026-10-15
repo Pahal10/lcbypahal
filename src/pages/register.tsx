@@ -1,28 +1,18 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Sparkles, Loader2, ArrowRight, UserPlus, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
 import { registerUser } from "@/lib/registration.functions";
 import { SocialAuthButtons } from "@/components/SocialAuthButtons";
+import { LLink, LangSwitcher, useT, useLocalePath } from "@/lib/i18n";
 
 
-export const Route = createFileRoute("/register")({
-  head: () => ({
-    meta: [
-      { title: "Create your account — Let's Connect" },
-      { name: "description", content: "Sign up for Let's Connect and start making friends with guided prompts built for social anxiety." },
-      { property: "og:title", content: "Create your account — Let's Connect" },
-      { property: "og:description", content: "Sign up here, then sign in on the mobile app." },
-      { property: "og:url", content: "https://lcbypahal.lovable.app/register" },
-    ],
-    links: [{ rel: "canonical", href: "https://lcbypahal.lovable.app/register" }],
-  }),
-  component: RegisterPage,
-});
 
-function RegisterPage() {
+export function RegisterPage() {
+  const t = useT();
   const navigate = useNavigate();
+  const lp = useLocalePath();
   const doRegister = useServerFn(registerUser);
 
   const [form, setForm] = useState({
@@ -45,11 +35,11 @@ function RegisterPage() {
     setError(null);
 
     if (form.password !== form.confirm) {
-      setError("Passwords do not match");
+      setError(t("Passwords do not match"));
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      setError("Please enter a valid email address");
+      setError(t("Please enter a valid email address"));
       return;
     }
 
@@ -63,9 +53,9 @@ function RegisterPage() {
           promo_code: form.promo_code.trim() || null,
         },
       });
-      await navigate({ to: "/success" });
+      await navigate({ to: lp("/success") as "/success" });
     } catch (err: any) {
-      setError(err?.message ?? "Something went wrong");
+      setError(t(err?.message ?? "Something went wrong"));
       setLoading(false);
     }
   }
@@ -89,17 +79,17 @@ function RegisterPage() {
 
       <div className="relative mx-auto max-w-md px-6 py-14">
         <div className="mb-8 flex items-center justify-between">
-          <Link to="/" className="text-sm text-cream/70 hover:text-cream">← Back</Link>
-          <img src={logo.url} alt="Let's Connect" className="h-9 w-auto" />
+          <LLink to="/" className="text-sm text-cream/70 hover:text-cream">{t("← Back")}</LLink>
+          <div className="flex items-center gap-4"><LangSwitcher className="text-cream/80" /><img src={logo.url} alt="Let's Connect" className="h-9 w-auto" /></div>
         </div>
 
         <div className="text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs uppercase tracking-widest text-gold">
-            <Sparkles className="h-3.5 w-3.5" /> Free to join
+            <Sparkles className="h-3.5 w-3.5" /> {t("Free to join")}
           </span>
-          <h1 className="mt-4 font-display text-3xl text-cream sm:text-4xl">Create your account</h1>
+          <h1 className="mt-4 font-display text-3xl text-cream sm:text-4xl">{t("Create your account")}</h1>
           <p className="mt-2 text-sm text-cream/70">
-            Sign up here, then sign in on the mobile app.
+            {t("Sign up here, then sign in on the mobile app.")}
           </p>
         </div>
 
@@ -111,7 +101,7 @@ function RegisterPage() {
             className="flex w-full items-center gap-4 rounded-2xl border border-cream/15 bg-cream/[0.06] px-5 py-4 text-[17px] font-medium text-cream shadow-[0_6px_20px_-8px_rgba(0,0,0,0.45)] transition hover:bg-cream/[0.1]"
           >
             <UserPlus className="h-5 w-5 text-gold" />
-            <span>Traditional username and password account</span>
+            <span>{t("Traditional username and password account")}</span>
             <ChevronDown className={`ml-auto h-5 w-5 text-cream/50 transition-transform ${showForm ? "rotate-180" : ""}`} />
           </button>
 
@@ -120,11 +110,11 @@ function RegisterPage() {
               onSubmit={onSubmit}
               className="space-y-4 rounded-3xl border border-cream/10 bg-cream/[0.04] p-6 backdrop-blur-sm"
             >
-              <Field label="Username" value={form.username} onChange={(v) => upd("username", v)} autoComplete="username" required />
-              <Field label="Email" type="email" value={form.email} onChange={(v) => upd("email", v)} autoComplete="email" required />
-              <Field label="Password" type="password" value={form.password} onChange={(v) => upd("password", v)} autoComplete="new-password" required />
-              <Field label="Confirm password" type="password" value={form.confirm} onChange={(v) => upd("confirm", v)} autoComplete="new-password" required />
-              <Field label="Promo code (optional)" value={form.promo_code} onChange={(v) => upd("promo_code", v)} />
+              <Field label={t("Username")} value={form.username} onChange={(v) => upd("username", v)} autoComplete="username" required />
+              <Field label={t("Email")} type="email" value={form.email} onChange={(v) => upd("email", v)} autoComplete="email" required />
+              <Field label={t("Password")} type="password" value={form.password} onChange={(v) => upd("password", v)} autoComplete="new-password" required />
+              <Field label={t("Confirm password")} type="password" value={form.confirm} onChange={(v) => upd("confirm", v)} autoComplete="new-password" required />
+              <Field label={t("Promo code (optional)")} value={form.promo_code} onChange={(v) => upd("promo_code", v)} />
 
               {error && (
                 <div className="rounded-lg border border-red-400/40 bg-red-400/10 px-3 py-2 text-sm text-red-100">
@@ -139,11 +129,11 @@ function RegisterPage() {
               >
                 {loading ? (
                   <>
-                    <Loader2 className="h-4 w-4 animate-spin" /> Creating account…
+                    <Loader2 className="h-4 w-4 animate-spin" /> {t("Creating account…")}
                   </>
                 ) : (
                   <>
-                    Create account <ArrowRight className="h-4 w-4" />
+                    {t("Create account")} <ArrowRight className="h-4 w-4" />
                   </>
                 )}
               </button>
@@ -154,9 +144,9 @@ function RegisterPage() {
         </div>
 
         <p className="mt-5 text-center text-xs text-cream/50">
-          By signing up you agree to our{" "}
-          <Link to="/terms" className="underline hover:text-cream/80">Terms</Link> and{" "}
-          <Link to="/refund" className="underline hover:text-cream/80">Refund policy</Link>.
+          {t("By signing up you agree to our")}{" "}
+          <LLink to="/terms" className="underline hover:text-cream/80">{t("Terms")}</LLink> {t("and")}{" "}
+          <LLink to="/refund" className="underline hover:text-cream/80">{t("Refund policy")}</LLink>.
         </p>
       </div>
     </div>
