@@ -31,7 +31,7 @@ function Nav() {
   const t = useT();
   return (
     <header className="absolute top-0 inset-x-0 z-30">
-      <nav className="mx-auto max-w-7xl px-6 lg:px-10 py-6 flex items-center justify-between">
+      <nav className="mx-auto max-w-7xl px-6 lg:px-10 py-6 flex flex-wrap gap-y-3 items-center justify-between">
         <a href="#" className="flex items-center gap-3">
           <img src={logoAsset.url} alt="Let's Connect" className="h-10 w-10 rounded-xl shadow-[var(--shadow-soft)]" />
           <span className="font-display text-xl tracking-tight">
@@ -43,7 +43,7 @@ function Nav() {
           <a href="#journey" className="hover:text-foreground transition-colors">{t("The journey")}</a>
           <a href="#stories" className="hover:text-foreground transition-colors">{t("Stories")}</a>
         </div>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-3 sm:gap-5">
           <LangSwitcher className="text-foreground/80" />
           <a
             href="#download"

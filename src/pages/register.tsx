@@ -149,6 +149,7 @@ export function RegisterPage() {
           <LLink to="/refund" className="underline hover:text-cream/80">{t("Refund policy")}</LLink>.
         </p>
       </div>
+      <footer className="relative flex justify-center px-6 py-6"><LangSwitcher /></footer>
     </div>
   );
 }

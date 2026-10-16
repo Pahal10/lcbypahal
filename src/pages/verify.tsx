@@ -500,6 +500,7 @@ function ResultView({
         className="mt-8 inline-flex items-center justify-center rounded-full border border-cream/20 bg-cream/[0.04] px-6 py-3 text-sm text-cream transition hover:bg-cream/[0.08]"
       >
         {t("Back to home")} </LLink>
+      <footer className="relative flex justify-center px-6 py-6"><LangSwitcher /></footer>
     </div>
   );
 }
