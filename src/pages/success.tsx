@@ -42,6 +42,7 @@ export function SuccessPage() {
 
         <LLink to="/" className="mt-4 text-sm text-cream/60 hover:text-cream">{t("← Back to home")}</LLink>
       </div>
+      <footer className="relative flex justify-center px-6 py-6"><LangSwitcher /></footer>
     </div>
   );
 }

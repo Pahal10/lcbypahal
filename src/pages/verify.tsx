@@ -1,23 +1,11 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { LLink, LangSwitcher, useT, useLocalePath } from "@/lib/i18n";
+
 import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { BadgeCheck, Loader2, ArrowRight, Sparkles, Gift, Frown } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
 import { verifyConnection, spinReward, claimWheelReward } from "@/lib/verify.functions";
 
-export const Route = createFileRoute("/verify")({
-  head: () => ({
-    meta: [
-      { title: "Verify a Connection — Let's Connect" },
-      { name: "description", content: "Verify a real-world meetup with a friend to unlock rewards on Let's Connect." },
-      { property: "og:title", content: "Verify a Connection — Let's Connect" },
-      { property: "og:description", content: "Confirm you met up in real life and unlock a reward." },
-      { property: "og:url", content: "https://lcbypahal.lovable.app/verify" },
-    ],
-    links: [{ rel: "canonical", href: "https://lcbypahal.lovable.app/verify" }],
-  }),
-  component: VerifyPage,
-});
 
 type Stage =
   | "choice"
@@ -28,7 +16,9 @@ type Stage =
   | "sorry-wheel"
   | "thanks-notverify";
 
-function VerifyPage() {
+export function VerifyPage() {
+  const t = useT();
+  const lp = useLocalePath();
   const [stage, setStage] = useState<Stage>("choice");
   const [user1, setUser1] = useState("");
   const [user2, setUser2] = useState("");
@@ -62,29 +52,29 @@ function VerifyPage() {
       {stage === "success-verify" && (
         <ResultView
           icon={<Gift className="h-9 w-9" />}
-          title="You're verified ✨"
-          message="Nice work! We've sent a Premium reward to both of your emails. Check your inbox in a few minutes."
+          title={t("You're verified ✨")}
+          message={t("Nice work! We've sent a Premium reward to both of your emails. Check your inbox in a few minutes.")}
         />
       )}
       {stage === "success-wheel" && (
         <ResultView
           icon={<Gift className="h-9 w-9" />}
-          title="You won! 🎉"
-          message="Lucky spin! We've sent a Premium reward to your email. Check your inbox in a few minutes."
+          title={t("You won! 🎉")}
+          message={t("Lucky spin! We've sent a Premium reward to your email. Check your inbox in a few minutes.")}
         />
       )}
       {stage === "sorry-wheel" && (
         <ResultView
           icon={<Frown className="h-9 w-9" />}
-          title="Sorry, next time!"
-          message="No reward this time. Keep connecting — the next verification could unlock a Premium reward."
+          title={t("Sorry, next time!")}
+          message={t("No reward this time. Keep connecting — the next verification could unlock a Premium reward.")}
         />
       )}
       {stage === "thanks-notverify" && (
         <ResultView
           icon={<Sparkles className="h-9 w-9" />}
-          title="Thank you for opening the link"
-          message="No pressure. We appreciate you being here 💛"
+          title={t("Thank you for opening the link")}
+          message={t("No pressure. We appreciate you being here 💛")}
         />
       )}
     </Shell>
@@ -92,6 +82,8 @@ function VerifyPage() {
 }
 
 function Shell({ children }: { children: React.ReactNode }) {
+  const t = useT();
+  const lp = useLocalePath();
   return (
     <div className="relative min-h-screen overflow-hidden bg-[color:var(--forest)] text-cream">
       <div
@@ -109,8 +101,8 @@ function Shell({ children }: { children: React.ReactNode }) {
       />
       <div className="relative mx-auto max-w-md px-6 py-14">
         <div className="mb-8 flex items-center justify-between">
-          <Link to="/" className="text-sm text-cream/70 hover:text-cream">← Home</Link>
-          <img src={logo.url} alt="Let's Connect" className="h-9 w-auto" />
+          <LLink to="/" className="text-sm text-cream/70 hover:text-cream">{t("← Home")} </LLink>
+          <LangSwitcher className="text-cream/80" /><img src={logo.url} alt="Let's Connect" className="h-9 w-auto" />
         </div>
         {children}
       </div>
@@ -119,32 +111,30 @@ function Shell({ children }: { children: React.ReactNode }) {
 }
 
 function ChoiceView({ onVerify, onNotVerify }: { onVerify: () => void; onNotVerify: () => void }) {
+  const t = useT();
+  const lp = useLocalePath();
   return (
     <div className="text-center">
       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gold/20 text-gold">
         <BadgeCheck className="h-9 w-9" />
       </div>
       <h1 className="mt-6 font-display text-3xl text-cream sm:text-4xl">
-        Verify your connection
-      </h1>
+        {t("Verify your connection")} </h1>
       <p className="mt-3 text-cream/75">
-        We want to know if you actually did the task. If you verify, you can unlock a
-        Premium reward.
-      </p>
+        {t("We want to know if you actually did the task. If you verify, you can unlock a Premium reward.")} </p>
 
       <div className="mt-8 space-y-3">
         <button
           onClick={onVerify}
           className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-6 py-3.5 text-sm font-semibold text-[color:var(--gold-foreground)] shadow-[0_20px_50px_-15px_oklch(0.7_0.14_70/0.6)] transition hover:brightness-105"
         >
-          Verify <ArrowRight className="h-4 w-4" />
+          {t("Verify")} <ArrowRight className="h-4 w-4" />
         </button>
         <button
           onClick={onNotVerify}
           className="inline-flex w-full items-center justify-center rounded-full border border-cream/20 bg-cream/[0.04] px-6 py-3.5 text-sm font-semibold text-cream transition hover:bg-cream/[0.08]"
         >
-          Not verify
-        </button>
+          {t("Not verify")} </button>
       </div>
     </div>
   );
@@ -165,6 +155,8 @@ function UsernameForm({
   onSuccess: () => void;
   onOtherSaidNo: () => void;
 }) {
+  const t = useT();
+  const lp = useLocalePath();
   const doVerify = useServerFn(verifyConnection);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -173,7 +165,7 @@ function UsernameForm({
     e.preventDefault();
     setError(null);
     if (!user1.trim() || !user2.trim()) {
-      setError("Please enter both usernames.");
+      setError(t("Please enter both usernames."));
       return;
     }
     setLoading(true);
@@ -181,7 +173,7 @@ function UsernameForm({
       await doVerify({ data: { user1: user1.trim(), user2: user2.trim() } });
       onSuccess();
     } catch (err: any) {
-      setError(err?.message ?? "Something went wrong");
+      setError(t(err?.message ?? "Something went wrong"));
     } finally {
       setLoading(false);
     }
@@ -194,19 +186,17 @@ function UsernameForm({
           <BadgeCheck className="h-9 w-9" />
         </div>
         <h1 className="mt-6 font-display text-3xl text-cream sm:text-4xl">
-          Enter both usernames
-        </h1>
+          {t("Enter both usernames")} </h1>
         <p className="mt-3 text-sm text-cream/70">
-          We'll check that you're two different people who actually met up.
-        </p>
+          {t("We'll check that you're two different people who actually met up.")} </p>
       </div>
 
       <form
         onSubmit={onSubmit}
         className="mt-8 space-y-4 rounded-3xl border border-cream/10 bg-cream/[0.04] p-6 backdrop-blur-sm"
       >
-        <Field label="Username 1" value={user1} onChange={setUser1} />
-        <Field label="Username 2" value={user2} onChange={setUser2} />
+        <Field label={t("Username 1")} value={user1} onChange={setUser1} />
+        <Field label={t("Username 2")} value={user2} onChange={setUser2} />
 
         {error && (
           <div className="rounded-lg border border-red-400/40 bg-red-400/10 px-3 py-2 text-sm text-red-100">
@@ -221,11 +211,10 @@ function UsernameForm({
         >
           {loading ? (
             <>
-              <Loader2 className="h-4 w-4 animate-spin" /> Checking…
-            </>
+              <Loader2 className="h-4 w-4 animate-spin" /> {t("Checking…")} </>
           ) : (
             <>
-              Check <ArrowRight className="h-4 w-4" />
+              {t("Check")} <ArrowRight className="h-4 w-4" />
             </>
           )}
         </button>
@@ -235,8 +224,7 @@ function UsernameForm({
           onClick={onOtherSaidNo}
           className="w-full text-sm text-cream/70 underline-offset-4 hover:text-cream hover:underline"
         >
-          The other user said no
-        </button>
+          {t("The other user said no")} </button>
       </form>
     </div>
   );
@@ -251,6 +239,8 @@ function Field({
   value: string;
   onChange: (v: string) => void;
 }) {
+  const t = useT();
+  const lp = useLocalePath();
   return (
     <label className="block">
       <span className="mb-1.5 block text-xs uppercase tracking-widest text-cream/60">{label}</span>
@@ -285,6 +275,8 @@ function WheelView({
   onWin: () => void;
   onLose: () => void;
 }) {
+  const t = useT();
+  const lp = useLocalePath();
   const doSpin = useServerFn(spinReward);
   const doClaim = useServerFn(claimWheelReward);
   const [spinning, setSpinning] = useState(false);
@@ -312,7 +304,7 @@ function WheelView({
         else onLose();
       }, 4600);
     } catch (err: any) {
-      setError(err?.message ?? "Something went wrong");
+      setError(t(err?.message ?? "Something went wrong"));
       setSpinning(false);
     }
   }
@@ -321,7 +313,7 @@ function WheelView({
     e.preventDefault();
     setError(null);
     if (!claimName.trim()) {
-      setError("Please enter your username.");
+      setError(t("Please enter your username."));
       return;
     }
     setClaiming(true);
@@ -329,7 +321,7 @@ function WheelView({
       await doClaim({ data: { username: claimName.trim() } });
       onWin();
     } catch (err: any) {
-      setError(err?.message ?? "Something went wrong");
+      setError(t(err?.message ?? "Something went wrong"));
     } finally {
       setClaiming(false);
     }
@@ -342,12 +334,10 @@ function WheelView({
       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gold/20 text-gold">
         <Sparkles className="h-9 w-9" />
       </div>
-      <h1 className="mt-6 font-display text-3xl text-cream sm:text-4xl">Lucky spin</h1>
+      <h1 className="mt-6 font-display text-3xl text-cream sm:text-4xl">{t("Lucky spin")} </h1>
       <p className="mt-3 text-sm text-cream/75">
-        The other user declined verification. You still have a small chance of unlocking a
-        Premium reward.
-        <br />
-        <span className="text-cream/60">Chance of winning: 5%</span>
+        {t("The other user declined verification. You still have a small chance of unlocking a Premium reward.")} <br />
+        <span className="text-cream/60">{t("Chance of winning: 5%")} </span>
       </p>
 
       <div className="relative mx-auto mt-8 h-[320px] w-[320px]">
@@ -418,7 +408,7 @@ function WheelView({
                 }}
               >
                 <span className="mb-1 block text-base">{s.reward ? "🎁" : "🙁"}</span>
-                {s.label}
+                {t(s.label)}
               </div>
             );
           })}
@@ -428,7 +418,7 @@ function WheelView({
         <button
           onClick={spin}
           disabled={spinning || needsClaim}
-          aria-label="Spin the wheel"
+          aria-label={t("Spin the wheel")}
           className="absolute left-1/2 top-1/2 z-10 h-[104px] w-[104px] -translate-x-1/2 -translate-y-1/2 rounded-full transition hover:brightness-110 active:scale-95 disabled:cursor-not-allowed"
           style={{
             background:
@@ -441,8 +431,8 @@ function WheelView({
             <Loader2 className="mx-auto h-7 w-7 animate-spin text-gold" />
           ) : (
             <>
-              <span className="block font-display text-2xl tracking-wide text-gold">SPIN</span>
-              <span className="mt-0.5 block text-[10px] text-gold/70">Good luck!</span>
+              <span className="block font-display text-2xl tracking-wide text-gold">{t("SPIN")} </span>
+              <span className="mt-0.5 block text-[10px] text-gold/70">{t("Good luck!")} </span>
             </>
           )}
         </button>
@@ -454,10 +444,8 @@ function WheelView({
           className="mt-8 space-y-4 rounded-3xl border border-cream/10 bg-cream/[0.04] p-6 text-left backdrop-blur-sm"
         >
           <p className="text-center text-sm text-cream/80">
-            You won 🎉 Enter the username linked to your Let&apos;s Connect account so we can
-            send your reward.
-          </p>
-          <Field label="Your username" value={claimName} onChange={setClaimName} />
+            {t("You won 🎉 Enter the username linked to your Let's Connect account so we can send your reward.")} </p>
+          <Field label={t("Your username")} value={claimName} onChange={setClaimName} />
           <button
             type="submit"
             disabled={claiming}
@@ -465,11 +453,10 @@ function WheelView({
           >
             {claiming ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin" /> Sending…
-              </>
+                <Loader2 className="h-4 w-4 animate-spin" /> {t("Sending…")} </>
             ) : (
               <>
-                Claim reward <ArrowRight className="h-4 w-4" />
+                {t("Claim reward")} <ArrowRight className="h-4 w-4" />
               </>
             )}
           </button>
@@ -483,7 +470,7 @@ function WheelView({
       )}
 
       {!needsClaim && (
-        <p className="mt-6 text-sm text-cream/60">Tap the wheel&apos;s centre to spin.</p>
+        <p className="mt-6 text-sm text-cream/60">{t("Tap the wheel's centre to spin.")} </p>
       )}
     </div>
   );
@@ -499,6 +486,8 @@ function ResultView({
   title: string;
   message: string;
 }) {
+  const t = useT();
+  const lp = useLocalePath();
   return (
     <div className="text-center">
       <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gold/20 text-gold">
@@ -506,12 +495,12 @@ function ResultView({
       </div>
       <h1 className="mt-6 font-display text-3xl text-cream sm:text-4xl">{title}</h1>
       <p className="mt-3 text-cream/75">{message}</p>
-      <Link
+      <LLink
         to="/"
         className="mt-8 inline-flex items-center justify-center rounded-full border border-cream/20 bg-cream/[0.04] px-6 py-3 text-sm text-cream transition hover:bg-cream/[0.08]"
       >
-        Back to home
-      </Link>
+        {t("Back to home")} </LLink>
+      <footer className="relative flex justify-center px-6 py-6"><LangSwitcher /></footer>
     </div>
   );
 }

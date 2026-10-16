@@ -11,7 +11,7 @@ export const BASE_URL = "https://lcbypahal.lovable.app";
 const DICT: Record<"pt" | "es", Record<string, string>> = { pt, es };
 
 export const HTML_LANG: Record<Lang, string> = { en: "en", pt: "pt-BR", es: "es" };
-const OG_LOCALE: Record<Lang, string> = { en: "en_US", pt: "pt_BR", es: "es_LA" };
+const OG_LOCALE: Record<Lang, string> = { en: "en_US", pt: "pt_BR", es: "es_419" };
 
 export function asLang(v: string | undefined): Lang {
   return v === "pt" || v === "es" ? v : "en";
@@ -37,12 +37,14 @@ export function localePath(lang: Lang, path: string): string {
 }
 
 export function useLang(): Lang {
-  return useRouterState({ select: (s) => langFromPath(s.location.pathname) });
+  return useRouterState({ select: (s) => s.location.pathname === "/auth/callback"
+    ? asLang(new URLSearchParams(s.location.searchStr).get("lang") ?? undefined)
+    : langFromPath(s.location.pathname) });
 }
 
 export function translate(lang: Lang, s: string): string {
   if (lang === "en") return s;
-  return DICT[lang][s] ?? s;
+  return DICT[lang][s] ?? DICT[lang][s.replace(/\s+/g, " ").trim()] ?? s;
 }
 
 export function useT() {
@@ -63,15 +65,18 @@ export function LLink({ to, ...rest }: Omit<ComponentProps<typeof Link>, "to"> &
 
 export function LangSwitcher({ className = "" }: { className?: string }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
-  const current = langFromPath(pathname);
+  const current = useLang();
+  const t = useT();
   const base = stripLang(pathname);
   return (
-    <div className={`flex items-center gap-1.5 text-xs font-medium ${className}`} aria-label="Language">
+    <div className={`flex items-center gap-1.5 text-xs font-medium ${className}`} aria-label={t("Language")}>
       {LANGS.map((l, i) => (
         <span key={l} className="flex items-center gap-1.5">
           {i > 0 && <span className="opacity-40">|</span>}
           <Link
             to={localePath(l, base) as "/"}
+            search={(previous) => ({ ...previous, ...(base === "/auth/callback" ? { lang: l } : {}) })}
+            hash={(previous) => previous ?? ""}
             hrefLang={HTML_LANG[l]}
             className={l === current ? "opacity-100 underline underline-offset-4" : "opacity-60 hover:opacity-100 transition-opacity"}
           >

@@ -127,6 +127,7 @@ export function OfferPage() {
           {t("You can always upgrade later from the app.")}
         </p>
       </div>
+      <footer className="relative flex justify-center px-6 py-6"><LangSwitcher /></footer>
     </div>
   );
 }

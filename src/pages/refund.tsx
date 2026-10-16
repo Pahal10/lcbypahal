@@ -46,6 +46,7 @@ export function RefundPage() {
           </section>
         </div>
       </div>
+      <footer className="relative flex justify-center px-6 py-6"><LangSwitcher /></footer>
     </div>
   );
 }
