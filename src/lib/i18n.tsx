@@ -76,7 +76,7 @@ export function LangSwitcher({ className = "" }: { className?: string }) {
           <Link
             to={localePath(l, base) as "/"}
             search={(previous) => ({ ...previous, ...(base === "/auth/callback" ? { lang: l } : {}) })}
-            hash={(previous) => previous}
+            hash={(previous) => previous ?? ""}
             hrefLang={HTML_LANG[l]}
             className={l === current ? "opacity-100 underline underline-offset-4" : "opacity-60 hover:opacity-100 transition-opacity"}
           >
