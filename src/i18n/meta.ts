@@ -1,10 +1,15 @@
-export type PagePath = "/" | "/pricing" | "/register" | "/terms" | "/refund" | "/success" | "/verify" | "/offer";
+export type PagePath = "/" | "/pricing" | "/register" | "/terms" | "/refund" | "/success" | "/verify" | "/offer" | "/auth/callback";
 
 export const PAGE_PATHS: PagePath[] = ["/", "/register", "/pricing", "/offer", "/verify", "/terms", "/refund", "/success"];
 
 type Meta = { title: string; description: string };
 
 export const PAGE_META: Record<PagePath, Record<"en" | "pt" | "es", Meta>> = {
+  "/auth/callback": {
+    en: { title: "Finishing sign-in — Let's Connect", description: "Complete your Let's Connect sign-in and choose your username." },
+    pt: { title: "Concluindo o acesso — Let's Connect", description: "Conclua seu acesso ao Let's Connect e escolha seu nome de usuário." },
+    es: { title: "Completando el acceso — Let's Connect", description: "Completa tu acceso a Let's Connect y elige tu nombre de usuario." },
+  },
   "/": {
     en: {
       title: "Let's Connect — Make Friends & Beat Loneliness | Social Anxiety Support App",

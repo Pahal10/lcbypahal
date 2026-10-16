@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { getBrowserSupabase } from "@/lib/supabase-browser";
+import { useLang, useT } from "@/lib/i18n";
 
 function GoogleIcon() {
   return (
@@ -22,6 +23,8 @@ function AppleIcon() {
 }
 
 export function SocialAuthButtons() {
+  const t = useT();
+  const lang = useLang();
   const [pending, setPending] = useState<"google" | "apple" | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -32,11 +35,11 @@ export function SocialAuthButtons() {
       const supabase = await getBrowserSupabase();
       const { error: err } = await supabase.auth.signInWithOAuth({
         provider,
-        options: { redirectTo: `${window.location.origin}/auth/callback` },
+        options: { redirectTo: `${window.location.origin}/auth/callback${lang === "en" ? "" : `?lang=${lang}`}` },
       });
       if (err) throw err;
     } catch (e: any) {
-      setError(e?.message ?? "Could not start sign-in");
+      setError(t(e?.message ?? "Could not start sign-in"));
       setPending(null);
     }
   }
@@ -50,7 +53,7 @@ export function SocialAuthButtons() {
         className="flex w-full items-center gap-4 rounded-2xl bg-white px-5 py-4 text-[17px] font-medium text-neutral-600 shadow-[0_6px_20px_-8px_rgba(0,0,0,0.45)] transition hover:brightness-95 disabled:opacity-60"
       >
         {pending === "google" ? <Loader2 className="h-5 w-5 animate-spin" /> : <GoogleIcon />}
-        <span>Continue with Google</span>
+        <span>{t("Continue with Google")}</span>
       </button>
 
       <button
@@ -60,7 +63,7 @@ export function SocialAuthButtons() {
         className="flex w-full items-center gap-4 rounded-2xl bg-black px-5 py-4 text-[17px] font-medium text-white shadow-[0_6px_20px_-8px_rgba(0,0,0,0.6)] transition hover:brightness-125 disabled:opacity-60"
       >
         {pending === "apple" ? <Loader2 className="h-5 w-5 animate-spin" /> : <AppleIcon />}
-        <span>Continue with Apple</span>
+        <span>{t("Continue with Apple")}</span>
       </button>
 
       {error && (

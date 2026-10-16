@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { LANGS, HTML_LANG, localePath } from "@/lib/i18n";
 
 const BASE_URL = "https://lcbypahal.lovable.app";
 
@@ -23,21 +24,23 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/refund", changefreq: "yearly", priority: "0.3" },
         ];
 
-        const urls = entries.map((e) =>
+        const urls = entries.flatMap((e) => LANGS.map((lang) =>
           [
             `  <url>`,
-            `    <loc>${BASE_URL}${e.path}</loc>`,
+            `    <loc>${BASE_URL}${localePath(lang, e.path)}</loc>`,
+            ...LANGS.map((alternate) => `    <xhtml:link rel="alternate" hreflang="${HTML_LANG[alternate]}" href="${BASE_URL}${localePath(alternate, e.path)}" />`),
+            `    <xhtml:link rel="alternate" hreflang="x-default" href="${BASE_URL}${e.path}" />`,
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,
           ]
             .filter(Boolean)
             .join("\n"),
-        );
+        ));
 
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,
-          `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+          `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">`,
           ...urls,
           `</urlset>`,
         ].join("\n");
