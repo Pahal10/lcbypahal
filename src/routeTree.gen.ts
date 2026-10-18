@@ -9,69 +9,39 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as VerifyRouteImport } from './routes/verify'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as SuccessRouteImport } from './routes/success'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as RegisterRouteImport } from './routes/register'
-import { Route as RefundRouteImport } from './routes/refund'
-import { Route as PricingRouteImport } from './routes/pricing'
-import { Route as OfferRouteImport } from './routes/offer'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as PtIndexRouteImport } from './routes/pt.index'
-import { Route as EsIndexRouteImport } from './routes/es.index'
-import { Route as PtVerifyRouteImport } from './routes/pt.verify'
-import { Route as PtTermsRouteImport } from './routes/pt.terms'
-import { Route as PtSuccessRouteImport } from './routes/pt.success'
-import { Route as PtRegisterRouteImport } from './routes/pt.register'
-import { Route as PtRefundRouteImport } from './routes/pt.refund'
-import { Route as PtPricingRouteImport } from './routes/pt.pricing'
-import { Route as PtOfferRouteImport } from './routes/pt.offer'
-import { Route as EsVerifyRouteImport } from './routes/es.verify'
-import { Route as EsTermsRouteImport } from './routes/es.terms'
-import { Route as EsSuccessRouteImport } from './routes/es.success'
-import { Route as EsRegisterRouteImport } from './routes/es.register'
-import { Route as EsRefundRouteImport } from './routes/es.refund'
-import { Route as EsPricingRouteImport } from './routes/es.pricing'
-import { Route as EsOfferRouteImport } from './routes/es.offer'
+import { Route as OfferRouteImport } from './routes/offer'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as RefundRouteImport } from './routes/refund'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SuccessRouteImport } from './routes/success'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as AuthCallbackRouteImport } from './routes/auth.callback'
-import { Route as PtAuthCallbackRouteImport } from './routes/pt.auth.callback'
+import { Route as EsIndexRouteImport } from './routes/es.index'
+import { Route as EsOfferRouteImport } from './routes/es.offer'
+import { Route as EsPricingRouteImport } from './routes/es.pricing'
+import { Route as EsRefundRouteImport } from './routes/es.refund'
+import { Route as EsRegisterRouteImport } from './routes/es.register'
+import { Route as EsSuccessRouteImport } from './routes/es.success'
+import { Route as EsTermsRouteImport } from './routes/es.terms'
+import { Route as EsVerifyRouteImport } from './routes/es.verify'
+import { Route as PtIndexRouteImport } from './routes/pt.index'
+import { Route as PtOfferRouteImport } from './routes/pt.offer'
+import { Route as PtPricingRouteImport } from './routes/pt.pricing'
+import { Route as PtRefundRouteImport } from './routes/pt.refund'
+import { Route as PtRegisterRouteImport } from './routes/pt.register'
+import { Route as PtSuccessRouteImport } from './routes/pt.success'
+import { Route as PtTermsRouteImport } from './routes/pt.terms'
+import { Route as PtVerifyRouteImport } from './routes/pt.verify'
 import { Route as EsAuthCallbackRouteImport } from './routes/es.auth.callback'
+import { Route as PtAuthCallbackRouteImport } from './routes/pt.auth.callback'
 import { Route as ApiPublicWebhooksLemonsqueezyRouteImport } from './routes/api/public/webhooks/lemonsqueezy'
 
-const VerifyRoute = VerifyRouteImport.update({
-  id: '/verify',
-  path: '/verify',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SuccessRoute = SuccessRouteImport.update({
-  id: '/success',
-  path: '/success',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RegisterRoute = RegisterRouteImport.update({
-  id: '/register',
-  path: '/register',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RefundRoute = RefundRouteImport.update({
-  id: '/refund',
-  path: '/refund',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OfferRoute = OfferRouteImport.update({
@@ -79,89 +49,39 @@ const OfferRoute = OfferRouteImport.update({
   path: '/offer',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PtIndexRoute = PtIndexRouteImport.update({
-  id: '/pt/',
-  path: '/pt/',
+const RefundRoute = RefundRouteImport.update({
+  id: '/refund',
+  path: '/refund',
   getParentRoute: () => rootRouteImport,
 } as any)
-const EsIndexRoute = EsIndexRouteImport.update({
-  id: '/es/',
-  path: '/es/',
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PtVerifyRoute = PtVerifyRouteImport.update({
-  id: '/pt/verify',
-  path: '/pt/verify',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PtTermsRoute = PtTermsRouteImport.update({
-  id: '/pt/terms',
-  path: '/pt/terms',
+const SuccessRoute = SuccessRouteImport.update({
+  id: '/success',
+  path: '/success',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PtSuccessRoute = PtSuccessRouteImport.update({
-  id: '/pt/success',
-  path: '/pt/success',
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PtRegisterRoute = PtRegisterRouteImport.update({
-  id: '/pt/register',
-  path: '/pt/register',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PtRefundRoute = PtRefundRouteImport.update({
-  id: '/pt/refund',
-  path: '/pt/refund',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PtPricingRoute = PtPricingRouteImport.update({
-  id: '/pt/pricing',
-  path: '/pt/pricing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PtOfferRoute = PtOfferRouteImport.update({
-  id: '/pt/offer',
-  path: '/pt/offer',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EsVerifyRoute = EsVerifyRouteImport.update({
-  id: '/es/verify',
-  path: '/es/verify',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EsTermsRoute = EsTermsRouteImport.update({
-  id: '/es/terms',
-  path: '/es/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EsSuccessRoute = EsSuccessRouteImport.update({
-  id: '/es/success',
-  path: '/es/success',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EsRegisterRoute = EsRegisterRouteImport.update({
-  id: '/es/register',
-  path: '/es/register',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EsRefundRoute = EsRefundRouteImport.update({
-  id: '/es/refund',
-  path: '/es/refund',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EsPricingRoute = EsPricingRouteImport.update({
-  id: '/es/pricing',
-  path: '/es/pricing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EsOfferRoute = EsOfferRouteImport.update({
-  id: '/es/offer',
-  path: '/es/offer',
+const VerifyRoute = VerifyRouteImport.update({
+  id: '/verify',
+  path: '/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthCallbackRoute = AuthCallbackRouteImport.update({
@@ -169,14 +89,94 @@ const AuthCallbackRoute = AuthCallbackRouteImport.update({
   path: '/auth/callback',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PtAuthCallbackRoute = PtAuthCallbackRouteImport.update({
-  id: '/pt/auth/callback',
-  path: '/pt/auth/callback',
+const EsIndexRoute = EsIndexRouteImport.update({
+  id: '/es/',
+  path: '/es/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsOfferRoute = EsOfferRouteImport.update({
+  id: '/es/offer',
+  path: '/es/offer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsPricingRoute = EsPricingRouteImport.update({
+  id: '/es/pricing',
+  path: '/es/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsRefundRoute = EsRefundRouteImport.update({
+  id: '/es/refund',
+  path: '/es/refund',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsRegisterRoute = EsRegisterRouteImport.update({
+  id: '/es/register',
+  path: '/es/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsSuccessRoute = EsSuccessRouteImport.update({
+  id: '/es/success',
+  path: '/es/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsTermsRoute = EsTermsRouteImport.update({
+  id: '/es/terms',
+  path: '/es/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EsVerifyRoute = EsVerifyRouteImport.update({
+  id: '/es/verify',
+  path: '/es/verify',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtIndexRoute = PtIndexRouteImport.update({
+  id: '/pt/',
+  path: '/pt/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtOfferRoute = PtOfferRouteImport.update({
+  id: '/pt/offer',
+  path: '/pt/offer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtPricingRoute = PtPricingRouteImport.update({
+  id: '/pt/pricing',
+  path: '/pt/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtRefundRoute = PtRefundRouteImport.update({
+  id: '/pt/refund',
+  path: '/pt/refund',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtRegisterRoute = PtRegisterRouteImport.update({
+  id: '/pt/register',
+  path: '/pt/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtSuccessRoute = PtSuccessRouteImport.update({
+  id: '/pt/success',
+  path: '/pt/success',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtTermsRoute = PtTermsRouteImport.update({
+  id: '/pt/terms',
+  path: '/pt/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtVerifyRoute = PtVerifyRouteImport.update({
+  id: '/pt/verify',
+  path: '/pt/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EsAuthCallbackRoute = EsAuthCallbackRouteImport.update({
   id: '/es/auth/callback',
   path: '/es/auth/callback',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PtAuthCallbackRoute = PtAuthCallbackRouteImport.update({
+  id: '/pt/auth/callback',
+  path: '/pt/auth/callback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicWebhooksLemonsqueezyRoute =
@@ -410,53 +410,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/verify': {
-      id: '/verify'
-      path: '/verify'
-      fullPath: '/verify'
-      preLoaderRoute: typeof VerifyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/success': {
-      id: '/success'
-      path: '/success'
-      fullPath: '/success'
-      preLoaderRoute: typeof SuccessRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/register': {
-      id: '/register'
-      path: '/register'
-      fullPath: '/register'
-      preLoaderRoute: typeof RegisterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/refund': {
-      id: '/refund'
-      path: '/refund'
-      fullPath: '/refund'
-      preLoaderRoute: typeof RefundRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/offer': {
@@ -466,123 +424,53 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OfferRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pt/': {
-      id: '/pt/'
-      path: '/pt'
-      fullPath: '/pt/'
-      preLoaderRoute: typeof PtIndexRouteImport
+    '/refund': {
+      id: '/refund'
+      path: '/refund'
+      fullPath: '/refund'
+      preLoaderRoute: typeof RefundRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/es/': {
-      id: '/es/'
-      path: '/es'
-      fullPath: '/es/'
-      preLoaderRoute: typeof EsIndexRouteImport
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pt/verify': {
-      id: '/pt/verify'
-      path: '/pt/verify'
-      fullPath: '/pt/verify'
-      preLoaderRoute: typeof PtVerifyRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pt/terms': {
-      id: '/pt/terms'
-      path: '/pt/terms'
-      fullPath: '/pt/terms'
-      preLoaderRoute: typeof PtTermsRouteImport
+    '/success': {
+      id: '/success'
+      path: '/success'
+      fullPath: '/success'
+      preLoaderRoute: typeof SuccessRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pt/success': {
-      id: '/pt/success'
-      path: '/pt/success'
-      fullPath: '/pt/success'
-      preLoaderRoute: typeof PtSuccessRouteImport
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pt/register': {
-      id: '/pt/register'
-      path: '/pt/register'
-      fullPath: '/pt/register'
-      preLoaderRoute: typeof PtRegisterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pt/refund': {
-      id: '/pt/refund'
-      path: '/pt/refund'
-      fullPath: '/pt/refund'
-      preLoaderRoute: typeof PtRefundRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pt/pricing': {
-      id: '/pt/pricing'
-      path: '/pt/pricing'
-      fullPath: '/pt/pricing'
-      preLoaderRoute: typeof PtPricingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pt/offer': {
-      id: '/pt/offer'
-      path: '/pt/offer'
-      fullPath: '/pt/offer'
-      preLoaderRoute: typeof PtOfferRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/es/verify': {
-      id: '/es/verify'
-      path: '/es/verify'
-      fullPath: '/es/verify'
-      preLoaderRoute: typeof EsVerifyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/es/terms': {
-      id: '/es/terms'
-      path: '/es/terms'
-      fullPath: '/es/terms'
-      preLoaderRoute: typeof EsTermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/es/success': {
-      id: '/es/success'
-      path: '/es/success'
-      fullPath: '/es/success'
-      preLoaderRoute: typeof EsSuccessRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/es/register': {
-      id: '/es/register'
-      path: '/es/register'
-      fullPath: '/es/register'
-      preLoaderRoute: typeof EsRegisterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/es/refund': {
-      id: '/es/refund'
-      path: '/es/refund'
-      fullPath: '/es/refund'
-      preLoaderRoute: typeof EsRefundRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/es/pricing': {
-      id: '/es/pricing'
-      path: '/es/pricing'
-      fullPath: '/es/pricing'
-      preLoaderRoute: typeof EsPricingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/es/offer': {
-      id: '/es/offer'
-      path: '/es/offer'
-      fullPath: '/es/offer'
-      preLoaderRoute: typeof EsOfferRouteImport
+    '/verify': {
+      id: '/verify'
+      path: '/verify'
+      fullPath: '/verify'
+      preLoaderRoute: typeof VerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth/callback': {
@@ -592,11 +480,116 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pt/auth/callback': {
-      id: '/pt/auth/callback'
-      path: '/pt/auth/callback'
-      fullPath: '/pt/auth/callback'
-      preLoaderRoute: typeof PtAuthCallbackRouteImport
+    '/es/': {
+      id: '/es/'
+      path: '/es'
+      fullPath: '/es/'
+      preLoaderRoute: typeof EsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/offer': {
+      id: '/es/offer'
+      path: '/es/offer'
+      fullPath: '/es/offer'
+      preLoaderRoute: typeof EsOfferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/pricing': {
+      id: '/es/pricing'
+      path: '/es/pricing'
+      fullPath: '/es/pricing'
+      preLoaderRoute: typeof EsPricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/refund': {
+      id: '/es/refund'
+      path: '/es/refund'
+      fullPath: '/es/refund'
+      preLoaderRoute: typeof EsRefundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/register': {
+      id: '/es/register'
+      path: '/es/register'
+      fullPath: '/es/register'
+      preLoaderRoute: typeof EsRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/success': {
+      id: '/es/success'
+      path: '/es/success'
+      fullPath: '/es/success'
+      preLoaderRoute: typeof EsSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/terms': {
+      id: '/es/terms'
+      path: '/es/terms'
+      fullPath: '/es/terms'
+      preLoaderRoute: typeof EsTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/es/verify': {
+      id: '/es/verify'
+      path: '/es/verify'
+      fullPath: '/es/verify'
+      preLoaderRoute: typeof EsVerifyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/': {
+      id: '/pt/'
+      path: '/pt'
+      fullPath: '/pt/'
+      preLoaderRoute: typeof PtIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/offer': {
+      id: '/pt/offer'
+      path: '/pt/offer'
+      fullPath: '/pt/offer'
+      preLoaderRoute: typeof PtOfferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/pricing': {
+      id: '/pt/pricing'
+      path: '/pt/pricing'
+      fullPath: '/pt/pricing'
+      preLoaderRoute: typeof PtPricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/refund': {
+      id: '/pt/refund'
+      path: '/pt/refund'
+      fullPath: '/pt/refund'
+      preLoaderRoute: typeof PtRefundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/register': {
+      id: '/pt/register'
+      path: '/pt/register'
+      fullPath: '/pt/register'
+      preLoaderRoute: typeof PtRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/success': {
+      id: '/pt/success'
+      path: '/pt/success'
+      fullPath: '/pt/success'
+      preLoaderRoute: typeof PtSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/terms': {
+      id: '/pt/terms'
+      path: '/pt/terms'
+      fullPath: '/pt/terms'
+      preLoaderRoute: typeof PtTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/verify': {
+      id: '/pt/verify'
+      path: '/pt/verify'
+      fullPath: '/pt/verify'
+      preLoaderRoute: typeof PtVerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/es/auth/callback': {
@@ -604,6 +597,13 @@ declare module '@tanstack/react-router' {
       path: '/es/auth/callback'
       fullPath: '/es/auth/callback'
       preLoaderRoute: typeof EsAuthCallbackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pt/auth/callback': {
+      id: '/pt/auth/callback'
+      path: '/pt/auth/callback'
+      fullPath: '/pt/auth/callback'
+      preLoaderRoute: typeof PtAuthCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/webhooks/lemonsqueezy': {
