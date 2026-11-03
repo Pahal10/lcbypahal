@@ -1,6 +1,6 @@
-export type PagePath = "/" | "/pricing" | "/register" | "/terms" | "/refund" | "/success" | "/verify" | "/offer" | "/auth/callback";
+export type PagePath = "/" | "/pricing" | "/register" | "/terms" | "/refund" | "/success" | "/verify" | "/offer" | "/auth/callback" | "/research";
 
-export const PAGE_PATHS: PagePath[] = ["/", "/register", "/pricing", "/offer", "/verify", "/terms", "/refund", "/success"];
+export const PAGE_PATHS: PagePath[] = ["/", "/register", "/pricing", "/offer", "/verify", "/terms", "/refund", "/success", "/research"];
 
 type Meta = { title: string; description: string };
 
@@ -26,6 +26,11 @@ export const PAGE_META: Record<PagePath, Record<"en" | "pt" | "es", Meta>> = {
       description:
         "Haz amigos de adulto con retos guiados en el mundo real. Ayuda para la ansiedad social y pequeños empujones para que te sientas menos solo.",
     },
+  },
+  "/research": {
+    en: { title: "Why we're lonely & how it works — Let's Connect", description: "The research behind loneliness, common patterns, and the four stages Let's Connect uses to turn small talk into real friendship." },
+    pt: { title: "Por que nos sentimos sozinhos — Let's Connect", description: "A pesquisa sobre a solidão, os padrões comuns e as quatro etapas que o Let's Connect usa para transformar conversa leve em amizade." },
+    es: { title: "Por qué nos sentimos solos — Let's Connect", description: "La investigación sobre la soledad, los patrones comunes y las cuatro etapas que Let's Connect usa para convertir charla en amistad." },
   },
   "/register": {
     en: { title: "Create your account — Let's Connect", description: "Sign up for Let's Connect and start making friends with guided prompts built for social anxiety." },

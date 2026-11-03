@@ -29,6 +29,7 @@
   --color-gold: var(--gold);
   --color-gold-foreground: var(--gold-foreground);
   --color-cream: var(--cream);
+  --color-mint: var(--mint);
   --color-forest: var(--forest);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
@@ -45,47 +46,46 @@
   --radius: 1rem;
 
   /* Warm light gold background */
-  --background: oklch(0.96 0.018 85);
+  --background: oklch(0.995 0.004 150);
   --foreground: oklch(0.22 0.04 155);
 
-  --card: oklch(0.955 0.015 85);
+  --card: oklch(1 0 0);
   --card-foreground: oklch(0.22 0.04 155);
 
-  --popover: oklch(0.955 0.015 85);
+  --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.22 0.04 155);
 
   /* Deep emerald primary (matches logo green) */
   --primary: oklch(0.46 0.13 155);
   --primary-foreground: oklch(0.985 0.012 95);
 
-  --secondary: oklch(0.91 0.028 85);
+  --secondary: oklch(0.955 0.03 150);
   --secondary-foreground: oklch(0.28 0.06 155);
 
-  --muted: oklch(0.92 0.02 85);
+  --muted: oklch(0.96 0.02 150);
   --muted-foreground: oklch(0.45 0.03 150);
 
-  --accent: oklch(0.88 0.04 85);
+  --accent: oklch(0.93 0.045 150);
   --accent-foreground: oklch(0.28 0.06 155);
 
   /* Warm muted gold */
   --gold: oklch(0.78 0.13 80);
   --gold-foreground: oklch(0.22 0.04 155);
 
-  --cream: oklch(0.97 0.02 95);
+  --cream: oklch(0.99 0.008 150);
   --forest: oklch(0.32 0.08 155);
+  --mint: oklch(0.948 0.03 155);
 
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.985 0.012 95);
 
-  --border: oklch(0.85 0.025 85);
-  --input: oklch(0.85 0.025 85);
+  --border: oklch(0.9 0.025 150);
+  --input: oklch(0.9 0.025 150);
   --ring: oklch(0.46 0.13 155);
 
   /* Gradients & shadows */
-  --gradient-hero: radial-gradient(ellipse at top left, oklch(0.55 0.14 155 / 0.18), transparent 55%),
-                   radial-gradient(ellipse at top right, oklch(0.82 0.14 80 / 0.22), transparent 55%),
-                   radial-gradient(ellipse at bottom center, oklch(0.78 0.12 80 / 0.14), transparent 60%),
-                   linear-gradient(180deg, oklch(0.945 0.03 85), oklch(0.97 0.02 85));
+  --gradient-hero: radial-gradient(ellipse at top left, oklch(0.85 0.08 150 / 0.35), transparent 60%),
+                   linear-gradient(180deg, oklch(0.97 0.025 150), oklch(0.995 0.004 150));
   --gradient-emerald: linear-gradient(135deg, oklch(0.46 0.13 155), oklch(0.32 0.08 155));
   --gradient-gold: linear-gradient(135deg, oklch(0.82 0.13 85), oklch(0.7 0.14 70));
 
