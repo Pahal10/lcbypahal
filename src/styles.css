@@ -29,6 +29,7 @@
   --color-gold: var(--gold);
   --color-gold-foreground: var(--gold-foreground);
   --color-cream: var(--cream);
+  --color-mint: var(--mint);
   --color-forest: var(--forest);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
@@ -73,6 +74,7 @@
 
   --cream: oklch(0.99 0.008 150);
   --forest: oklch(0.32 0.08 155);
+  --mint: oklch(0.948 0.03 155);
 
   --destructive: oklch(0.55 0.22 27);
   --destructive-foreground: oklch(0.985 0.012 95);

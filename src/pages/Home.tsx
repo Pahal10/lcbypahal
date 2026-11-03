@@ -394,13 +394,13 @@ function CTA() {
   const IOS_URL = "https://apps.apple.com/qa/app/lc-lets-connect/id6792295616";
   const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share";
   return (
-    <section id="download" className="relative overflow-hidden" style={{ background: "var(--gradient-emerald)" }}>
+    <section id="download" className="relative overflow-hidden bg-mint">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-10 items-center">
-        <div className="py-20 lg:py-28 text-primary-foreground">
+        <div className="py-20 lg:py-28 text-foreground">
           <h2 className="font-display text-5xl lg:text-6xl leading-[1.05]">
             {t("Download Let's Connect today")}
           </h2>
-          <p className="mt-6 text-lg text-primary-foreground/85 max-w-lg leading-relaxed">
+          <p className="mt-6 text-lg text-muted-foreground max-w-lg leading-relaxed">
             {t("Feeling lonely or socially anxious? We are here to help :)")}
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
@@ -413,7 +413,7 @@ function CTA() {
           </div>
         </div>
         <div className="relative self-end flex justify-center lg:justify-end">
-          <img src={handPhone} alt={t("A hand holding a phone showing the Let's Connect app")} loading="lazy" className="w-full max-w-md rounded-t-[2rem] mix-blend-multiply" />
+          <img src={handPhone} alt={t("A hand holding a phone showing the Let's Connect app")} loading="lazy" className="w-full max-w-md " />
         </div>
       </div>
     </section>
