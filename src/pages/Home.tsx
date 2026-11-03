@@ -1,6 +1,7 @@
 import { useState } from "react";
 import logoAsset from "@/assets/logo.png.asset.json";
 import heroImg from "@/assets/hero-connection.jpg";
+import handPhone from "@/assets/hand-phone-lc.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
 import premiumRewardAsset from "@/assets/premium-reward.jpg.asset.json";
@@ -8,16 +9,41 @@ import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, Trendi
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
 
+export function ResearchPage() {
+  return (
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Nav />
+      <div className="pt-24" />
+      <Why />
+      <Patterns />
+      <Different />
+      <Journey />
+      <Footer />
+    </div>
+  );
+}
+
+function ResearchTeaser() {
+  const t = useT();
+  return (
+    <section className="py-16">
+      <div className="mx-auto max-w-3xl px-6 text-center">
+        <p className="text-muted-foreground">{t("Curious about the science behind loneliness and how our stages work?")}</p>
+        <LLink to="/research" className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/30 px-6 py-3 text-sm font-medium text-primary hover:bg-primary/5 transition-colors">
+          {t("Read the research")} <ArrowRight className="h-4 w-4" />
+        </LLink>
+      </div>
+    </section>
+  );
+}
+
 export function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Nav />
       <Hero />
       <Marquee />
-      <Why />
-      <Patterns />
-      <Different />
-      <Journey />
+      <ResearchTeaser />
       <Premium />
       <Loyalty />
       <Testimonials />
@@ -39,14 +65,14 @@ function Nav() {
           </span>
         </a>
         <div className="hidden md:flex items-center gap-9 text-sm text-foreground/70">
-          <a href="#why" className="hover:text-foreground transition-colors">{t("Why we're lonely")}</a>
-          <a href="#journey" className="hover:text-foreground transition-colors">{t("The journey")}</a>
-          <a href="#stories" className="hover:text-foreground transition-colors">{t("Stories")}</a>
+          <LLink to="/research" className="hover:text-foreground transition-colors">{t("Why we're lonely")}</LLink>
+          <LLink to="/research" className="hover:text-foreground transition-colors">{t("The journey")}</LLink>
+          <a href="/#stories" className="hover:text-foreground transition-colors">{t("Stories")}</a>
         </div>
         <div className="flex items-center gap-3 sm:gap-5">
           <LangSwitcher className="text-foreground/80" />
           <a
-            href="#download"
+            href="/#download"
             className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-medium shadow-[var(--shadow-soft)] hover:opacity-95 transition"
           >
             {t("Get started")} <ArrowRight className="h-4 w-4" />
@@ -60,75 +86,32 @@ function Nav() {
 function Hero() {
   const t = useT();
   return (
-    <section className="relative pt-32 pb-24 lg:pt-44 lg:pb-32 overflow-hidden" style={{ backgroundImage: "var(--gradient-hero)" }}>
-      <div className="absolute inset-0 bg-noise opacity-60 pointer-events-none" />
-      <div className="absolute -top-32 -left-20 h-96 w-96 rounded-full bg-gold/15 blur-[120px] pointer-events-none" />
-      <div className="absolute top-20 right-1/4 h-72 w-72 rounded-full bg-gold/12 blur-[100px] pointer-events-none animate-float" />
-      <div className="absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
-      <Sparkles className="absolute top-32 right-[12%] h-5 w-5 text-gold/40 animate-float" style={{ animationDelay: "0.5s" }} />
-      <Sparkles className="absolute bottom-40 left-[8%] h-4 w-4 text-gold/30 animate-float" style={{ animationDelay: "1.2s" }} />
-      <Heart className="absolute top-1/2 left-[6%] h-4 w-4 text-primary/25 animate-float" style={{ animationDelay: "0.8s" }} />
-      <Leaf className="absolute top-40 left-[15%] h-5 w-5 text-primary/20 animate-float" style={{ animationDelay: "1.5s" }} />
-
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-12 gap-12 items-center">
-        <div className="lg:col-span-7 animate-fade-up">
-          <div className="inline-flex items-center gap-2 rounded-full border border-gold/25 bg-gradient-to-r from-gold/10 via-cream/50 to-gold/10 backdrop-blur px-4 py-1.5 text-xs text-foreground/80 shadow-[var(--shadow-soft)]">
-            <Sparkles className="h-3.5 w-3.5 text-gold" />
+    <section className="relative min-h-[88vh] flex items-center pt-32 pb-24 overflow-hidden">
+      <img src={heroImg} alt={t("Friends sharing a warm moment")} className="absolute inset-0 h-full w-full object-cover object-[70%_center]" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/10" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
+        <div className="max-w-2xl animate-fade-up">
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background/70 backdrop-blur px-4 py-1.5 text-xs text-foreground/80">
+            <Sparkles className="h-3.5 w-3.5 text-primary" />
             {t("A gentler way to feel less alone")}
           </div>
           <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.02] tracking-tight">
-            {t("Connection,")}
-            <br />
-            <span className="italic font-script text-gradient-emerald text-6xl sm:text-7xl lg:text-[7rem] block leading-none mt-3">
-              {t("one small hello")}
+            {t("We can help you")}
+            <span className="italic font-script text-gradient-emerald text-7xl sm:text-8xl lg:text-[8rem] block leading-none mt-3">
+              {t("belong.")}
             </span>
-            <span className="block mt-2 text-foreground/80">{t("at a time.")}</span>
           </h1>
-          <p className="mt-7 max-w-xl text-lg text-muted-foreground leading-relaxed">
+          <p className="mt-7 max-w-xl text-lg text-foreground/75 leading-relaxed">
             {t("Let's Connect is a quiet companion for anyone who finds being social hard. Tiny prompts, real conversations, and a steady hand when the world feels loud.")}
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <a
-              href="#download"
-              className="group relative inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:shadow-[var(--shadow-gold)] transition-all duration-500 overflow-hidden"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/30 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              <span className="relative">{t("Get started")}</span>
-              <ArrowRight className="relative h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            <a href="#download" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:opacity-95 transition">
+              {t("Get started")} <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#journey" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
-              <span className="h-10 w-10 rounded-full border border-gold/25 grid place-items-center bg-card hover:bg-gold/5 transition-colors">
-                <ArrowRight className="h-4 w-4" />
-              </span>
-              {t("See how it works")}
-            </a>
-          </div>
-          <div className="mt-10 flex items-center gap-6 text-sm text-muted-foreground">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="h-8 w-8 rounded-full border-2 border-background shadow-[var(--shadow-soft)]"
-                  style={{ background: i % 2 ? "var(--gradient-emerald)" : "var(--gradient-gold)" }} />
-              ))}
-            </div>
-            <span>{t("Joined by")} <strong className="text-foreground">2,400+</strong> {t("kind humans this month")}</span>
-          </div>
-        </div>
-
-        <div className="lg:col-span-5 relative">
-          <div className="relative animate-float">
-            <div className="absolute -inset-8 rounded-[2.5rem] bg-gold/20 blur-3xl" />
-            <div className="absolute -inset-2 rounded-[2.5rem] bg-gradient-to-br from-gold/15 via-transparent to-primary/10 blur-2xl" />
-            <div className="relative rounded-[2rem] overflow-hidden shadow-[var(--shadow-elegant)] border border-gold/15">
-              <img src={heroImg} alt={t("Friends sharing a warm moment")} className="w-full h-[520px] object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-forest/30 via-transparent to-transparent" />
-              <div className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-cream/90 backdrop-blur px-3 py-1.5 text-xs font-medium text-foreground shadow-[var(--shadow-soft)] border border-gold/20">
-                <span className="h-2 w-2 rounded-full bg-gold animate-pulse" />
-                {t("feeling warmer already")}
-              </div>
-            </div>
-            <div className="absolute -bottom-5 -right-5 h-20 w-20 rounded-full grid place-items-center shadow-[var(--shadow-soft)] border-2 border-cream" style={{ background: "var(--gradient-gold)" }}>
-              <Heart className="h-8 w-8 text-forest" fill="currentColor" />
-            </div>
+            <LLink to="/research" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
+              {t("See how it works")} <ArrowRight className="h-4 w-4" />
+            </LLink>
           </div>
         </div>
       </div>
@@ -411,28 +394,26 @@ function CTA() {
   const IOS_URL = "https://apps.apple.com/qa/app/lc-lets-connect/id6792295616";
   const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share";
   return (
-    <section id="download" className="py-28 lg:py-36">
-      <div className="mx-auto max-w-5xl px-6 lg:px-10">
-        <div className="relative rounded-[2.5rem] p-12 lg:p-20 text-center overflow-hidden border border-border" style={{ background: "var(--gradient-emerald)" }}>
-          <div className="absolute -top-20 -right-20 h-72 w-72 rounded-full bg-gold/30 blur-3xl" />
-          <div className="absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-cream/10 blur-3xl" />
-          <div className="relative text-cream">
-            <img src={logoAsset.url} alt="" className="h-16 w-16 mx-auto rounded-2xl shadow-[var(--shadow-gold)]" />
-            <h2 className="mt-8 font-display text-4xl lg:text-6xl leading-tight">
-              {t("The world feels lighter with")} <span className="font-script text-gold text-7xl">{t("one")}</span> {t("good hello.")}
-            </h2>
-            <p className="mt-6 text-cream/80 max-w-xl mx-auto">
-              {t("Feeling lonely or socially anxious? We are here to help :)")}
-            </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-3">
-              <a href={IOS_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-cream text-forest px-7 py-4 font-medium shadow-[var(--shadow-soft)] hover:scale-[1.02] transition-transform">
-                <Smartphone className="h-4 w-4" /> {t("Download for iOS")}
-              </a>
-              <a href={ANDROID_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-gold text-gold-foreground px-7 py-4 font-medium shadow-[var(--shadow-gold)] hover:scale-[1.02] transition-transform">
-                <Smartphone className="h-4 w-4" /> {t("Download for Android")}
-              </a>
-            </div>
+    <section id="download" className="relative overflow-hidden" style={{ background: "var(--gradient-emerald)" }}>
+      <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-10 items-center">
+        <div className="py-20 lg:py-28 text-primary-foreground">
+          <h2 className="font-display text-5xl lg:text-6xl leading-[1.05]">
+            {t("Download Let's Connect today")}
+          </h2>
+          <p className="mt-6 text-lg text-primary-foreground/85 max-w-lg leading-relaxed">
+            {t("Feeling lonely or socially anxious? We are here to help :)")}
+          </p>
+          <div className="mt-10 flex flex-wrap gap-3">
+            <a href={IOS_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-foreground text-background px-6 py-3.5 font-medium hover:opacity-90 transition">
+              <Smartphone className="h-5 w-5" /> {t("Download for iOS")}
+            </a>
+            <a href={ANDROID_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-foreground text-background px-6 py-3.5 font-medium hover:opacity-90 transition">
+              <Smartphone className="h-5 w-5" /> {t("Download for Android")}
+            </a>
           </div>
+        </div>
+        <div className="relative self-end flex justify-center lg:justify-end">
+          <img src={handPhone} alt={t("A hand holding a phone showing the Let's Connect app")} loading="lazy" className="w-full max-w-md rounded-t-[2rem] mix-blend-multiply" />
         </div>
       </div>
     </section>
@@ -468,9 +449,9 @@ function Footer() {
           <div className="md:col-span-3">
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-foreground/60">{t("Product")}</p>
             <div className="mt-4 flex flex-col gap-2.5 text-sm text-muted-foreground">
-              <a href="#why" className="hover:text-foreground transition-colors">{t("Why we're lonely")}</a>
-              <a href="#journey" className="hover:text-foreground transition-colors">{t("The journey")}</a>
-              <a href="#download" className="hover:text-foreground transition-colors">{t("Download the app")}</a>
+              <LLink to="/research" className="hover:text-foreground transition-colors">{t("Why we're lonely")}</LLink>
+              <LLink to="/research" className="hover:text-foreground transition-colors">{t("The journey")}</LLink>
+              <a href="/#download" className="hover:text-foreground transition-colors">{t("Download the app")}</a>
             </div>
           </div>
 

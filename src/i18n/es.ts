@@ -320,5 +320,11 @@ export const es: Record<string, string> = {
   "Go home": "Ir al inicio",
   "This page didn't load": "Esta página no se cargó",
   "Something went wrong on our end. You can try refreshing or head back home.": "Algo salió mal de nuestro lado. Puedes actualizar la página o volver al inicio.",
-  "Try again": "Inténtalo de nuevo"
+  "Try again": "Inténtalo de nuevo",
+  "We can help you": "Podemos ayudarte a",
+  "belong.": "pertenecer.",
+  "Curious about the science behind loneliness and how our stages work?": "¿Curiosidad por la ciencia de la soledad y cómo funcionan nuestras etapas?",
+  "Read the research": "Lee la investigación",
+  "Download Let's Connect today": "Descarga Let's Connect hoy",
+  "A hand holding a phone showing the Let's Connect app": "Una mano sosteniendo un teléfono con la app Let's Connect"
 };
