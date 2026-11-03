@@ -14,6 +14,7 @@ import { Route as OfferRouteImport } from './routes/offer'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as RefundRouteImport } from './routes/refund'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as ResearchRouteImport } from './routes/research'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SuccessRouteImport } from './routes/success'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -24,6 +25,7 @@ import { Route as EsOfferRouteImport } from './routes/es.offer'
 import { Route as EsPricingRouteImport } from './routes/es.pricing'
 import { Route as EsRefundRouteImport } from './routes/es.refund'
 import { Route as EsRegisterRouteImport } from './routes/es.register'
+import { Route as EsResearchRouteImport } from './routes/es.research'
 import { Route as EsSuccessRouteImport } from './routes/es.success'
 import { Route as EsTermsRouteImport } from './routes/es.terms'
 import { Route as EsVerifyRouteImport } from './routes/es.verify'
@@ -32,6 +34,7 @@ import { Route as PtOfferRouteImport } from './routes/pt.offer'
 import { Route as PtPricingRouteImport } from './routes/pt.pricing'
 import { Route as PtRefundRouteImport } from './routes/pt.refund'
 import { Route as PtRegisterRouteImport } from './routes/pt.register'
+import { Route as PtResearchRouteImport } from './routes/pt.research'
 import { Route as PtSuccessRouteImport } from './routes/pt.success'
 import { Route as PtTermsRouteImport } from './routes/pt.terms'
 import { Route as PtVerifyRouteImport } from './routes/pt.verify'
@@ -62,6 +65,11 @@ const RefundRoute = RefundRouteImport.update({
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
@@ -114,6 +122,11 @@ const EsRegisterRoute = EsRegisterRouteImport.update({
   path: '/es/register',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EsResearchRoute = EsResearchRouteImport.update({
+  id: '/es/research',
+  path: '/es/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EsSuccessRoute = EsSuccessRouteImport.update({
   id: '/es/success',
   path: '/es/success',
@@ -154,6 +167,11 @@ const PtRegisterRoute = PtRegisterRouteImport.update({
   path: '/pt/register',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PtResearchRoute = PtResearchRouteImport.update({
+  id: '/pt/research',
+  path: '/pt/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PtSuccessRoute = PtSuccessRouteImport.update({
   id: '/pt/success',
   path: '/pt/success',
@@ -192,6 +210,7 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
   '/register': typeof RegisterRoute
+  '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success': typeof SuccessRoute
   '/terms': typeof TermsRoute
@@ -201,6 +220,7 @@ export interface FileRoutesByFullPath {
   '/es/pricing': typeof EsPricingRoute
   '/es/refund': typeof EsRefundRoute
   '/es/register': typeof EsRegisterRoute
+  '/es/research': typeof EsResearchRoute
   '/es/success': typeof EsSuccessRoute
   '/es/terms': typeof EsTermsRoute
   '/es/verify': typeof EsVerifyRoute
@@ -208,6 +228,7 @@ export interface FileRoutesByFullPath {
   '/pt/pricing': typeof PtPricingRoute
   '/pt/refund': typeof PtRefundRoute
   '/pt/register': typeof PtRegisterRoute
+  '/pt/research': typeof PtResearchRoute
   '/pt/success': typeof PtSuccessRoute
   '/pt/terms': typeof PtTermsRoute
   '/pt/verify': typeof PtVerifyRoute
@@ -223,6 +244,7 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
   '/register': typeof RegisterRoute
+  '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success': typeof SuccessRoute
   '/terms': typeof TermsRoute
@@ -232,6 +254,7 @@ export interface FileRoutesByTo {
   '/es/pricing': typeof EsPricingRoute
   '/es/refund': typeof EsRefundRoute
   '/es/register': typeof EsRegisterRoute
+  '/es/research': typeof EsResearchRoute
   '/es/success': typeof EsSuccessRoute
   '/es/terms': typeof EsTermsRoute
   '/es/verify': typeof EsVerifyRoute
@@ -239,6 +262,7 @@ export interface FileRoutesByTo {
   '/pt/pricing': typeof PtPricingRoute
   '/pt/refund': typeof PtRefundRoute
   '/pt/register': typeof PtRegisterRoute
+  '/pt/research': typeof PtResearchRoute
   '/pt/success': typeof PtSuccessRoute
   '/pt/terms': typeof PtTermsRoute
   '/pt/verify': typeof PtVerifyRoute
@@ -255,6 +279,7 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
   '/register': typeof RegisterRoute
+  '/research': typeof ResearchRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/success': typeof SuccessRoute
   '/terms': typeof TermsRoute
@@ -264,6 +289,7 @@ export interface FileRoutesById {
   '/es/pricing': typeof EsPricingRoute
   '/es/refund': typeof EsRefundRoute
   '/es/register': typeof EsRegisterRoute
+  '/es/research': typeof EsResearchRoute
   '/es/success': typeof EsSuccessRoute
   '/es/terms': typeof EsTermsRoute
   '/es/verify': typeof EsVerifyRoute
@@ -271,6 +297,7 @@ export interface FileRoutesById {
   '/pt/pricing': typeof PtPricingRoute
   '/pt/refund': typeof PtRefundRoute
   '/pt/register': typeof PtRegisterRoute
+  '/pt/research': typeof PtResearchRoute
   '/pt/success': typeof PtSuccessRoute
   '/pt/terms': typeof PtTermsRoute
   '/pt/verify': typeof PtVerifyRoute
@@ -288,6 +315,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/refund'
     | '/register'
+    | '/research'
     | '/sitemap.xml'
     | '/success'
     | '/terms'
@@ -297,6 +325,7 @@ export interface FileRouteTypes {
     | '/es/pricing'
     | '/es/refund'
     | '/es/register'
+    | '/es/research'
     | '/es/success'
     | '/es/terms'
     | '/es/verify'
@@ -304,6 +333,7 @@ export interface FileRouteTypes {
     | '/pt/pricing'
     | '/pt/refund'
     | '/pt/register'
+    | '/pt/research'
     | '/pt/success'
     | '/pt/terms'
     | '/pt/verify'
@@ -319,6 +349,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/refund'
     | '/register'
+    | '/research'
     | '/sitemap.xml'
     | '/success'
     | '/terms'
@@ -328,6 +359,7 @@ export interface FileRouteTypes {
     | '/es/pricing'
     | '/es/refund'
     | '/es/register'
+    | '/es/research'
     | '/es/success'
     | '/es/terms'
     | '/es/verify'
@@ -335,6 +367,7 @@ export interface FileRouteTypes {
     | '/pt/pricing'
     | '/pt/refund'
     | '/pt/register'
+    | '/pt/research'
     | '/pt/success'
     | '/pt/terms'
     | '/pt/verify'
@@ -350,6 +383,7 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/refund'
     | '/register'
+    | '/research'
     | '/sitemap.xml'
     | '/success'
     | '/terms'
@@ -359,6 +393,7 @@ export interface FileRouteTypes {
     | '/es/pricing'
     | '/es/refund'
     | '/es/register'
+    | '/es/research'
     | '/es/success'
     | '/es/terms'
     | '/es/verify'
@@ -366,6 +401,7 @@ export interface FileRouteTypes {
     | '/pt/pricing'
     | '/pt/refund'
     | '/pt/register'
+    | '/pt/research'
     | '/pt/success'
     | '/pt/terms'
     | '/pt/verify'
@@ -382,6 +418,7 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   RefundRoute: typeof RefundRoute
   RegisterRoute: typeof RegisterRoute
+  ResearchRoute: typeof ResearchRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SuccessRoute: typeof SuccessRoute
   TermsRoute: typeof TermsRoute
@@ -391,6 +428,7 @@ export interface RootRouteChildren {
   EsPricingRoute: typeof EsPricingRoute
   EsRefundRoute: typeof EsRefundRoute
   EsRegisterRoute: typeof EsRegisterRoute
+  EsResearchRoute: typeof EsResearchRoute
   EsSuccessRoute: typeof EsSuccessRoute
   EsTermsRoute: typeof EsTermsRoute
   EsVerifyRoute: typeof EsVerifyRoute
@@ -398,6 +436,7 @@ export interface RootRouteChildren {
   PtPricingRoute: typeof PtPricingRoute
   PtRefundRoute: typeof PtRefundRoute
   PtRegisterRoute: typeof PtRegisterRoute
+  PtResearchRoute: typeof PtResearchRoute
   PtSuccessRoute: typeof PtSuccessRoute
   PtTermsRoute: typeof PtTermsRoute
   PtVerifyRoute: typeof PtVerifyRoute
@@ -443,6 +482,13 @@ declare module '@tanstack/react-router' {
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sitemap.xml': {
@@ -515,6 +561,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsRegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/es/research': {
+      id: '/es/research'
+      path: '/es/research'
+      fullPath: '/es/research'
+      preLoaderRoute: typeof EsResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/es/success': {
       id: '/es/success'
       path: '/es/success'
@@ -571,6 +624,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PtRegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pt/research': {
+      id: '/pt/research'
+      path: '/pt/research'
+      fullPath: '/pt/research'
+      preLoaderRoute: typeof PtResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/pt/success': {
       id: '/pt/success'
       path: '/pt/success'
@@ -622,6 +682,7 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   RefundRoute: RefundRoute,
   RegisterRoute: RegisterRoute,
+  ResearchRoute: ResearchRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SuccessRoute: SuccessRoute,
   TermsRoute: TermsRoute,
@@ -631,6 +692,7 @@ const rootRouteChildren: RootRouteChildren = {
   EsPricingRoute: EsPricingRoute,
   EsRefundRoute: EsRefundRoute,
   EsRegisterRoute: EsRegisterRoute,
+  EsResearchRoute: EsResearchRoute,
   EsSuccessRoute: EsSuccessRoute,
   EsTermsRoute: EsTermsRoute,
   EsVerifyRoute: EsVerifyRoute,
@@ -638,6 +700,7 @@ const rootRouteChildren: RootRouteChildren = {
   PtPricingRoute: PtPricingRoute,
   PtRefundRoute: PtRefundRoute,
   PtRegisterRoute: PtRegisterRoute,
+  PtResearchRoute: PtResearchRoute,
   PtSuccessRoute: PtSuccessRoute,
   PtTermsRoute: PtTermsRoute,
   PtVerifyRoute: PtVerifyRoute,
