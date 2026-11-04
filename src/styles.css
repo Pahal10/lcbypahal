@@ -157,3 +157,8 @@
 
 @utility animate-float { animation: float-soft 6s ease-in-out infinite; }
 @utility animate-fade-up { animation: fade-up 0.8s ease-out both; }
+
+.download-product-image {
+  mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent), linear-gradient(to bottom, transparent, black 12%, black 90%, transparent);
+  mask-composite: intersect;
+}
