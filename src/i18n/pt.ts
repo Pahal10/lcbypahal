@@ -326,5 +326,18 @@ export const pt: Record<string, string> = {
   "Curious about the science behind loneliness and how our stages work?": "Curioso sobre a ciência da solidão e como nossas etapas funcionam?",
   "Read the research": "Leia a pesquisa",
   "Download Let's Connect today": "Baixe o Let's Connect hoje",
-  "A hand holding a phone showing the Let's Connect app": "Uma mão segurando um celular com o app Let's Connect"
+  "A hand holding a phone showing the Let's Connect app": "Uma mão segurando um celular com o app Let's Connect",
+  "Meet Let's Connect": "Conheça o Let's Connect",
+  "Less scrolling.": "Menos rolagem de tela.",
+  "More real connection.": "Mais conexão de verdade.",
+  "Your pocket-sized nudge into the real world.": "Um incentivo de bolso para se conectar no mundo real.",
+  "Know what to say.": "Saiba o que dizer.",
+  "A little help starting real conversations.": "Uma ajudinha para começar conversas de verdade.",
+  "Turn hellos into friendships.": "Transforme olás em amizades.",
+  "Keep track of your people. Build on each connection.": "Acompanhe suas amizades. Fortaleça cada conexão.",
+  "Build your social confidence.": "Ganhe confiança para socializar.",
+  "Practice in the conversation gym. Go at your pace.": "Pratique na academia de conversação. Vá no seu ritmo.",
+  "Let's Connect home screen with a daily connection prompt": "Tela inicial do Let's Connect com uma sugestão diária para se conectar",
+  "Let's Connect friends screen showing your real-life connections": "Tela de amigos do Let's Connect mostrando suas conexões na vida real",
+  "Find your next hello": "Dê seu próximo olá"
 };

@@ -4,10 +4,12 @@ import heroImg from "@/assets/hero-connection.jpg";
 import handPhone from "@/assets/hand-phone-lc.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
-import premiumRewardAsset from "@/assets/premium-reward.jpg.asset.json";
+import appHome from "@/assets/lc-app-home.jpg.asset.json";
+import appConnections from "@/assets/lc-app-connections.jpg.asset.json";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
+import { Button } from "@/components/ui/button";
 
 export function ResearchPage() {
   return (
@@ -44,7 +46,7 @@ export function HomePage() {
       <Hero />
       <Marquee />
       <ResearchTeaser />
-      <Premium />
+      <ProductReveal />
       <Loyalty />
       <Testimonials />
       <CTA />
@@ -394,7 +396,7 @@ function CTA() {
   const IOS_URL = "https://apps.apple.com/qa/app/lc-lets-connect/id6792295616";
   const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share";
   return (
-    <section id="download" className="relative overflow-hidden bg-mint">
+    <section id="download" className="relative overflow-hidden bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-10 items-center">
         <div className="py-20 lg:py-28 text-foreground">
           <h2 className="font-display text-5xl lg:text-6xl leading-[1.05]">
@@ -413,7 +415,7 @@ function CTA() {
           </div>
         </div>
         <div className="relative self-end flex justify-center lg:justify-end">
-          <img src={handPhone} alt={t("A hand holding a phone showing the Let's Connect app")} loading="lazy" className="w-full max-w-md " />
+          <img src={handPhone} alt={t("A hand holding a phone showing the Let's Connect app")} loading="lazy" className="download-product-image w-full max-w-md" />
         </div>
       </div>
     </section>
@@ -520,56 +522,46 @@ function Footer() {
   );
 }
 
-function Premium() {
+function ProductReveal() {
   const t = useT();
+  const features = [
+    { icon: MessageCircle, title: "Know what to say.", description: "A little help starting real conversations." },
+    { icon: Users, title: "Turn hellos into friendships.", description: "Keep track of your people. Build on each connection." },
+    { icon: Sparkles, title: "Build your social confidence.", description: "Practice in the conversation gym. Go at your pace." },
+  ];
   return (
-    <section className="py-28 lg:py-36 relative overflow-hidden">
-      <div className="absolute -top-32 right-0 h-96 w-96 rounded-full bg-gold/15 blur-[120px] pointer-events-none" />
-      <div className="absolute -bottom-32 left-0 h-96 w-96 rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-16 items-center">
-        <div className="relative flex justify-center order-2 lg:order-1">
-          <div className="absolute -inset-8 rounded-[3rem] bg-gold/15 blur-3xl" />
-          <div className="relative">
-            <div className="relative w-[300px] h-[610px] rounded-[3rem] bg-gradient-to-b from-neutral-900 to-neutral-800 p-3 shadow-[var(--shadow-elegant)] border border-neutral-700">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-neutral-900 rounded-b-2xl z-10" />
-              <div className="relative w-full h-full rounded-[2.3rem] overflow-hidden bg-black">
-                <img src={premiumRewardAsset.url} alt={t("Premium reward inside the app")} className="w-full h-full object-cover" />
-              </div>
-            </div>
-            <div className="absolute -top-4 -right-4 h-20 w-20 rounded-full grid place-items-center shadow-[var(--shadow-soft)] border-2 border-cream animate-float" style={{ background: "var(--gradient-gold)" }}>
-              <Gift className="h-8 w-8 text-forest" />
-            </div>
+    <section id="product" className="overflow-hidden bg-secondary/40 py-20 lg:py-28">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="text-sm font-medium text-primary">{t("Meet Let's Connect")}</p>
+          <h2 className="mt-4 font-display text-4xl leading-tight sm:text-5xl lg:text-6xl tracking-normal">
+            {t("Less scrolling.")}<br /><span className="text-primary">{t("More real connection.")}</span>
+          </h2>
+          <p className="mt-5 text-base text-muted-foreground sm:text-lg">{t("Your pocket-sized nudge into the real world.")}</p>
+        </div>
+        <div className="mt-12 flex items-center justify-center gap-4 sm:gap-8 lg:gap-12">
+          <div className="mt-10 w-[38%] max-w-[235px] shrink-0 -rotate-6 overflow-hidden rounded-[2rem] border-[6px] border-foreground bg-foreground shadow-[var(--shadow-elegant)] sm:border-[8px]">
+            <img src={appHome.url} alt={t("Let's Connect home screen with a daily connection prompt")} loading="lazy" width={920} height={2000} className="block h-auto w-full" />
+          </div>
+          <div className="w-[42%] max-w-[265px] shrink-0 rotate-6 overflow-hidden rounded-[2rem] border-[6px] border-foreground bg-foreground shadow-[var(--shadow-elegant)] sm:border-[8px]">
+            <img src={appConnections.url} alt={t("Let's Connect friends screen showing your real-life connections")} loading="lazy" width={920} height={2000} className="block h-auto w-full" />
           </div>
         </div>
-
-        <div className="order-1 lg:order-2">
-          <p className="text-sm font-medium text-primary uppercase tracking-[0.2em]">{t("Premium rewards")}</p>
-          <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
-            {t("Hidden perks,")} <span className="font-script text-primary text-6xl">{t("unlocked")}</span>.
-          </h2>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            {t("Discover hacks and discounts that live quietly online — the kind most people never find. From airline discounts to secret deals, we surface the ones worth knowing.")}
-          </p>
-          <div className="mt-8 space-y-4">
-            <div className="flex items-start gap-4 rounded-2xl border border-gold/25 bg-gradient-to-br from-gold/10 to-transparent p-5">
-              <div className="h-11 w-11 rounded-2xl grid place-items-center shrink-0" style={{ background: "var(--gradient-gold)" }}>
-                <Sparkles className="h-5 w-5 text-forest" />
-              </div>
+        <ul className="mt-16 grid gap-8 border-t border-primary/15 pt-9 md:grid-cols-3 md:gap-10">
+          {features.map(({ icon: Icon, title, description }) => (
+            <li key={title} className="flex items-start gap-4 md:block">
+              <Icon className="h-6 w-6 shrink-0 text-primary md:mb-4" strokeWidth={1.5} />
               <div>
-                <p className="font-display text-lg">{t("Go Premium")}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{t("Pay a nominal fee and instantly unlock every hidden reward — new ones added weekly.")}</p>
+                <h3 className="font-sans text-lg font-semibold tracking-normal">{t(title)}</h3>
+                <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">{t(description)}</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5">
-              <div className="h-11 w-11 rounded-2xl bg-primary/10 grid place-items-center shrink-0">
-                <CheckCircle2 className="h-5 w-5 text-primary" />
-              </div>
-              <div>
-                <p className="font-display text-lg">{t("Or stay free")}</p>
-                <p className="mt-1 text-sm text-muted-foreground">{t("Verify the small social tasks you complete and earn rewards in return — no paywall needed.")}</p>
-              </div>
-            </div>
-          </div>
+          ))}
+        </ul>
+        <div className="mt-10 text-center">
+          <Button asChild variant="link" className="h-auto whitespace-normal text-base">
+            <a href="#download">{t("Find your next hello")} <ArrowRight /></a>
+          </Button>
         </div>
       </div>
     </section>
