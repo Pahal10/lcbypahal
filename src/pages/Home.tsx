@@ -555,7 +555,7 @@ function ProductReveal() {
                 <h3 className="font-sans text-lg font-semibold tracking-normal">{t(title)}</h3>
                 <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">{t(description)}</p>
               </div>
-            </div>
+            </li>
           ))}
         </ul>
         <div className="mt-10 text-center">
