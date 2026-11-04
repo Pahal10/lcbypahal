@@ -5,6 +5,6 @@
 - [x] Provide URL and changed-file inventory.
 
 # Home page product reveal
-- [ ] Replace premium rewards with an image-led, concise app introduction in all three languages.
-- [ ] Match the download section background to the white and light-green theme.
-- [ ] Check the updated sections on desktop and mobile.
+- [x] Replace premium rewards with an image-led, concise app introduction in all three languages.
+- [x] Match the download section background to the white and light-green theme.
+- [x] Check the updated sections on desktop and mobile.
