@@ -339,7 +339,7 @@ export const es: Record<string, string> = {
   "Practice in the conversation gym. Go at your pace.": "Practica en el gimnasio de conversación. Ve a tu ritmo.",
   "Let's Connect home screen with a daily connection prompt": "Pantalla de inicio de Let's Connect con una sugerencia diaria para conectar",
   "Let's Connect friends screen showing your real-life connections": "Pantalla de amigos de Let's Connect con tus conexiones en la vida real",
-  "Find your next hello": "Da tu próximo saludo"
+  "Find your next hello": "Da tu próximo saludo",
   "feel connected.": "sentirte conectado.",
   "Not a social media.": "No es una red social.",
   "Not an AI chatbot.": "No es un chatbot de IA.",
