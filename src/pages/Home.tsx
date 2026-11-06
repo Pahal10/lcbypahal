@@ -7,7 +7,7 @@ import featureMeet from "@/assets/feature-meet.jpg";
 import appHome from "@/assets/lc-app-home.jpg.asset.json";
 import loyaltySteps from "@/assets/loyalty-steps.png.asset.json";
 import appConnections from "@/assets/lc-app-connections.jpg.asset.json";
-import auroraAsset from "@/assets/aurora-emerald.png.asset.json";
+import auroraAsset from "@/assets/aurora-emerald.jpg.asset.json";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
@@ -94,7 +94,7 @@ function Hero() {
       <img src={auroraAsset.url} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-60 hero-drift" />
       <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/25 to-background" />
       <img src={heroImg} alt={t("Friends sharing a warm moment")} className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-20 mix-blend-luminosity hero-photo" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 via-45% to-transparent to-80%" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/65 via-45% to-transparent to-80%" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl animate-fade-up">
