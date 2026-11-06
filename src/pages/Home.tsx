@@ -7,6 +7,7 @@ import featureMeet from "@/assets/feature-meet.jpg";
 import appHome from "@/assets/lc-app-home.jpg.asset.json";
 import loyaltySteps from "@/assets/loyalty-steps.png.asset.json";
 import appConnections from "@/assets/lc-app-connections.jpg.asset.json";
+import auroraAsset from "@/assets/aurora-emerald.jpg.asset.json";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
@@ -89,28 +90,30 @@ function Nav() {
 function Hero() {
   const t = useT();
   return (
-    <section className="relative min-h-[88vh] flex items-center pt-32 pb-24 overflow-hidden">
-      <img src={heroImg} alt={t("Friends sharing a warm moment")} className="absolute inset-0 h-full w-full object-cover object-[70%_center]" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/10" />
+    <section className="relative min-h-[88vh] flex items-center pt-32 pb-24 overflow-hidden bg-hero-mist">
+      <img src={auroraAsset.url} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-60 hero-drift" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/25 to-background" />
+      <img src={heroImg} alt={t("Friends sharing a warm moment")} className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-20 mix-blend-luminosity hero-photo" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/65 via-45% to-transparent to-80%" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
-        <div className="max-w-2xl animate-fade-up">
-          <h1 className=" font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.02] tracking-tight">
+        <div className="max-w-xl animate-fade-up">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-balance">
             {t("We can help you")}
-            <span className="italic font-script text-gradient-emerald text-7xl sm:text-8xl lg:text-[8rem] block leading-none mt-3">
+            <span className="italic font-script text-gradient-emerald text-5xl sm:text-6xl lg:text-7xl block leading-[1.25] mt-1">
               {t("feel connected.")}
             </span>
           </h1>
-          <p className="mt-7 max-w-xl text-lg text-foreground/75 leading-relaxed">
-            {t("Not a social media.")}<br />
-            {t("Not an AI chatbot.")}<br />
+          <p className="mt-6 max-w-md text-base sm:text-lg text-foreground/75 leading-relaxed text-pretty">
+            {t("Not a social media.")}{" "}
+            {t("Not an AI chatbot.")}{" "}
             {t("Guides you and pushes you to real-world conversations.")}
           </p>
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <a href="https://apps.apple.com/qa/app/lc-lets-connect/id6792295616" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:opacity-95 transition">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="https://apps.apple.com/qa/app/lc-lets-connect/id6792295616" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:opacity-95 transition">
               <Smartphone className="h-4 w-4" /> {t("Download for iOS")}
             </a>
-            <a href="https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/80 backdrop-blur px-7 py-4 text-foreground font-medium hover:bg-background transition">
+            <a href="https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/80 backdrop-blur px-6 py-3.5 text-sm text-foreground font-medium hover:bg-background transition">
               <Smartphone className="h-4 w-4" /> {t("Download on Google Play")}
             </a>
           </div>
