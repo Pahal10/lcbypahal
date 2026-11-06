@@ -340,4 +340,11 @@ export const pt: Record<string, string> = {
   "Let's Connect home screen with a daily connection prompt": "Tela inicial do Let's Connect com uma sugestão diária para se conectar",
   "Let's Connect friends screen showing your real-life connections": "Tela de amigos do Let's Connect mostrando suas conexões na vida real",
   "Find your next hello": "Dê seu próximo olá"
+  "feel connected.": "se sentir conectado.",
+  "Not a social media.": "Não é uma rede social.",
+  "Not an AI chatbot.": "Não é um chatbot de IA.",
+  "Guides you and pushes you to real-world conversations.": "Guia você e te incentiva a ter conversas na vida real.",
+  "Download on Google Play": "Baixar no Google Play",
+  "Learn more": "Saiba mais",
+  "Deposit $20, make friends, get paid $21": "Deposite $20, faça amigos, receba $21",
 };

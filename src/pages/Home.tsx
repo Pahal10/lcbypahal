@@ -5,8 +5,9 @@ import handPhone from "@/assets/hand-phone-lc.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
 import appHome from "@/assets/lc-app-home.jpg.asset.json";
+import loyaltySteps from "@/assets/loyalty-steps.png.asset.json";
 import appConnections from "@/assets/lc-app-connections.jpg.asset.json";
-import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart } from "lucide-react";
+import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
@@ -94,26 +95,24 @@ function Hero() {
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="max-w-2xl animate-fade-up">
-          <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-background/70 backdrop-blur px-4 py-1.5 text-xs text-foreground/80">
-            <Sparkles className="h-3.5 w-3.5 text-primary" />
-            {t("A gentler way to feel less alone")}
-          </div>
-          <h1 className="mt-6 font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.02] tracking-tight">
+          <h1 className=" font-display text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.02] tracking-tight">
             {t("We can help you")}
             <span className="italic font-script text-gradient-emerald text-7xl sm:text-8xl lg:text-[8rem] block leading-none mt-3">
-              {t("belong.")}
+              {t("feel connected.")}
             </span>
           </h1>
           <p className="mt-7 max-w-xl text-lg text-foreground/75 leading-relaxed">
-            {t("Let's Connect is a quiet companion for anyone who finds being social hard. Tiny prompts, real conversations, and a steady hand when the world feels loud.")}
+            {t("Not a social media.")}<br />
+            {t("Not an AI chatbot.")}<br />
+            {t("Guides you and pushes you to real-world conversations.")}
           </p>
           <div className="mt-9 flex flex-wrap items-center gap-4">
-            <a href="#download" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:opacity-95 transition">
-              {t("Get started")} <ArrowRight className="h-4 w-4" />
+            <a href="https://apps.apple.com/qa/app/lc-lets-connect/id6792295616" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:opacity-95 transition">
+              <Smartphone className="h-4 w-4" /> {t("Download for iOS")}
             </a>
-            <LLink to="/research" className="inline-flex items-center gap-2 text-sm font-medium text-foreground/80 hover:text-foreground transition-colors">
-              {t("See how it works")} <ArrowRight className="h-4 w-4" />
-            </LLink>
+            <a href="https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-background/80 backdrop-blur px-7 py-4 text-foreground font-medium hover:bg-background transition">
+              <Smartphone className="h-4 w-4" /> {t("Download on Google Play")}
+            </a>
           </div>
         </div>
       </div>
@@ -570,6 +569,7 @@ function ProductReveal() {
 
 function Loyalty() {
   const t = useT();
+  const [open, setOpen] = useState(false);
   const tiers = [
     { icon: Coins, amount: "$0", label: "Fewer than 3 tasks this quarter", note: "No payout — but the price of a coffee isn't a bad bet on your social life." },
     { icon: Banknote, amount: "$20.20", label: "3 or more tasks this quarter", note: "Do the little tasks we suggest, and more than you paid comes straight back." },
@@ -592,7 +592,15 @@ function Loyalty() {
           </p>
         </div>
 
-        <div className="relative mt-14 max-w-3xl mx-auto">
+        <img src={loyaltySteps.url} alt={t("Deposit $20, make friends, get paid $21")} loading="lazy" className="mt-12 mx-auto w-full max-w-5xl rounded-[2rem] shadow-[var(--shadow-elegant)]" />
+
+        <div className="mt-8 text-center">
+          <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} className="inline-flex items-center gap-2 rounded-full border border-cream/40 px-6 py-2.5 text-sm font-medium text-cream hover:bg-cream/10 transition">
+            {t("Learn more")} <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
+          </button>
+        </div>
+
+        {open && <div className="relative mt-10 max-w-3xl mx-auto animate-fade-up">
           <div className="absolute -inset-4 rounded-[2.5rem] bg-gold/15 blur-2xl pointer-events-none" />
           <div className="relative rounded-[2rem] border-2 border-dashed border-gold/60 bg-white p-8 lg:p-10 shadow-[var(--shadow-elegant)] text-foreground">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-8 border-b border-dashed border-gold/40">
@@ -629,7 +637,7 @@ function Loyalty() {
               {t("Yes — $20.20 and $21 are")} <span className="text-foreground font-medium">{t("more than you paid")}</span>{t(". Real money back in your pocket for doing the thing that actually helps: going out and connecting with people.")}
             </p>
           </div>
-        </div>
+        </div>}
 
         <div className="mt-12 text-center">
           <a
