@@ -91,10 +91,10 @@ function Hero() {
   const t = useT();
   return (
     <section className="relative min-h-[88vh] flex items-center pt-32 pb-24 overflow-hidden bg-hero-mist">
-      <img src={auroraAsset.url} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover opacity-40 hero-drift" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
-      <img src={heroImg} alt={t("Friends sharing a warm moment")} className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-30 mix-blend-luminosity" />
-      <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/55 to-transparent" />
+      <img src={auroraAsset.url} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-60 hero-drift" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/55 via-background/25 to-background" />
+      <img src={heroImg} alt={t("Friends sharing a warm moment")} className="absolute inset-0 h-full w-full object-cover object-[70%_center] opacity-20 mix-blend-luminosity hero-photo" />
+      <div className="absolute inset-0 bg-gradient-to-r from-background via-background/70 via-45% to-transparent to-80%" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl animate-fade-up">

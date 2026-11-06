@@ -159,12 +159,17 @@
 @utility animate-fade-up { animation: fade-up 0.8s ease-out both; }
 
 @utility bg-hero-mist {
-  background-color: oklch(0.972 0.038 155);
+  background-color: oklch(0.968 0.05 155);
   background-image:
-    radial-gradient(70% 60% at 12% 8%, oklch(0.9 0.09 158 / 0.75), transparent 62%),
-    radial-gradient(60% 55% at 86% 18%, oklch(0.85 0.12 160 / 0.55), transparent 64%),
-    radial-gradient(75% 65% at 70% 92%, oklch(0.83 0.11 155 / 0.5), transparent 66%),
-    linear-gradient(180deg, oklch(0.965 0.045 155), oklch(0.985 0.028 155));
+    radial-gradient(70% 60% at 12% 8%, oklch(0.91 0.11 158 / 0.85), transparent 62%),
+    radial-gradient(60% 55% at 86% 18%, oklch(0.85 0.14 160 / 0.6), transparent 64%),
+    radial-gradient(75% 65% at 70% 92%, oklch(0.83 0.13 155 / 0.55), transparent 66%),
+    linear-gradient(180deg, oklch(0.958 0.055 156), oklch(0.982 0.035 155));
+}
+
+@utility hero-photo {
+  mask-image: linear-gradient(to right, transparent 30%, black 72%);
+  -webkit-mask-image: linear-gradient(to right, transparent 30%, black 72%);
 }
 
 @keyframes hero-drift {
