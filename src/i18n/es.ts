@@ -346,5 +346,8 @@ export const es: Record<string, string> = {
   "Guides you and pushes you to real-world conversations.": "Te guía y te impulsa a tener conversaciones en la vida real.",
   "Download on Google Play": "Descargar en Google Play",
   "Learn more": "Saber más",
+  "Don't know who to approach when you want to hang out?": "¿No sabes a quién invitar cuando quieres salir?",
+  "Or how to make friends?": "¿O cómo hacer amigos?",
+  "Build the confidence to start conversations, make friends, and turn everyday moments into meaningful connections. Let's Connect conversation gym and small talk screens.": "Gana confianza para iniciar conversaciones, hacer amigos y transformar momentos cotidianos en conexiones significativas. Pantallas del gimnasio de conversación y de Conversación Ligera de Let's Connect.",
   "Deposit $20, make friends, get paid $21": "Deposita $20, haz amigos, recibe $21",
 };
