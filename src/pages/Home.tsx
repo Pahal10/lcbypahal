@@ -119,24 +119,6 @@ function Hero() {
   );
 }
 
-function Marquee() {
-  const t = useT();
-  const items = ["Build real friendships", "Calm the social nerves", "Tiny daily prompts", "Conversation guides", "Find your people", "Go at your pace"];
-  return (
-    <div className="border-y border-border bg-secondary/40 py-5 overflow-hidden">
-      <div className="flex gap-12 animate-[float-soft_0s] whitespace-nowrap text-sm font-medium text-muted-foreground">
-        <div className="flex gap-12 animate-[marquee_30s_linear_infinite]" style={{ animation: "none" }}>
-          {[...items, ...items].map((x, i) => (
-            <span key={i} className="flex items-center gap-3">
-              <Heart className="h-3.5 w-3.5 text-gold" /> {t(x)}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function Why() {
   const t = useT();
   return (
