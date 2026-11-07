@@ -45,7 +45,6 @@ export function HomePage() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Nav dark />
       <Hero />
-      <Marquee />
       <ResearchTeaser />
       <ProductReveal />
       <Loyalty />
