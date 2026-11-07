@@ -8,3 +8,8 @@
 - [x] Replace premium rewards with an image-led, concise app introduction in all three languages.
 - [x] Match the download section background to the white and light-green theme.
 - [x] Check the updated sections on desktop and mobile.
+
+# Updated opening and product artwork
+- [ ] Replace the opening description with the visitor-focused question.
+- [ ] Show the supplied product artwork second, then the research invitation.
+- [ ] Verify the page and download links at desktop and phone sizes.
