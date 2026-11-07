@@ -3,9 +3,8 @@ import logoAsset from "@/assets/logo.png.asset.json";
 import handPhone from "@/assets/hand-phone-lc.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
-import appHome from "@/assets/lc-app-home.jpg.asset.json";
 import loyaltySteps from "@/assets/loyalty-steps.png.asset.json";
-import appConnections from "@/assets/lc-app-connections.jpg.asset.json";
+import productArtwork from "@/assets/lc-product-reveal.jpg.asset.json";
 import auroraAsset from "@/assets/aurora-deep.jpg.asset.json";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -45,8 +44,8 @@ export function HomePage() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Nav dark />
       <Hero />
-      <ResearchTeaser />
       <ProductReveal />
+      <ResearchTeaser />
       <Loyalty />
       <Testimonials />
       <CTA />
@@ -94,17 +93,16 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/25" />
       <div className="relative mx-auto w-full max-w-5xl px-6 lg:px-10 text-center">
         <div className="animate-fade-up">
+          <p className="mx-auto mb-7 max-w-2xl text-lg sm:text-xl leading-relaxed text-primary-foreground/85 text-balance">
+            {t("Don't know who to approach when you want to hang out?")}<br />
+            {t("Or how to make friends?")}
+          </p>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.15] tracking-tight text-white">
             {t("We can help you")}{" "}
             <span className="italic font-script text-gradient-aurora text-5xl sm:text-6xl lg:text-7xl">
               {t("feel connected.")}
             </span>
           </h1>
-          <p className="mt-8 text-base sm:text-lg text-white/85 leading-relaxed">
-            {t("Not a social media.")}<br />
-            {t("Not an AI chatbot.")}<br />
-            {t("Guides you and pushes you to real-world conversations.")}
-          </p>
           <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
             <a href="https://apps.apple.com/qa/app/lc-lets-connect/id6792295616" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:opacity-95 transition">
               <Smartphone className="h-4 w-4" /> {t("Download for iOS")}
@@ -504,46 +502,16 @@ function Footer() {
 
 function ProductReveal() {
   const t = useT();
-  const features = [
-    { icon: MessageCircle, title: "Know what to say.", description: "A little help starting real conversations." },
-    { icon: Users, title: "Turn hellos into friendships.", description: "Keep track of your people. Build on each connection." },
-    { icon: Sparkles, title: "Build your social confidence.", description: "Practice in the conversation gym. Go at your pace." },
-  ];
   return (
-    <section id="product" className="overflow-hidden bg-secondary/40 py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-sm font-medium text-primary">{t("Meet Let's Connect")}</p>
-          <h2 className="mt-4 font-display text-4xl leading-tight sm:text-5xl lg:text-6xl tracking-normal">
-            {t("Less scrolling.")}<br /><span className="text-primary">{t("More real connection.")}</span>
-          </h2>
-          <p className="mt-5 text-base text-muted-foreground sm:text-lg">{t("Your pocket-sized nudge into the real world.")}</p>
-        </div>
-        <div className="mt-12 flex items-center justify-center gap-4 sm:gap-8 lg:gap-12">
-          <div className="mt-10 w-[38%] max-w-[235px] shrink-0 -rotate-6 overflow-hidden rounded-[2rem] border-[6px] border-foreground bg-foreground shadow-[var(--shadow-elegant)] sm:border-[8px]">
-            <img src={appHome.url} alt={t("Let's Connect home screen with a daily connection prompt")} loading="lazy" width={920} height={2000} className="block h-auto w-full" />
-          </div>
-          <div className="w-[42%] max-w-[265px] shrink-0 rotate-6 overflow-hidden rounded-[2rem] border-[6px] border-foreground bg-foreground shadow-[var(--shadow-elegant)] sm:border-[8px]">
-            <img src={appConnections.url} alt={t("Let's Connect friends screen showing your real-life connections")} loading="lazy" width={920} height={2000} className="block h-auto w-full" />
-          </div>
-        </div>
-        <ul className="mt-16 grid gap-8 border-t border-primary/15 pt-9 md:grid-cols-3 md:gap-10">
-          {features.map(({ icon: Icon, title, description }) => (
-            <li key={title} className="flex items-start gap-4 md:block">
-              <Icon className="h-6 w-6 shrink-0 text-primary md:mb-4" strokeWidth={1.5} />
-              <div>
-                <h3 className="font-sans text-lg font-semibold tracking-normal">{t(title)}</h3>
-                <p className="mt-2 max-w-xs text-sm leading-relaxed text-muted-foreground">{t(description)}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-10 text-center">
-          <Button asChild variant="link" className="h-auto whitespace-normal text-base">
-            <a href="#download">{t("Find your next hello")} <ArrowRight /></a>
-          </Button>
-        </div>
-      </div>
+    <section id="product" aria-label={t("Meet Let's Connect")} className="overflow-hidden bg-hero-deep">
+      <img
+        src={productArtwork.url}
+        alt={t("Build the confidence to start conversations, make friends, and turn everyday moments into meaningful connections. Let's Connect conversation gym and small talk screens.")}
+        width={1365}
+        height={682}
+        loading="lazy"
+        className="block h-auto w-full"
+      />
     </section>
   );
 }
