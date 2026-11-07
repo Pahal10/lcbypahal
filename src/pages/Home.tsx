@@ -4,7 +4,7 @@ import handPhone from "@/assets/hand-phone-lc.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
 import loyaltySteps from "@/assets/loyalty-steps.png.asset.json";
-import productArtwork from "@/assets/lc-product-reveal.jpg.asset.json";
+import productArtwork from "@/assets/lc-product-reveal-clean.jpg.asset.json";
 import auroraAsset from "@/assets/aurora-deep.jpg.asset.json";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -507,8 +507,8 @@ function ProductReveal() {
       <img
         src={productArtwork.url}
         alt={t("Build the confidence to start conversations, make friends, and turn everyday moments into meaningful connections. Let's Connect conversation gym and small talk screens.")}
-        width={1365}
-        height={682}
+        width={1672}
+        height={831}
         loading="lazy"
         className="block h-auto w-full"
       />
