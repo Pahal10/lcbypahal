@@ -45,7 +45,6 @@ export function HomePage() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Nav dark />
       <Hero />
-      <Marquee />
       <ResearchTeaser />
       <ProductReveal />
       <Loyalty />
@@ -93,7 +92,6 @@ function Hero() {
       <img src={auroraAsset.url} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover object-center hero-drift" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
       <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
         <div className="max-w-xl animate-fade-up">
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-balance text-white">
@@ -102,9 +100,11 @@ function Hero() {
               {t("feel connected.")}
             </span>
           </h1>
-          <p className="mt-6 max-w-md text-base sm:text-lg text-white/80 leading-relaxed text-pretty">
-            {t("Not a social media.")}{" "}
-            {t("Not an AI chatbot.")}{" "}
+          <p className="mt-6 text-base sm:text-lg text-white/80 leading-relaxed">
+            {t("Not a social media.")}
+            <br />
+            {t("Not an AI chatbot.")}
+            <br />
             {t("Guides you and pushes you to real-world conversations.")}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -118,24 +118,6 @@ function Hero() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Marquee() {
-  const t = useT();
-  const items = ["Build real friendships", "Calm the social nerves", "Tiny daily prompts", "Conversation guides", "Find your people", "Go at your pace"];
-  return (
-    <div className="border-y border-border bg-secondary/40 py-5 overflow-hidden">
-      <div className="flex gap-12 animate-[float-soft_0s] whitespace-nowrap text-sm font-medium text-muted-foreground">
-        <div className="flex gap-12 animate-[marquee_30s_linear_infinite]" style={{ animation: "none" }}>
-          {[...items, ...items].map((x, i) => (
-            <span key={i} className="flex items-center gap-3">
-              <Heart className="h-3.5 w-3.5 text-gold" /> {t(x)}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 }
 
