@@ -45,7 +45,6 @@ export function HomePage() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Nav dark />
       <Hero />
-      <Marquee />
       <ResearchTeaser />
       <ProductReveal />
       <Loyalty />
@@ -89,53 +88,34 @@ function Nav({ dark = false }: { dark?: boolean }) {
 function Hero() {
   const t = useT();
   return (
-    <section className="relative min-h-[88vh] flex items-center pt-32 pb-24 overflow-hidden bg-hero-deep">
+    <section className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-24 overflow-hidden bg-hero-deep">
       <img src={auroraAsset.url} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover object-center hero-drift" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
-      <div className="relative mx-auto w-full max-w-7xl px-6 lg:px-10">
-        <div className="max-w-xl animate-fade-up">
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-balance text-white">
-            {t("We can help you")}
-            <span className="italic font-script text-gradient-aurora text-5xl sm:text-6xl lg:text-7xl block leading-[1.25] mt-1">
+      <div className="absolute inset-0 bg-black/30" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/25" />
+      <div className="relative mx-auto w-full max-w-5xl px-6 lg:px-10 text-center">
+        <div className="animate-fade-up">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.15] tracking-tight text-white">
+            {t("We can help you")}{" "}
+            <span className="italic font-script text-gradient-aurora text-5xl sm:text-6xl lg:text-7xl">
               {t("feel connected.")}
             </span>
           </h1>
-          <p className="mt-6 max-w-md text-base sm:text-lg text-white/80 leading-relaxed text-pretty">
-            {t("Not a social media.")}{" "}
-            {t("Not an AI chatbot.")}{" "}
+          <p className="mt-8 text-base sm:text-lg text-white/85 leading-relaxed">
+            {t("Not a social media.")}<br />
+            {t("Not an AI chatbot.")}<br />
             {t("Guides you and pushes you to real-world conversations.")}
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="https://apps.apple.com/qa/app/lc-lets-connect/id6792295616" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:opacity-95 transition">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <a href="https://apps.apple.com/qa/app/lc-lets-connect/id6792295616" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:opacity-95 transition">
               <Smartphone className="h-4 w-4" /> {t("Download for iOS")}
             </a>
-            <a href="https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 backdrop-blur px-6 py-3.5 text-sm text-white font-medium hover:bg-white/20 transition">
+            <a href="https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 backdrop-blur px-7 py-3.5 text-sm text-white font-medium hover:bg-white/20 transition">
               <Smartphone className="h-4 w-4" /> {t("Download on Google Play")}
             </a>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function Marquee() {
-  const t = useT();
-  const items = ["Build real friendships", "Calm the social nerves", "Tiny daily prompts", "Conversation guides", "Find your people", "Go at your pace"];
-  return (
-    <div className="border-y border-border bg-secondary/40 py-5 overflow-hidden">
-      <div className="flex gap-12 animate-[float-soft_0s] whitespace-nowrap text-sm font-medium text-muted-foreground">
-        <div className="flex gap-12 animate-[marquee_30s_linear_infinite]" style={{ animation: "none" }}>
-          {[...items, ...items].map((x, i) => (
-            <span key={i} className="flex items-center gap-3">
-              <Heart className="h-3.5 w-3.5 text-gold" /> {t(x)}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 }
 
