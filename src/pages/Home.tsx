@@ -4,8 +4,7 @@ import handPhone from "@/assets/hand-phone-lc.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
 import loyaltySteps from "@/assets/loyalty-steps.png.asset.json";
-import productArtwork from "@/assets/lc-product-reveal-clean.jpg.asset.json";
-import auroraAsset from "@/assets/aurora-deep.jpg.asset.json";
+import { OpeningArtwork } from "@/components/OpeningArtwork";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
@@ -42,9 +41,7 @@ function ResearchTeaser() {
 export function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <Nav dark />
-      <Hero />
-      <ProductReveal />
+      <OpeningArtwork />
       <ResearchTeaser />
       <Loyalty />
       <Testimonials />
@@ -81,39 +78,6 @@ function Nav({ dark = false }: { dark?: boolean }) {
         </div>
       </nav>
     </header>
-  );
-}
-
-function Hero() {
-  const t = useT();
-  return (
-    <section className="relative min-h-[92vh] flex items-center justify-center pt-32 pb-24 overflow-hidden bg-hero-deep">
-      <img src={auroraAsset.url} alt="" aria-hidden className="absolute inset-0 h-full w-full object-cover object-center hero-drift" />
-      <div className="absolute inset-0 bg-black/30" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-black/25" />
-      <div className="relative mx-auto w-full max-w-5xl px-6 lg:px-10 text-center">
-        <div className="animate-fade-up">
-          <p className="mx-auto mb-7 max-w-2xl text-lg sm:text-xl leading-relaxed text-primary-foreground/85 text-balance">
-            {t("Don't know who to approach when you want to hang out?")}<br />
-            {t("Or how to make friends?")}
-          </p>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.15] tracking-tight text-white">
-            {t("We can help you")}{" "}
-            <span className="italic font-script text-gradient-aurora text-5xl sm:text-6xl lg:text-7xl">
-              {t("feel connected.")}
-            </span>
-          </h1>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <a href="https://apps.apple.com/qa/app/lc-lets-connect/id6792295616" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 text-sm text-primary-foreground font-medium shadow-[var(--shadow-elegant)] hover:opacity-95 transition">
-              <Smartphone className="h-4 w-4" /> {t("Download for iOS")}
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 backdrop-blur px-7 py-3.5 text-sm text-white font-medium hover:bg-white/20 transition">
-              <Smartphone className="h-4 w-4" /> {t("Download on Google Play")}
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -497,22 +461,6 @@ function Footer() {
         </DialogContent>
       </Dialog>
     </>
-  );
-}
-
-function ProductReveal() {
-  const t = useT();
-  return (
-    <section id="product" aria-label={t("Meet Let's Connect")} className="overflow-hidden bg-hero-deep">
-      <img
-        src={productArtwork.url}
-        alt={t("Build the confidence to start conversations, make friends, and turn everyday moments into meaningful connections. Let's Connect conversation gym and small talk screens.")}
-        width={1672}
-        height={831}
-        loading="lazy"
-        className="block h-auto w-full"
-      />
-    </section>
   );
 }
 
