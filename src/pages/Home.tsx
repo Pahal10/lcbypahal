@@ -5,6 +5,7 @@ import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
 import loyaltySteps from "@/assets/loyalty-steps.png.asset.json";
 import { OpeningArtwork } from "@/components/OpeningArtwork";
+import { ProductFeatures } from "@/components/ProductFeatures";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
@@ -42,6 +43,7 @@ export function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <OpeningArtwork />
+      <ProductFeatures />
       <ResearchTeaser />
       <Loyalty />
       <Testimonials />

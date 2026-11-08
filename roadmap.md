@@ -17,3 +17,8 @@
 # Exact mobile and desktop opening
 - [x] Replace the first two sections with the supplied device-specific artwork.
 - [x] Keep pictured navigation and downloads clickable and verify both sizes.
+
+# Translated opening and features
+- [ ] Rebuild the opening with real translated text, downloads, visible mobile navigation, and desktop sizing.
+- [ ] Build the three-feature section from the reference with translated copy.
+- [ ] Verify desktop/mobile layout, language switching, and download links.
