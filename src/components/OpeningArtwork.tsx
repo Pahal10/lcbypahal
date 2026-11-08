@@ -1,32 +1,32 @@
-import mobileArtwork from "@/assets/lc-opening-mobile.jpg.asset.json";
-import desktopArtwork from "@/assets/lc-opening-desktop.jpg.asset.json";
-import { LLink, useT } from "@/lib/i18n";
-
-const hotspot = "absolute block rounded-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring";
+import { useState } from "react";
+import { ArrowRight, Dumbbell, Footprints, Menu, X, Smartphone } from "lucide-react";
+import aurora from "@/assets/aurora-deep.jpg.asset.json";
+import logo from "@/assets/logo.png.asset.json";
+import { Button } from "@/components/ui/button";
+import { AppPhone } from "@/components/AppPhone";
+import { LLink, LangSwitcher, useT } from "@/lib/i18n";
 
 export function OpeningArtwork() {
   const t = useT();
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <section id="product" className="relative w-full bg-forest" aria-label={t("Meet Let's Connect")}>
-      <h1 className="sr-only">{t("Build the confidence to start conversations, make friends, and turn everyday moments into meaningful connections. Let's Connect conversation gym and small talk screens.")}</h1>
-      <picture>
-        <source media="(min-width: 768px)" srcSet={desktopArtwork.url} width={1920} height={1081} />
-        <img src={mobileArtwork.url} width={1072} height={1920} fetchPriority="high" alt={t("Build the confidence to start conversations, make friends, and turn everyday moments into meaningful connections. Let's Connect conversation gym and small talk screens.")} className="block h-auto w-full" />
-      </picture>
-      <div className="md:hidden">
-        <a className={`${hotspot} left-[10.4%] top-[91.7%] h-[5.1%] w-[36%] rounded-full`} href="https://apps.apple.com/qa/app/lc-lets-connect/id6792295616" target="_blank" rel="noopener noreferrer" aria-label={t("Download for iOS")} />
-        <a className={`${hotspot} left-[49%] top-[91.7%] h-[5.1%] w-[46.2%] rounded-full`} href="https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" aria-label={t("Download on Google Play")} />
+    <section id="product" className="opening-ui aurora-surface" aria-label={t("Meet Let's Connect")}>
+      <img src={aurora.url} alt="" aria-hidden="true" className="aurora-backdrop" fetchPriority="high" />
+      <header className="opening-header">
+        <LLink to="/" className="opening-brand"><img src={logo.url} alt="" /><span>Let's <i>Connect</i></span></LLink>
+        <nav className="opening-desktop-nav" aria-label={t("Main navigation")}><LLink to="/research">{t("Why we're lonely")}</LLink><LLink to="/research">{t("The journey")}</LLink><a href="#stories">{t("Stories")}</a></nav>
+        <div className="opening-header-actions"><LangSwitcher /><Button asChild className="hidden lg:inline-flex rounded-full"><a href="#opening-download">{t("Get started")}<ArrowRight /></a></Button><Button variant="ghost" size="icon" className="lg:hidden" aria-label={t(menuOpen ? "Close menu" : "Open menu")} aria-expanded={menuOpen} aria-controls="opening-menu" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</Button></div>
+      </header>
+      {menuOpen && <nav id="opening-menu" className="opening-mobile-nav" aria-label={t("Main navigation")}><LLink to="/research">{t("Why we're lonely")}</LLink><LLink to="/research">{t("The journey")}</LLink><a href="#stories" onClick={() => setMenuOpen(false)}>{t("Stories")}</a><a href="#opening-download" onClick={() => setMenuOpen(false)}>{t("Get started")}</a></nav>}
+      <div className="opening-content">
+        <h1>{t("We can help you start conversations,")}<br className="hidden sm:block" /> {t("make friends, and turn everyday moments")}<br className="hidden sm:block" /> {t("into")} <em>{t("meaningful connections.")}</em></h1>
+        <div className="opening-product">
+          <div className="opening-benefit"><Footprints /><h2>{t("Real-world Activities")}</h2><p>{t("Hands-on activities to try with strangers that you approach with our help.")}</p></div>
+          <div className="opening-phones"><AppPhone screen="gym" className="opening-phone-gym" /><AppPhone screen="task" className="opening-phone-task" /></div>
+          <div className="opening-benefit"><Dumbbell /><h2>{t("Conversation Gym")}</h2><p>{t("Build your social muscle — anytime, anywhere.")}</p></div>
+        </div>
+        <div id="opening-download" className="opening-downloads"><Button asChild size="lg" className="rounded-full"><a href="https://apps.apple.com/qa/app/lc-lets-connect/id6792295616" target="_blank" rel="noopener noreferrer"><Smartphone />{t("Download for iOS")}</a></Button><Button asChild size="lg" className="rounded-full aurora-store-secondary"><a href="https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share" target="_blank" rel="noopener noreferrer"><Smartphone />{t("Download on Google Play")}</a></Button></div>
       </div>
-      <nav className="hidden md:block" aria-label="Main navigation">
-        <LLink to="/" className={`${hotspot} left-[3.5%] top-[1.5%] h-[7%] w-[14%]`} aria-label="Let's Connect" />
-        <LLink to="/research" className={`${hotspot} left-[35.4%] top-[3%] h-[4.5%] w-[9.5%]`} aria-label={t("Why we're lonely")} />
-        <LLink to="/research" className={`${hotspot} left-[47%] top-[3%] h-[4.5%] w-[7.2%]`} aria-label={t("The journey")} />
-        <a href="#stories" className={`${hotspot} left-[58%] top-[3%] h-[4.5%] w-[5%]`} aria-label={t("Stories")} />
-        <a href="/" hrefLang="en" className={`${hotspot} left-[78.4%] top-[3%] h-[4.5%] w-[2.1%]`} aria-label="English" />
-        <a href="/pt" hrefLang="pt-BR" className={`${hotspot} left-[81.2%] top-[3%] h-[4.5%] w-[2.1%]`} aria-label="Português" />
-        <a href="/es" hrefLang="es" className={`${hotspot} left-[83.8%] top-[3%] h-[4.5%] w-[2.1%]`} aria-label="Español" />
-        <a href="#download" className={`${hotspot} left-[87.3%] top-[2.4%] h-[5.5%] w-[10%] rounded-full`} aria-label={t("Get started")} />
-      </nav>
     </section>
   );
 }
