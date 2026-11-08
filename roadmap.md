@@ -15,5 +15,5 @@
 - [x] Verify the page and download links at desktop and phone sizes.
 
 # Exact mobile and desktop opening
-- [ ] Replace the first two sections with the supplied device-specific artwork.
-- [ ] Keep pictured navigation and downloads clickable and verify both sizes.
+- [x] Replace the first two sections with the supplied device-specific artwork.
+- [x] Keep pictured navigation and downloads clickable and verify both sizes.

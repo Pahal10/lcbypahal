@@ -22,7 +22,7 @@ export function OpeningArtwork() {
         <LLink to="/research" className={`${hotspot} left-[35.4%] top-[3%] h-[4.5%] w-[9.5%]`} aria-label={t("Why we're lonely")} />
         <LLink to="/research" className={`${hotspot} left-[47%] top-[3%] h-[4.5%] w-[7.2%]`} aria-label={t("The journey")} />
         <a href="#stories" className={`${hotspot} left-[58%] top-[3%] h-[4.5%] w-[5%]`} aria-label={t("Stories")} />
-        <LLink to="/" hrefLang="en" className={`${hotspot} left-[78.4%] top-[3%] h-[4.5%] w-[2.1%]`} aria-label="English" />
+        <a href="/" hrefLang="en" className={`${hotspot} left-[78.4%] top-[3%] h-[4.5%] w-[2.1%]`} aria-label="English" />
         <a href="/pt" hrefLang="pt-BR" className={`${hotspot} left-[81.2%] top-[3%] h-[4.5%] w-[2.1%]`} aria-label="Português" />
         <a href="/es" hrefLang="es" className={`${hotspot} left-[83.8%] top-[3%] h-[4.5%] w-[2.1%]`} aria-label="Español" />
         <a href="#download" className={`${hotspot} left-[87.3%] top-[2.4%] h-[5.5%] w-[10%] rounded-full`} aria-label={t("Get started")} />
