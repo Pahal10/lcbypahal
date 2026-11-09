@@ -394,4 +394,5 @@ export const es: Record<string, string> = {
   "Exit gracefully": "Termina con amabilidad",
   "Handle awkward silence": "Maneja el silencio",
   "Join a group": "Únete a un grupo",
+  "Price?": "¿Precio?",
 };
