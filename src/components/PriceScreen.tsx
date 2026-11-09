@@ -12,6 +12,8 @@ export function PriceScreen() {
     if (!section || !title) return;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
+    let currentY = 260;
+    let currentOpacity = 0;
     const update = () => {
       frame = 0;
       if (reducedMotion.matches) {
@@ -21,10 +23,19 @@ export function PriceScreen() {
       }
       const rect = section.getBoundingClientRect();
       const height = window.innerHeight;
-      const entrance = Math.max(0, Math.min(1, 1 - rect.top / height));
-      const exit = Math.max(0, Math.min(1, -rect.top / Math.max(1, rect.height - height)));
-      title.style.transform = `translateY(${(1 - entrance) * 120 - exit * height * 0.42}px)`;
-      title.style.opacity = String(entrance * (1 - exit));
+      const clamp = (value: number) => Math.max(0, Math.min(1, value));
+      const smooth = (value: number) => value * value * (3 - 2 * value);
+      const entrance = smooth(clamp((height - rect.top) / (height * 2.5)));
+      const exit = smooth(clamp((-rect.top / height - 2.2) / 1.8));
+      const targetY = (1 - entrance) * height * 0.38 - exit * height * 0.42;
+      const targetOpacity = entrance * (1 - exit);
+      currentY += (targetY - currentY) * 0.085;
+      currentOpacity += (targetOpacity - currentOpacity) * 0.085;
+      title.style.transform = `translateY(${currentY}px)`;
+      title.style.opacity = String(currentOpacity);
+      if (Math.abs(targetY - currentY) > 0.1 || Math.abs(targetOpacity - currentOpacity) > 0.001) {
+        frame = requestAnimationFrame(update);
+      }
     };
     const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
     update();
