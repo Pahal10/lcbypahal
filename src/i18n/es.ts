@@ -323,7 +323,7 @@ export const es: Record<string, string> = {
   "Try again": "Inténtalo de nuevo",
   "We can help you": "Podemos ayudarte a",
   "belong.": "pertenecer.",
-  "Curious about the science behind loneliness and how our stages work?": "¿Curiosidad por la ciencia de la soledad y cómo funcionan nuestras etapas?",
+  "Curious about the R&D behind Let's Connect?": "¿Te interesa la investigación y el desarrollo detrás de Let's Connect?",
   "Read the research": "Lee la investigación",
   "Download Let's Connect today": "Descarga Let's Connect hoy",
   "A hand holding a phone showing the Let's Connect app": "Una mano sosteniendo un teléfono con la app Let's Connect",
