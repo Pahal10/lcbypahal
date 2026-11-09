@@ -19,6 +19,12 @@
 - [x] Keep pictured navigation and downloads clickable and verify both sizes.
 
 # Translated opening and features
-- [ ] Rebuild the opening with real translated text, downloads, visible mobile navigation, and desktop sizing.
-- [ ] Build the three-feature section from the reference with translated copy.
+- [x] Rebuild the opening with real translated text, downloads, visible mobile navigation, and desktop sizing.
+- [x] Build the three-feature section from the reference with translated copy.
 - [ ] Verify desktop/mobile layout, language switching, and download links.
+
+# Uploaded screenshot refinements
+- [x] Use supplied images in the opening and features 01, 02, and 03.
+- [x] Reduce the opening headline and hide side benefits on phones.
+- [x] Share a continuous aurora background and update the localized R&D invitation.
+- [ ] Check the refinements on desktop and mobile in all three languages.

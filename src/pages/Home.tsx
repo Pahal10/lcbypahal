@@ -4,6 +4,7 @@ import handPhone from "@/assets/hand-phone-lc.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
 import loyaltySteps from "@/assets/loyalty-steps.png.asset.json";
+import aurora from "@/assets/aurora-deep.jpg.asset.json";
 import { OpeningArtwork } from "@/components/OpeningArtwork";
 import { ProductFeatures } from "@/components/ProductFeatures";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart, ChevronDown } from "lucide-react";
@@ -30,7 +31,7 @@ function ResearchTeaser() {
   return (
     <section className="py-16">
       <div className="mx-auto max-w-3xl px-6 text-center">
-        <p className="text-muted-foreground">{t("Curious about the science behind loneliness and how our stages work?")}</p>
+        <p className="text-muted-foreground">{t("Curious about the R&D behind Let's Connect?")}</p>
         <LLink to="/research" className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/30 px-6 py-3 text-sm font-medium text-primary hover:bg-primary/5 transition-colors">
           {t("Read the research")} <ArrowRight className="h-4 w-4" />
         </LLink>
@@ -42,8 +43,11 @@ function ResearchTeaser() {
 export function HomePage() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <OpeningArtwork />
-      <ProductFeatures />
+      <div className="product-presentation aurora-surface">
+        <img src={aurora.url} alt="" aria-hidden="true" className="aurora-backdrop" fetchPriority="high" />
+        <OpeningArtwork />
+        <ProductFeatures />
+      </div>
       <ResearchTeaser />
       <Loyalty />
       <Testimonials />
