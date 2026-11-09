@@ -229,11 +229,13 @@
 .loyalty-presentation { overflow: clip; }
 .loyalty-presentation .aurora-backdrop { opacity: .48; }
 .price-scroll { position: relative; height: 180svh; }
+.loyalty-section { margin-top: -80svh; }
 .price-screen { position: sticky; top: 0; min-height: 100svh; display: grid; place-items: center; padding: 32px; overflow: clip; }
 .price-screen h2 { font-family: var(--font-display); font-size: 112px; font-weight: 400; line-height: 1.1; letter-spacing: 0; will-change: transform, opacity; }
 @media (max-width: 699px) { .price-screen h2 { font-size: 72px; } }
 @media (prefers-reduced-motion: reduce) {
   .price-scroll { height: 100svh; }
+  .loyalty-section { margin-top: 0; }
   .price-screen h2 { transform: none !important; opacity: 1 !important; will-change: auto; }
 }
 .opening-benefit { min-width: 0; display: none; }
