@@ -30,6 +30,6 @@
 - [x] Check the refinements on desktop and mobile in all three languages.
 
 # Aurora and scrolling price screen
-- [ ] Preserve the complete opening image and match the desktop reference.
-- [ ] Add the fullscreen scrolling Price screen before aurora loyalty.
-- [ ] Move the research invitation after downloads and verify all three languages.
+- [x] Preserve the complete opening image and match the desktop reference.
+- [x] Add the fullscreen scrolling Price screen before aurora loyalty.
+- [x] Move the research invitation after downloads and verify all three languages.
