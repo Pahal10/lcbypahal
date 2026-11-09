@@ -7,6 +7,7 @@ import loyaltySteps from "@/assets/loyalty-steps.png.asset.json";
 import aurora from "@/assets/aurora-deep.jpg.asset.json";
 import { OpeningArtwork } from "@/components/OpeningArtwork";
 import { ProductFeatures } from "@/components/ProductFeatures";
+import { PriceScreen } from "@/components/PriceScreen";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
@@ -42,16 +43,20 @@ function ResearchTeaser() {
 
 export function HomePage() {
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground overflow-x-clip">
       <div className="product-presentation aurora-surface">
         <img src={aurora.url} alt="" aria-hidden="true" className="aurora-backdrop" fetchPriority="high" />
         <OpeningArtwork />
         <ProductFeatures />
       </div>
-      <ResearchTeaser />
-      <Loyalty />
+      <div className="loyalty-presentation aurora-surface">
+        <img src={aurora.url} alt="" aria-hidden="true" className="aurora-backdrop" loading="lazy" />
+        <PriceScreen />
+        <Loyalty />
+      </div>
       <Testimonials />
       <CTA />
+      <ResearchTeaser />
       <Footer />
     </div>
   );
@@ -479,9 +484,7 @@ function Loyalty() {
     { icon: BadgeCheck, amount: "$21", label: "3 or more verified tasks this quarter", note: "Verify what you actually did, and the payout grows again." },
   ];
   return (
-    <section className="relative overflow-hidden bg-primary py-28 lg:py-36 text-cream">
-      <div className="absolute -top-32 left-1/4 h-96 w-96 rounded-full bg-gold/15 blur-[120px] pointer-events-none" />
-      <div className="absolute -bottom-32 right-1/4 h-80 w-80 rounded-full bg-forest/40 blur-[120px] pointer-events-none" />
+    <section className="loyalty-section relative py-28 lg:py-36 text-cream">
       <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div className="text-center max-w-2xl mx-auto">
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-4 py-1.5 text-xs uppercase tracking-widest text-cream">
