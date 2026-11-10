@@ -33,3 +33,8 @@
 - [x] Preserve the complete opening image and match the desktop reference.
 - [x] Add the fullscreen scrolling Price screen before aurora loyalty.
 - [x] Move the research invitation after downloads and verify all three languages.
+
+# Hero and features spec pass
+- [ ] Full-viewport hero with overlay navbar, smaller clamped headline, ~40% larger phones with radial edge fade.
+- [ ] Near-black streaked background and glassmorphism cards for the second section.
+- [ ] Verify both sections on desktop and mobile in all three languages.
