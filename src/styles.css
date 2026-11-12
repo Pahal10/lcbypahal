@@ -381,3 +381,19 @@
 .product-feature h3, .product-feature p { min-height: 0; }
 .product-feature p { margin-top: 14px; }
 .feature-phone { width: clamp(120px, 62%, 210px); align-self: center; margin: 0 auto 16px; transform: rotate(8deg); }
+/* Hero as a full-bleed image */
+.opening-ui { position: relative; height: 100svh; min-height: 520px; overflow: hidden; }
+.opening-hero-picture { display: block; position: absolute; inset: 0; }
+.opening-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+/* Section 2: green aurora instead of black, faint green stripes */
+.features-ui { background: transparent; }
+.features-ui::before {
+  background:
+    repeating-linear-gradient(90deg, oklch(0.9 0.1 150 / .05) 0 1px, transparent 1px 90px),
+    repeating-linear-gradient(90deg, oklch(0.85 0.12 155 / .06) 0 2px, transparent 2px 260px),
+    repeating-linear-gradient(90deg, oklch(0.95 0.08 150 / .08) 0 1px, transparent 1px 480px),
+    radial-gradient(70% 45% at 25% 15%, oklch(0.42 0.12 158 / .45), transparent 70%),
+    radial-gradient(70% 45% at 75% 85%, oklch(0.38 0.11 165 / .4), transparent 70%);
+}
+.features-ui::after { background: radial-gradient(ellipse at center, oklch(0.55 0.13 155 / .22), transparent 70%); }
