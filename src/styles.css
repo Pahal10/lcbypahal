@@ -349,3 +349,35 @@
   .features-inner { padding-inline: 18px; }
   .features-inner > h2 { font-size: 28px; }
 }
+/* ===== HERO + CARDS FIX (keep at the very bottom) ===== */
+.opening-ui { height: 100svh; min-height: 560px; overflow: hidden; display: flex; flex-direction: column; }
+.opening-content { flex: 1; min-height: 0; width: 100%; max-width: 1400px; margin: 0 auto; padding: 76px 24px 20px; display: flex; flex-direction: column; justify-content: flex-start; }
+.opening-content h1 { flex: none; max-width: 900px; margin: 0 auto; font-size: clamp(1.25rem, 2.2vw, 2.4rem); line-height: 1.25; }
+.opening-product { flex: 1; min-height: 0; margin-top: clamp(8px, 2svh, 24px); display: grid; grid-template-columns: minmax(0,1fr) minmax(0,2fr) minmax(0,1fr); grid-template-rows: minmax(0,1fr); align-items: center; gap: 24px; }
+.opening-phones { position: relative; align-self: stretch; min-height: 0; grid-column: auto; grid-row: auto; }
+.opening-phones::before { display: none; }
+.opening-phone-pair { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; aspect-ratio: auto; object-fit: contain; mask-image: none; -webkit-mask-image: none; }
+.opening-downloads { display: none; }
+.opening-benefit { display: block; position: relative; }
+.opening-benefit > svg { width: 56px; height: 56px; padding: 14px; }
+.opening-benefit h2 { font-size: clamp(1.1rem, 1.8vw, 1.75rem); }
+.opening-benefit p { font-size: clamp(.8rem, 1.1vw, 1rem); max-width: 280px; margin-inline: auto; }
+@media (min-width: 900px) {
+  .opening-benefit::before { content: ''; position: absolute; top: 28px; height: 1px; }
+  .opening-product > .opening-benefit:first-child::before { left: calc(50% + 36px); right: 0; background: linear-gradient(90deg, var(--aurora-line), transparent); }
+  .opening-product > .opening-benefit:last-child::before { left: 0; right: calc(50% + 36px); background: linear-gradient(270deg, var(--aurora-line), transparent); }
+}
+@media (max-width: 899px) {
+  .opening-product { grid-template-columns: 1fr 1fr; grid-template-rows: minmax(0,1fr) auto; gap: 12px 16px; }
+  .opening-phones { grid-column: 1 / -1; grid-row: 1; }
+  .opening-benefit { grid-row: 2; }
+  .opening-benefit > svg { width: 36px; height: 36px; padding: 8px; margin-bottom: 8px; }
+  .opening-benefit h2 { font-size: 15px; }
+  .opening-benefit p { font-size: 11px; line-height: 1.4; margin-top: 6px; }
+}
+
+/* Feature cards: text on top, phone below, every screen size */
+.product-feature { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; min-height: 0; padding: clamp(20px, 2.4vw, 32px); }
+.product-feature h3, .product-feature p { min-height: 0; }
+.product-feature p { margin-top: 14px; }
+.feature-phone { width: clamp(120px, 62%, 210px); align-self: center; margin: 0 auto 16px; transform: rotate(8deg); }
