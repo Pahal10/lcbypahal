@@ -226,7 +226,7 @@
 .opening-phones { grid-column: 1 / -1; grid-row: 1; display: flex; justify-content: center; align-items: center; padding: 0; min-width: 0; }
 .opening-phone-pair { width: 100%; max-width: 640px; height: auto; aspect-ratio: 891 / 726; object-fit: contain; border: 0; box-shadow: none; background: none; mask-image: radial-gradient(ellipse at center, black 55%, transparent 78%); -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 78%); }
 .opening-phones { position: relative; isolation: isolate; }
-.product-presentation .aurora-backdrop { opacity: .28; }
+.product-presentation .aurora-backdrop { opacity: .55; }
 .product-presentation { --aurora-background: oklch(0.25 0.045 160); }
 .loyalty-presentation { overflow: clip; }
 .loyalty-presentation .aurora-backdrop { opacity: .48; }
