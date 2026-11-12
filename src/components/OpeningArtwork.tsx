@@ -21,10 +21,14 @@ export function OpeningArtwork() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <section id="product" className="opening-ui" aria-label={t("Meet Let's Connect")}>
-      <picture className="opening-hero-picture">
-        <source media="(min-width: 900px)" srcSet={HERO.desktop[lang]} />
-        <img src={HERO.mobile[lang]} alt={t("Let's Connect app preview")} className="opening-hero-img" fetchPriority="high" />
-      </picture>
+      <picture className="opening-hero-bg" aria-hidden="true">
+  <source media="(min-width: 900px)" srcSet={HERO.desktop[lang]} />
+  <img src={HERO.mobile[lang]} alt="" />
+</picture>
+<picture className="opening-hero-picture">
+  <source media="(min-width: 900px)" srcSet={HERO.desktop[lang]} />
+  <img src={HERO.mobile[lang]} alt={t("Let's Connect app preview")} className="opening-hero-img" fetchPriority="high" />
+</picture>
       <h1 className="sr-only">{t("We can help you start conversations,")} {t("make friends, and turn everyday moments")} {t("into")} {t("meaningful connections.")}</h1>
       <header className="opening-header absolute inset-x-0 top-0 z-10">
         <LLink to="/" className="opening-brand"><img src={logo.url} alt="" /><span>Let's <i>Connect</i></span></LLink>
