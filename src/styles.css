@@ -384,7 +384,6 @@
 /* Hero as a full-bleed image */
 .opening-ui { position: relative; height: 100svh; min-height: 520px; overflow: hidden; }
 .opening-hero-picture { display: block; position: absolute; inset: 0; }
-.opening-hero-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
 /* Section 2: green aurora instead of black, faint green stripes */
 .features-ui { background: transparent; }
@@ -398,4 +397,15 @@
 }
 .features-ui::after { background: radial-gradient(ellipse at center, oklch(0.55 0.13 155 / .22), transparent 70%); }
 .opening-header { position: absolute; top: 0; left: 0; right: 0; margin: 0 auto; z-index: 10; }
-.opening-hero-img { object-position: center 30%; }
+/* Blurred copy fills any empty bands */
+.opening-hero-bg { display: block; position: absolute; inset: 0; overflow: hidden; }
+.opening-hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: blur(48px); transform: scale(1.15); }
+
+/* The real image: always shown whole, centered, never cropped */
+.opening-hero-img {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent), linear-gradient(to bottom, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 5%, #000 95%, transparent), linear-gradient(to bottom, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-composite: source-in; mask-composite: intersect;
+}
