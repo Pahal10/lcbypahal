@@ -397,3 +397,5 @@
     radial-gradient(70% 45% at 75% 85%, oklch(0.38 0.11 165 / .4), transparent 70%);
 }
 .features-ui::after { background: radial-gradient(ellipse at center, oklch(0.55 0.13 155 / .22), transparent 70%); }
+.opening-header { position: absolute; top: 0; left: 0; right: 0; margin: 0 auto; z-index: 10; }
+.opening-hero-img { object-position: center 30%; }
