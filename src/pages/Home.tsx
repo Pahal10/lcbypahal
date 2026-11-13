@@ -487,7 +487,8 @@ function Loyalty() {
             <Ticket className="h-3.5 w-3.5 text-gold" /> {t("The loyalty program")}
           </span>
           <h2 className="mt-6 text-4xl lg:text-5xl font-display leading-tight text-cream">
-            {t("Go make friends.")} <span className="font-script text-gold text-6xl">{t("Get paid back.")}</span>
+            <span className="inline-block whitespace-nowrap">{t("Go make friends.")}</span>{" "}
+            <span className="inline-block whitespace-nowrap font-script text-gold text-6xl">{t("Get paid back.")}</span>
           </h2>
           <p className="mt-5 text-lg text-cream/75 leading-relaxed">
             {t("Pay")} <span className="text-cream font-medium">{t("$20 for the quarter")}</span> {t("— then just show up. Do the small connection tasks we suggest, and we hand the money straight back to you. Real cash. Some quarters, more than you paid.")}
