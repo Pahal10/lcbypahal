@@ -30,13 +30,9 @@ export function ResearchPage() {
 function ResearchTeaser() {
   const t = useT();
   return (
-    <section className="py-16">
-      <div className="mx-auto max-w-3xl px-6 text-center">
-        <p className="text-muted-foreground">{t("Curious about the R&D behind Let's Connect?")}</p>
-        <LLink to="/research" className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/30 px-6 py-3 text-sm font-medium text-primary hover:bg-primary/5 transition-colors">
-          {t("Read the research")} <ArrowRight className="h-4 w-4" />
-        </LLink>
-      </div>
+    <section className="research-teaser">
+      <p>{t("Curious about the R&D behind Let's Connect?")}</p>
+      <LLink to="/research">{t("Read the research")} <ArrowRight className="h-4 w-4" /></LLink>
     </section>
   );
 }
