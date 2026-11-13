@@ -395,4 +395,5 @@ export const pt: Record<string, string> = {
   "Handle awkward silence": "Lide com o silêncio",
   "Join a group": "Junte-se a um grupo",
   "Price?": "Preço?",
+  "Build the confidence to start conversations,": "Desenvolva a confiança para iniciar conversas,",
 };
