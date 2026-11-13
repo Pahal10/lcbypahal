@@ -481,10 +481,11 @@
     margin: clamp(0px, 1.5svh, 14px) auto 0;
   }
   /* ===== SECTION 2 + RESEARCH TEASER (keep at the very bottom) ===== */
-.research-teaser { padding: clamp(28px, 5svh, 56px) 24px; text-align: center; color: var(--aurora-foreground); }
-.research-teaser p { color: var(--aurora-muted); }
-.research-teaser a { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 12px 24px; border-radius: 999px; border: 1px solid var(--aurora-line); color: var(--aurora-accent); font-size: 14px; font-weight: 500; transition: background .2s; }
-.research-teaser a:hover { background: oklch(1 0 0 / .08); }
+/* "Curious about the R&D" strip: plain white band between section 1 and 2 */
+.research-teaser { position: relative; padding: clamp(32px, 6svh, 64px) 24px; text-align: center; background: var(--background); color: var(--foreground); }
+.research-teaser p { color: var(--muted-foreground); }
+.research-teaser a { display: inline-flex; align-items: center; gap: 8px; margin-top: 16px; padding: 12px 24px; border-radius: 999px; border: 1px solid oklch(0.46 0.13 155 / .3); color: var(--primary); font-size: 14px; font-weight: 500; transition: background .2s; }
+.research-teaser a:hover { background: oklch(0.46 0.13 155 / .06); }
 
 .features-ui { background: oklch(0.14 0.03 160) url("./assets/features-strips.jpg") center / cover no-repeat; }
 .features-ui::before { background: linear-gradient(to bottom, var(--aurora-background), oklch(0.14 0.03 160 / .35) 18%, oklch(0.14 0.03 160 / .3) 82%, oklch(0.14 0.03 160 / .85)); }
