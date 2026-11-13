@@ -43,7 +43,6 @@ export function HomePage() {
       <div className="product-presentation aurora-surface">
         <img src={aurora.url} alt="" aria-hidden="true" className="aurora-backdrop" fetchPriority="high" />
         <OpeningArtwork />
-        <ResearchTeaser pos="top" />
         <ProductFeatures />
       </div>
       <div className="loyalty-presentation aurora-surface">
