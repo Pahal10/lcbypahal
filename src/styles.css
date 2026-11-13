@@ -528,3 +528,5 @@
   .feature-icon { display: none; }
   .feature-phone { width: 118px; align-self: center; justify-self: center; margin: 6px 0; transform: rotate(10deg); }
 }
+/* colour behind the page (browser status strip + overscroll) matches the aurora */
+html, body { background-color: oklch(0.2 0.045 160); }
