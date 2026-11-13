@@ -1,10 +1,10 @@
 import { useState } from "react";
-import logoAsset from "@/assets/logo.png.asset.json";
+import logoPng from "@/assets/logo.png";
 import handPhone from "@/assets/hand-phone-lc.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
 import featureMeet from "@/assets/feature-meet.jpg";
-import loyaltySteps from "@/assets/loyalty-steps.png.asset.json";
-import aurora from "@/assets/aurora-deep.jpg.asset.json";
+import loyaltyPng from "@/assets/loyalty-steps.png";
+import auroraJpg from "@/assets/aurora-deep.jpg";
 import { OpeningArtwork } from "@/components/OpeningArtwork";
 import { ProductFeatures } from "@/components/ProductFeatures";
 import { PriceScreen } from "@/components/PriceScreen";
@@ -12,6 +12,9 @@ import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, Trendi
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
+const logoAsset = { url: logoPng };
+const loyaltySteps = { url: loyaltyPng };
+const aurora = { url: auroraJpg };
 
 export function ResearchPage() {
   return (
