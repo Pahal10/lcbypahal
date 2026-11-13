@@ -490,9 +490,6 @@ function Loyalty() {
             <span className="inline-block whitespace-nowrap">{t("Go make friends.")}</span>{" "}
             <span className="inline-block whitespace-nowrap font-script text-gold text-6xl">{t("Get paid back.")}</span>
           </h2>
-          <p className="mt-5 text-lg text-cream/75 leading-relaxed">
-            {t("Pay")} <span className="text-cream font-medium">{t("$20 for the quarter")}</span> {t("— then just show up. Do the small connection tasks we suggest, and we hand the money straight back to you. Real cash. Some quarters, more than you paid.")}
-          </p>
         </div>
 
         <img src={loyaltySteps.url} alt={t("Deposit $20, make friends, get paid $21")} loading="lazy" className="mt-12 mx-auto w-full max-w-5xl rounded-[2rem] shadow-[var(--shadow-elegant)]" />
@@ -555,9 +552,6 @@ function Loyalty() {
           </a>
           <p className="mt-3 text-sm text-cream/75">
             {t("Showing interest is")} <span className="text-cream font-medium">{t("completely free")}</span> {t("— no card, no commitment, just a raised hand.")}
-          </p>
-          <p className="mt-1 text-xs text-cream/60">
-            {t("Not launched yet — early interest gets first access when it goes live.")}
           </p>
         </div>
       </div>
