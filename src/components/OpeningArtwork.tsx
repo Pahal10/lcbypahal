@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, Dumbbell, Footprints, Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png.asset.json";
-import phones from "@/assets/hero/phones.png";
+import phones from "@/assets/hero/phones.webp";
 import { Button } from "@/components/ui/button";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
 
