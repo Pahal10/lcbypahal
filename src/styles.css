@@ -471,13 +471,16 @@
 .hero2-benefit h2 { font-weight: 400; margin-top: clamp(10px, 1.6svh, 18px); font-size: clamp(1.05rem, min(1.75vw, 3.4svh), 2.3rem); line-height: 1.2; letter-spacing: 0; text-wrap: balance; }
 .hero2-benefit p { margin-top: clamp(6px, 1.2svh, 12px); max-width: 28ch; font-size: clamp(.82rem, min(1.05vw, 2.3svh), 1.25rem); line-height: 1.5; color: var(--aurora-muted); text-wrap: balance; }
 
-/* tablets and phones: headline, then BIG phones. The two benefits are hidden. */
+/* tablets and phones: headline + BIG phones (whole image, no cropping), centered as a group. Benefits hidden. */
 @media (max-width: 899px) {
-  .hero2 { padding-left: 0; padding-right: 0; }
-  .hero2 h1 { padding: 0 clamp(16px, 4vw, 32px); font-size: clamp(1.2rem, min(5.6vw, 3.9svh), 2rem); }
-  .hero2-stage { display: block; position: relative; margin-top: clamp(4px, 1.5svh, 16px); overflow: visible; }
+  .hero2 { padding-left: 0; padding-right: 0; justify-content: center; }
+  .hero2 h1 { padding: 0 clamp(14px, 4vw, 32px); font-size: clamp(1.4rem, min(6.6vw, 4.6svh), 2.3rem); }
+  .hero2-stage {
+    flex: none; display: block; position: relative; container-type: normal;
+    width: min(100%, calc((100svh - 250px) * 1.19)); aspect-ratio: 1107 / 931;
+    margin: clamp(0px, 1.5svh, 14px) auto 0;
+  }
   .hero2-benefit { display: none; }
   .hero2-phones { position: absolute; inset: 0; }
-  .hero2-phones img { left: 50%; width: 110%; max-width: none; transform: translateX(-50%); }
-  .hero2-phones::before, .hero2-phones::after { width: 100%; }
+  .hero2-phones img { object-position: 50% 50%; }
 }
