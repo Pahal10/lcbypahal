@@ -43,6 +43,7 @@ export function HomePage() {
       <div className="product-presentation aurora-surface">
         <img src={aurora.url} alt="" aria-hidden="true" className="aurora-backdrop" fetchPriority="high" />
         <OpeningArtwork />
+        <ResearchTeaser />
         <ProductFeatures />
       </div>
       <div className="loyalty-presentation aurora-surface">
@@ -52,7 +53,6 @@ export function HomePage() {
       </div>
       <Testimonials />
       <CTA />
-      <ResearchTeaser />
       <Footer />
     </div>
   );
