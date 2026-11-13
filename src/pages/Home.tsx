@@ -27,10 +27,10 @@ export function ResearchPage() {
   );
 }
 
-function ResearchTeaser() {
+function ResearchTeaser({ pos }: { pos: "top" | "bottom" }) {
   const t = useT();
   return (
-    <section className="research-teaser">
+    <section className={`research-teaser research-teaser-${pos}`}>
       <p>{t("Curious about the R&D behind Let's Connect?")}</p>
       <LLink to="/research">{t("Read the research")} <ArrowRight className="h-4 w-4" /></LLink>
     </section>
@@ -43,7 +43,7 @@ export function HomePage() {
       <div className="product-presentation aurora-surface">
         <img src={aurora.url} alt="" aria-hidden="true" className="aurora-backdrop" fetchPriority="high" />
         <OpeningArtwork />
-        <ResearchTeaser />
+        <ResearchTeaser pos="top" />
         <ProductFeatures />
       </div>
       <div className="loyalty-presentation aurora-surface">
@@ -53,6 +53,7 @@ export function HomePage() {
       </div>
       <Testimonials />
       <CTA />
+      <ResearchTeaser pos="bottom" />
       <Footer />
     </div>
   );
