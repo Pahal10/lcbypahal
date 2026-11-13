@@ -528,9 +528,3 @@
   .feature-icon { display: none; }
   .feature-phone { width: 118px; align-self: center; justify-self: center; margin: 6px 0; transform: rotate(10deg); }
 }
-
-.research-teaser-bottom { display: none; }
-@media (max-width: 699px) {
-  .research-teaser-top { display: none; }
-  .research-teaser-bottom { display: block; }
-}
