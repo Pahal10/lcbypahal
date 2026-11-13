@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { ArrowRight, Dumbbell, Footprints, Menu, X } from "lucide-react";
 import logoPng from "@/assets/logo.png";
-const logo = { url: logoPng };import phones from "@/assets/hero/phones.png";
+import phones from "@/assets/hero/phones.png";
 import { Button } from "@/components/ui/button";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
 import heroBg from "@/assets/hero/hero-bg.jpg";
+const logo = { url: logoPng };
 
 export function OpeningArtwork() {
   const t = useT();
