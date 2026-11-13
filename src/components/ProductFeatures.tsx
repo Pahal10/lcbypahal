@@ -1,8 +1,11 @@
 import { Leaf, TrendingUp, MessageCircle } from "lucide-react";
-import taskScreen from "@/assets/app-smalltalk-screen.png.asset.json";
-import peopleScreen from "@/assets/app-people-screen.png.asset.json";
-import helpScreen from "@/assets/app-help-screen.png.asset.json";
+import taskImg from "@/assets/app-smalltalk-screen.webp";
+import peopleImg from "@/assets/app-people-screen.webp";
+import helpImg from "@/assets/app-help-screen.webp";
 import { useT } from "@/lib/i18n";
+const taskScreen = { url: taskImg };
+const peopleScreen = { url: peopleImg };
+const helpScreen = { url: helpImg };
 
 export function ProductFeatures() {
   const t = useT();
