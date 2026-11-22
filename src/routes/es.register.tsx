@@ -3,6 +3,6 @@ import { RegisterPage } from "@/pages/register";
 import { buildHead } from "@/lib/i18n";
 
 export const Route = createFileRoute("/es/register")({
-  head: () => buildHead("es", "/register"),
+  head: () => buildHead("es", "/register", { noindex: true }),
   component: RegisterPage,
 });

@@ -4,6 +4,6 @@ import { buildHead } from "@/lib/i18n";
 
 export const Route = createFileRoute("/offer")({
   validateSearch: (s: Record<string, unknown>) => ({ userId: typeof s.userId === "string" ? s.userId : "", email: typeof s.email === "string" ? s.email : "" }),
-  head: () => buildHead("en", "/offer"),
+  head: () => buildHead("en", "/offer", { noindex: true }),
   component: OfferPage,
 });

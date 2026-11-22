@@ -100,10 +100,44 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "WebSite",
-          name: "Let's Connect",
-          alternateName: "LC — Let's Connect",
-          url: "https://lcbypahal.lovable.app",
+          "@graph": [
+            {
+              "@type": "Organization",
+              "@id": "https://lcletsconnect.com/#org",
+              name: "Let's Connect",
+              url: "https://lcletsconnect.com",
+              logo: "https://lcletsconnect.com/apple-touch-icon.png",
+              sameAs: [
+                "https://apps.apple.com/us/app/lc-lets-connect/id6792295616",
+                "https://play.google.com/store/apps/details?id=com.pahal.lc",
+              ],
+            },
+            {
+              "@type": "WebSite",
+              "@id": "https://lcletsconnect.com/#website",
+              name: "Let's Connect",
+              alternateName: ["LC", "LC - Let's Connect", "Lets Connect app"],
+              url: "https://lcletsconnect.com",
+              inLanguage: ["en", "pt-BR", "es"],
+              publisher: { "@id": "https://lcletsconnect.com/#org" },
+            },
+            {
+              "@type": "MobileApplication",
+              "@id": "https://lcletsconnect.com/#app",
+              name: "LC - Let's Connect",
+              description:
+                "Make friends as an adult with guided real-world prompts and social anxiety support, one conversation at a time.",
+              applicationCategory: "LifestyleApplication",
+              operatingSystem: "iOS, Android",
+              url: "https://lcletsconnect.com",
+              downloadUrl: [
+                "https://apps.apple.com/us/app/lc-lets-connect/id6792295616",
+                "https://play.google.com/store/apps/details?id=com.pahal.lc",
+              ],
+              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+              publisher: { "@id": "https://lcletsconnect.com/#org" },
+            },
+          ],
         }),
       },
     ],

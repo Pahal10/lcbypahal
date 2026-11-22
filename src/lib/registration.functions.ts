@@ -106,7 +106,7 @@ export const createCheckout = createServerFn({ method: "POST" })
     const variantId = process.env.LEMONSQUEEZY_VARIANT_ID!;
 
     const origin =
-      process.env.PUBLIC_SITE_URL ?? "https://lcbypahal.lovable.app";
+      process.env.PUBLIC_SITE_URL ?? "https://lcletsconnect.com";
 
     const body = {
       data: {

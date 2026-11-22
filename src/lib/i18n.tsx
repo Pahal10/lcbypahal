@@ -6,7 +6,7 @@ import { PAGE_META, type PagePath } from "@/i18n/meta";
 
 export type Lang = "en" | "pt" | "es";
 export const LANGS: Lang[] = ["en", "pt", "es"];
-export const BASE_URL = "https://lcbypahal.lovable.app";
+export const BASE_URL = "https://lcletsconnect.com";
 
 const DICT: Record<"pt" | "es", Record<string, string>> = { pt, es };
 
@@ -105,9 +105,14 @@ export function buildHead(lang: Lang, path: PagePath, opts: { noindex?: boolean;
     { property: "og:type", content: opts.type ?? "website" },
     { property: "og:locale", content: OG_LOCALE[lang] },
     ...LANGS.filter((l) => l !== lang).map((l) => ({ property: "og:locale:alternate", content: OG_LOCALE[l] })),
+    { property: "og:image", content: `${BASE_URL}/og-image.png` },
+    { property: "og:image:width", content: "1200" },
+    { property: "og:image:height", content: "630" },
+    { property: "og:image:alt", content: "Let's Connect app on a phone — make friends and start conversations" },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: m.title },
     { name: "twitter:description", content: m.description },
+    { name: "twitter:image", content: `${BASE_URL}/og-image.png` },
   ];
   if (opts.noindex) meta.push({ name: "robots", content: "noindex" });
   const links = [

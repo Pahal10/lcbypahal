@@ -3,6 +3,6 @@ import { VerifyPage } from "@/pages/verify";
 import { buildHead } from "@/lib/i18n";
 
 export const Route = createFileRoute("/verify")({
-  head: () => buildHead("en", "/verify"),
+  head: () => buildHead("en", "/verify", { noindex: true }),
   component: VerifyPage,
 });

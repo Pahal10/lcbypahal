@@ -1,8 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
-import { LANGS, HTML_LANG, localePath } from "@/lib/i18n";
-
-const BASE_URL = "https://lcbypahal.lovable.app";
+import { LANGS, HTML_LANG, localePath, BASE_URL } from "@/lib/i18n";
 
 interface SitemapEntry {
   path: string;
@@ -17,10 +15,7 @@ export const Route = createFileRoute("/sitemap.xml")({
         const entries: SitemapEntry[] = [
           { path: "/", changefreq: "weekly", priority: "1.0" },
           { path: "/research", changefreq: "monthly", priority: "0.7" },
-          { path: "/register", changefreq: "monthly", priority: "0.9" },
           { path: "/pricing", changefreq: "monthly", priority: "0.8" },
-          { path: "/offer", changefreq: "monthly", priority: "0.7" },
-          { path: "/verify", changefreq: "monthly", priority: "0.6" },
           { path: "/terms", changefreq: "yearly", priority: "0.3" },
           { path: "/refund", changefreq: "yearly", priority: "0.3" },
         ];
