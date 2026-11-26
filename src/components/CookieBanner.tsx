@@ -4,6 +4,17 @@ import { useT } from "@/lib/i18n";
 const KEY = "lc_consent";
 type Gtag = (...args: unknown[]) => void;
 
+/**
+ * The head script in __root.tsx detects the visitor's country (Cloudflare /cdn-cgi/trace)
+ * and exposes window.__lcAsk: resolves true when consent must be asked (EU, EEA, UK,
+ * Switzerland, Brazil, or country unknown) and false elsewhere (analytics already granted).
+ */
+type WindowWithAsk = Window & { __lcAsk?: Promise<boolean>; gtag?: Gtag };
+
+function setAnalytics(value: "granted" | "denied") {
+  (window as WindowWithAsk).gtag?.("consent", "update", { analytics_storage: value });
+}
+
 /** Re-open the banner from anywhere (e.g. a footer "Cookie settings" link). */
 export function openCookieSettings() {
   window.dispatchEvent(new Event("lc-open-consent"));
@@ -15,8 +26,7 @@ function save(value: "granted" | "denied") {
   } catch {
     /* storage unavailable: choice applies to this visit only */
   }
-  const gtag = (window as unknown as { gtag?: Gtag }).gtag;
-  gtag?.("consent", "update", { analytics_storage: value });
+  setAnalytics(value);
 }
 
 export function CookieBanner() {
@@ -24,14 +34,28 @@ export function CookieBanner() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    let cancelled = false;
+    let stored: string | null = null;
     try {
-      if (!localStorage.getItem(KEY)) setOpen(true);
+      stored = localStorage.getItem(KEY);
     } catch {
-      setOpen(true);
+      /* storage unavailable */
+    }
+    // A saved choice is already applied by the head script; nothing to ask.
+    if (!stored) {
+      const ask = (window as WindowWithAsk).__lcAsk;
+      if (!ask) setOpen(true);
+      else
+        ask.then((mustAsk) => {
+          if (!cancelled && mustAsk) setOpen(true);
+        });
     }
     const reopen = () => setOpen(true);
     window.addEventListener("lc-open-consent", reopen);
-    return () => window.removeEventListener("lc-open-consent", reopen);
+    return () => {
+      cancelled = true;
+      window.removeEventListener("lc-open-consent", reopen);
+    };
   }, []);
 
   if (!open) return null;

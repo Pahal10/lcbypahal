@@ -103,8 +103,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children:
           "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}" +
           "try{var q=new URLSearchParams(location.search).get('notrack');if(q==='1')localStorage.setItem('lc_no_track','1');if(q==='0')localStorage.removeItem('lc_no_track');if(localStorage.getItem('lc_no_track')==='1')window['ga-disable-G-95S1DZNVFF']=true;}catch(e){}" +
-          "gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});" +
+          "gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:800});" +
           "try{if(localStorage.getItem('lc_consent')==='granted')gtag('consent','update',{analytics_storage:'granted'});}catch(e){}" +
+          "var R='AT,BE,BG,HR,CY,CZ,DK,EE,FI,FR,DE,GR,HU,IE,IT,LV,LT,LU,MT,NL,PL,PT,RO,SK,SI,ES,SE,IS,LI,NO,GB,CH,BR'.split(',');" +
+          "window.__lcAsk=fetch('/cdn-cgi/trace',{cache:'no-store'}).then(function(r){return r.text();}).then(function(t){var m=/^loc=([A-Z]{2})$/m.exec(t);var c=m&&m[1];var ask=!c||R.indexOf(c)>-1;var st=null;try{st=localStorage.getItem('lc_consent');}catch(e){}if(!ask&&!st)gtag('consent','update',{analytics_storage:'granted'});return ask;}).catch(function(){return true;});" +
           "gtag('js',new Date());gtag('config','G-95S1DZNVFF');",
       },
       {
