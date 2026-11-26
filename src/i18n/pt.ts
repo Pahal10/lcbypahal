@@ -396,4 +396,8 @@ export const pt: Record<string, string> = {
   "Join a group": "Junte-se a um grupo",
   "Price?": "Preço?",
   "Build the confidence to start conversations,": "Desenvolva a confiança para iniciar conversas,",
+  "We use analytics cookies to understand how people find this site.": "Usamos cookies de análise para entender como as pessoas encontram este site.",
+  "Accept": "Aceitar",
+  "Decline": "Recusar",
+  "Cookie settings": "Configurações de cookies",
 };

@@ -13,6 +13,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { HTML_LANG, LLink, useLang, useT } from "@/lib/i18n";
+import { CookieBanner } from "@/components/CookieBanner";
 
 function NotFoundComponent() {
   const t = useT();
@@ -82,6 +83,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#0f2a1d" },
+      { name: "apple-itunes-app", content: "app-id=6792295616" },
       { name: "google-site-verification", content: "IARPiI_NaZpJ8viqH9hBQ5WQiAz-wamqi7-CaRUI7v4" },
       { title: "Let's Connect — Make Friends & Beat Loneliness | Social Anxiety Support App" },
       { name: "description", content: "Make friends as an adult with guided real-world prompts. Social anxiety help and gentle nudges that help you feel less lonely, one conversation at a time." },
@@ -99,7 +101,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { src: "https://www.googletagmanager.com/gtag/js?id=G-95S1DZNVFF", async: true },
       {
         children:
-          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-95S1DZNVFF');",
+          "window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}" +
+          "try{var q=new URLSearchParams(location.search).get('notrack');if(q==='1')localStorage.setItem('lc_no_track','1');if(q==='0')localStorage.removeItem('lc_no_track');if(localStorage.getItem('lc_no_track')==='1')window['ga-disable-G-95S1DZNVFF']=true;}catch(e){}" +
+          "gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});" +
+          "try{if(localStorage.getItem('lc_consent')==='granted')gtag('consent','update',{analytics_storage:'granted'});}catch(e){}" +
+          "gtag('js',new Date());gtag('config','G-95S1DZNVFF');",
       },
       {
         type: "application/ld+json",
@@ -113,7 +119,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               url: "https://lcletsconnect.com",
               logo: "https://lcletsconnect.com/apple-touch-icon.png",
               sameAs: [
-                "https://apps.apple.com/us/app/lc-lets-connect/id6792295616",
+                "https://apps.apple.com/app/lc-lets-connect/id6792295616",
                 "https://play.google.com/store/apps/details?id=com.pahal.lc",
               ],
             },
@@ -136,7 +142,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               operatingSystem: "iOS, Android",
               url: "https://lcletsconnect.com",
               downloadUrl: [
-                "https://apps.apple.com/us/app/lc-lets-connect/id6792295616",
+                "https://apps.apple.com/app/lc-lets-connect/id6792295616",
                 "https://play.google.com/store/apps/details?id=com.pahal.lc",
               ],
               offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
@@ -185,6 +191,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
+      <CookieBanner />
     </QueryClientProvider>
   );
 }
