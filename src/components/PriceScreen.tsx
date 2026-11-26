@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import { useT } from "@/lib/i18n";
+import { fireSideConfetti } from "@/lib/confetti";
 
 export function PriceScreen() {
   const t = useT();
@@ -14,6 +15,9 @@ export function PriceScreen() {
     let frame = 0;
     let currentY = 260;
     let currentOpacity = 0;
+    let confettiArmed = true;
+    let lastFire = 0;
+    let stopConfetti: (() => void) | null = null;
     const update = () => {
       frame = 0;
       if (reducedMotion.matches) {
@@ -33,6 +37,14 @@ export function PriceScreen() {
       currentOpacity += (targetOpacity - currentOpacity) * 0.085;
       title.style.transform = `translateY(${currentY}px)`;
       title.style.opacity = String(currentOpacity);
+      if (confettiArmed && currentOpacity > 0.85) {
+        confettiArmed = false;
+        lastFire = performance.now();
+        stopConfetti?.();
+        stopConfetti = fireSideConfetti();
+      } else if (!confettiArmed && currentOpacity < 0.1 && performance.now() - lastFire > 3000) {
+        confettiArmed = true;
+      }
       if (Math.abs(targetY - currentY) > 0.1 || Math.abs(targetOpacity - currentOpacity) > 0.001) {
         frame = requestAnimationFrame(update);
       }
@@ -44,6 +56,7 @@ export function PriceScreen() {
     reducedMotion.addEventListener("change", schedule);
     return () => {
       cancelAnimationFrame(frame);
+      stopConfetti?.();
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("resize", schedule);
       reducedMotion.removeEventListener("change", schedule);
@@ -51,6 +64,6 @@ export function PriceScreen() {
   }, []);
 
   return <section ref={sectionRef} className="price-scroll" aria-labelledby="price-title">
-    <div className="price-screen"><h2 ref={titleRef} id="price-title">{t("Price?")}</h2></div>
+    <div className="price-screen"><h2 ref={titleRef} id="price-title">{t("It's free!!")}</h2></div>
   </section>;
 }

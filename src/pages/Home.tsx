@@ -8,6 +8,8 @@ import auroraJpg from "@/assets/aurora-deep.jpg";
 import { OpeningArtwork } from "@/components/OpeningArtwork";
 import { ProductFeatures } from "@/components/ProductFeatures";
 import { PriceScreen } from "@/components/PriceScreen";
+import { QrCard } from "@/components/QrCard";
+import { androidUrl, iosUrl } from "@/lib/store-links";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
@@ -15,6 +17,10 @@ import { Button } from "@/components/ui/button";
 const logoAsset = { url: logoPng };
 const loyaltySteps = { url: loyaltyPng };
 const aurora = { url: auroraJpg };
+// Drop real QR images at src/assets/qr-ios.png and src/assets/qr-android.png; they are picked up automatically.
+const qrImages = import.meta.glob("../assets/qr-*.png", { eager: true, query: "?url", import: "default" }) as Record<string, string>;
+const QR_IOS_SRC = qrImages["../assets/qr-ios.png"];
+const QR_ANDROID_SRC = qrImages["../assets/qr-android.png"];
 
 export function ResearchPage() {
   return (
@@ -345,8 +351,9 @@ function Testimonials() {
 
 function CTA() {
   const t = useT();
-  const IOS_URL = "https://apps.apple.com/app/lc-lets-connect/id6792295616";
-  const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.pahal.lc&pcampaignid=web_share";
+  const iosHref = iosUrl("download_section");
+  const androidHref = androidUrl("download_section");
+  const storeButton = "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-foreground text-background px-6 py-3.5 font-medium hover:opacity-90 transition";
   return (
     <section id="download" className="relative overflow-hidden bg-background">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-2 gap-10 items-center">
@@ -357,17 +364,28 @@ function CTA() {
           <p className="mt-6 text-lg text-muted-foreground max-w-lg leading-relaxed">
             {t("Feeling lonely or socially anxious? We are here to help :)")}
           </p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <a href={IOS_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-foreground text-background px-6 py-3.5 font-medium hover:opacity-90 transition">
-              <Smartphone className="h-5 w-5" /> {t("Download for iOS")}
-            </a>
-            <a href={ANDROID_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-xl bg-foreground text-background px-6 py-3.5 font-medium hover:opacity-90 transition">
-              <Smartphone className="h-5 w-5" /> {t("Download for Android")}
-            </a>
+          <div className="mt-10 max-w-md">
+            <div className="flex flex-col gap-3">
+              <a href={iosHref} target="_blank" rel="noopener noreferrer" className={storeButton}>
+                <Smartphone className="h-5 w-5" /> {t("Download for iOS")}
+              </a>
+              <a href={androidHref} target="_blank" rel="noopener noreferrer" className={storeButton}>
+                <Smartphone className="h-5 w-5" /> {t("Download for Android")}
+              </a>
+            </div>
+            <div className="mt-7 hidden md:flex items-center gap-4 text-xs uppercase tracking-[0.2em] text-muted-foreground" role="separator">
+              <span className="h-px flex-1 bg-border" />
+              {t("or")}
+              <span className="h-px flex-1 bg-border" />
+            </div>
+            <div className="mt-7 hidden md:flex gap-4">
+              <QrCard src={QR_IOS_SRC} label="iPhone & iPad" caption="Scan to download" alt={t("QR code to download Let's Connect on iPhone or iPad")} />
+              <QrCard src={QR_ANDROID_SRC} label="Android" caption="Scan to download" alt={t("QR code to download Let's Connect on Android")} />
+            </div>
           </div>
         </div>
         <div className="relative self-end flex justify-center lg:justify-end">
-          <img src={handPhone} alt={t("A hand holding a phone showing the Let's Connect app")} loading="lazy" className="download-product-image w-full max-w-md" />
+          <img src={handPhone} alt={t("A hand holding a phone showing the Let's Connect app")} loading="lazy" className="download-product-image w-full max-w-md lg:max-w-lg" />
         </div>
       </div>
     </section>
@@ -477,6 +495,7 @@ function Footer() {
 function Loyalty() {
   const t = useT();
   const [open, setOpen] = useState(false);
+  const prefetchSteps = () => { if (typeof window !== "undefined") new Image().src = loyaltySteps.url; };
   const tiers = [
     { icon: Coins, amount: "$0", label: "Fewer than 3 tasks this quarter", note: "No payout — but the price of a coffee isn't a bad bet on your social life." },
     { icon: Banknote, amount: "$20.20", label: "3 or more tasks this quarter", note: "Do the little tasks we suggest, and more than you paid comes straight back." },
@@ -490,20 +509,20 @@ function Loyalty() {
             <Ticket className="h-3.5 w-3.5 text-gold" /> {t("The loyalty program")}
           </span>
           <h2 className="mt-6 text-4xl lg:text-5xl font-display leading-tight text-cream">
-            <span className="inline-block whitespace-nowrap">{t("Go make friends.")}</span>{" "}
-            <span className="inline-block whitespace-nowrap font-script text-gold text-6xl">{t("Get paid back.")}</span>
+            <span className="inline-block whitespace-nowrap font-script text-gold text-6xl">{t("Want to get paid")}</span>{" "}
+            <span className="inline-block whitespace-nowrap">{t("to make friends?")}</span>
           </h2>
         </div>
 
-        <img src={loyaltySteps.url} alt={t("Deposit $20, make friends, get paid $21")} loading="lazy" className="mt-12 mx-auto w-full max-w-5xl rounded-[2rem] shadow-[var(--shadow-elegant)]" />
-
         <div className="mt-8 text-center">
-          <button type="button" onClick={() => setOpen((o) => !o)} aria-expanded={open} className="inline-flex items-center gap-2 rounded-full border border-cream/40 px-6 py-2.5 text-sm font-medium text-cream hover:bg-cream/10 transition">
+          <button type="button" onClick={() => setOpen((o) => !o)} onMouseEnter={prefetchSteps} onFocus={prefetchSteps} aria-expanded={open} className="inline-flex items-center gap-2 rounded-full border border-cream/40 px-6 py-2.5 text-sm font-medium text-cream hover:bg-cream/10 transition">
             {t("Learn more")} <ChevronDown className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`} />
           </button>
         </div>
 
-        {open && <div className="relative mt-10 max-w-3xl mx-auto animate-fade-up">
+        {open && <div className="mt-10 animate-fade-up">
+          <img src={loyaltySteps.url} alt={t("Deposit $20, make friends, get paid $21")} decoding="async" className="mx-auto w-full max-w-5xl rounded-[2rem] shadow-[var(--shadow-elegant)]" />
+          <div className="relative mt-10 max-w-3xl mx-auto">
           <div className="absolute -inset-4 rounded-[2.5rem] bg-gold/15 blur-2xl pointer-events-none" />
           <div className="relative rounded-[2rem] border-2 border-dashed border-gold/60 bg-white p-8 lg:p-10 shadow-[var(--shadow-elegant)] text-foreground">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-8 border-b border-dashed border-gold/40">
@@ -539,6 +558,10 @@ function Loyalty() {
             <p className="mt-8 text-center text-sm text-muted-foreground max-w-xl mx-auto">
               {t("Yes — $20.20 and $21 are")} <span className="text-foreground font-medium">{t("more than you paid")}</span>{t(". Real money back in your pocket for doing the thing that actually helps: going out and connecting with people.")}
             </p>
+            <p className="mt-4 text-center text-xs">
+              <LLink to="/refund" className="text-muted-foreground underline underline-offset-4 hover:text-foreground transition-colors">{t("Refund policy")}</LLink>
+            </p>
+          </div>
           </div>
         </div>}
 

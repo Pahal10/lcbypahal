@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GoRouteImport } from './routes/go'
 import { Route as OfferRouteImport } from './routes/offer'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as RefundRouteImport } from './routes/refund'
@@ -29,6 +30,8 @@ import { Route as EsResearchRouteImport } from './routes/es.research'
 import { Route as EsSuccessRouteImport } from './routes/es.success'
 import { Route as EsTermsRouteImport } from './routes/es.terms'
 import { Route as EsVerifyRouteImport } from './routes/es.verify'
+import { Route as GoAndroidRouteImport } from './routes/go.android'
+import { Route as GoIosRouteImport } from './routes/go.ios'
 import { Route as PtIndexRouteImport } from './routes/pt.index'
 import { Route as PtOfferRouteImport } from './routes/pt.offer'
 import { Route as PtPricingRouteImport } from './routes/pt.pricing'
@@ -45,6 +48,11 @@ import { Route as ApiPublicWebhooksLemonsqueezyRouteImport } from './routes/api/
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GoRoute = GoRouteImport.update({
+  id: '/go',
+  path: '/go',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OfferRoute = OfferRouteImport.update({
@@ -142,6 +150,16 @@ const EsVerifyRoute = EsVerifyRouteImport.update({
   path: '/es/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GoAndroidRoute = GoAndroidRouteImport.update({
+  id: '/android',
+  path: '/android',
+  getParentRoute: () => GoRoute,
+} as any)
+const GoIosRoute = GoIosRouteImport.update({
+  id: '/ios',
+  path: '/ios',
+  getParentRoute: () => GoRoute,
+} as any)
 const PtIndexRoute = PtIndexRouteImport.update({
   id: '/pt/',
   path: '/pt/',
@@ -206,6 +224,7 @@ const ApiPublicWebhooksLemonsqueezyRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/go': typeof GoRouteWithChildren
   '/offer': typeof OfferRoute
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
@@ -224,6 +243,8 @@ export interface FileRoutesByFullPath {
   '/es/success': typeof EsSuccessRoute
   '/es/terms': typeof EsTermsRoute
   '/es/verify': typeof EsVerifyRoute
+  '/go/android': typeof GoAndroidRoute
+  '/go/ios': typeof GoIosRoute
   '/pt/offer': typeof PtOfferRoute
   '/pt/pricing': typeof PtPricingRoute
   '/pt/refund': typeof PtRefundRoute
@@ -240,6 +261,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/go': typeof GoRouteWithChildren
   '/offer': typeof OfferRoute
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
@@ -258,6 +280,8 @@ export interface FileRoutesByTo {
   '/es/success': typeof EsSuccessRoute
   '/es/terms': typeof EsTermsRoute
   '/es/verify': typeof EsVerifyRoute
+  '/go/android': typeof GoAndroidRoute
+  '/go/ios': typeof GoIosRoute
   '/pt/offer': typeof PtOfferRoute
   '/pt/pricing': typeof PtPricingRoute
   '/pt/refund': typeof PtRefundRoute
@@ -275,6 +299,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/go': typeof GoRouteWithChildren
   '/offer': typeof OfferRoute
   '/pricing': typeof PricingRoute
   '/refund': typeof RefundRoute
@@ -293,6 +318,8 @@ export interface FileRoutesById {
   '/es/success': typeof EsSuccessRoute
   '/es/terms': typeof EsTermsRoute
   '/es/verify': typeof EsVerifyRoute
+  '/go/android': typeof GoAndroidRoute
+  '/go/ios': typeof GoIosRoute
   '/pt/offer': typeof PtOfferRoute
   '/pt/pricing': typeof PtPricingRoute
   '/pt/refund': typeof PtRefundRoute
@@ -311,6 +338,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/go'
     | '/offer'
     | '/pricing'
     | '/refund'
@@ -329,6 +357,8 @@ export interface FileRouteTypes {
     | '/es/success'
     | '/es/terms'
     | '/es/verify'
+    | '/go/android'
+    | '/go/ios'
     | '/pt/offer'
     | '/pt/pricing'
     | '/pt/refund'
@@ -345,6 +375,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/go'
     | '/offer'
     | '/pricing'
     | '/refund'
@@ -363,6 +394,8 @@ export interface FileRouteTypes {
     | '/es/success'
     | '/es/terms'
     | '/es/verify'
+    | '/go/android'
+    | '/go/ios'
     | '/pt/offer'
     | '/pt/pricing'
     | '/pt/refund'
@@ -379,6 +412,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/go'
     | '/offer'
     | '/pricing'
     | '/refund'
@@ -397,6 +431,8 @@ export interface FileRouteTypes {
     | '/es/success'
     | '/es/terms'
     | '/es/verify'
+    | '/go/android'
+    | '/go/ios'
     | '/pt/offer'
     | '/pt/pricing'
     | '/pt/refund'
@@ -414,6 +450,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  GoRoute: typeof GoRouteWithChildren
   OfferRoute: typeof OfferRoute
   PricingRoute: typeof PricingRoute
   RefundRoute: typeof RefundRoute
@@ -454,6 +491,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/go': {
+      id: '/go'
+      path: '/go'
+      fullPath: '/go'
+      preLoaderRoute: typeof GoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/offer': {
@@ -589,6 +633,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EsVerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/go/android': {
+      id: '/go/android'
+      path: '/android'
+      fullPath: '/go/android'
+      preLoaderRoute: typeof GoAndroidRouteImport
+      parentRoute: typeof GoRoute
+    }
+    '/go/ios': {
+      id: '/go/ios'
+      path: '/ios'
+      fullPath: '/go/ios'
+      preLoaderRoute: typeof GoIosRouteImport
+      parentRoute: typeof GoRoute
+    }
     '/pt/': {
       id: '/pt/'
       path: '/pt'
@@ -676,8 +734,21 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface GoRouteChildren {
+  GoAndroidRoute: typeof GoAndroidRoute
+  GoIosRoute: typeof GoIosRoute
+}
+
+const GoRouteChildren: GoRouteChildren = {
+  GoAndroidRoute: GoAndroidRoute,
+  GoIosRoute: GoIosRoute,
+}
+
+const GoRouteWithChildren = GoRoute._addFileChildren(GoRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  GoRoute: GoRouteWithChildren,
   OfferRoute: OfferRoute,
   PricingRoute: PricingRoute,
   RefundRoute: RefundRoute,
