@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import logoPng from "@/assets/logo.png";
 import handPhone from "@/assets/hand-phone-lc.jpg";
 import featureCalm from "@/assets/feature-calm.jpg";
@@ -10,6 +10,7 @@ import { ProductFeatures } from "@/components/ProductFeatures";
 import { PriceScreen } from "@/components/PriceScreen";
 import { QrCard } from "@/components/QrCard";
 import { androidUrl, iosUrl } from "@/lib/store-links";
+import { fireSideConfetti } from "@/lib/confetti";
 import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, TrendingDown, MapPin, UserMinus, Users, Coffee, Gamepad2, Lightbulb, Mail, ShieldCheck, Gift, CheckCircle2, Instagram, MessageCircle, Smartphone, Ticket, Coins, Banknote, BadgeCheck, HandHeart, ChevronDown } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
@@ -495,6 +496,26 @@ function Footer() {
 function Loyalty() {
   const t = useT();
   const [open, setOpen] = useState(false);
+  const freeRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    const el = freeRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    let armed = true;
+    let lastFire = 0;
+    let stop: (() => void) | null = null;
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && armed) {
+        armed = false;
+        lastFire = performance.now();
+        stop?.();
+        stop = fireSideConfetti();
+      } else if (!entry.isIntersecting && !armed && performance.now() - lastFire > 3000) {
+        armed = true;
+      }
+    }, { threshold: 0.9 });
+    io.observe(el);
+    return () => { io.disconnect(); stop?.(); };
+  }, []);
   const prefetchSteps = () => { if (typeof window !== "undefined") new Image().src = loyaltySteps.url; };
   const tiers = [
     { icon: Coins, amount: "$0", label: "Fewer than 3 tasks this quarter", note: "No payout — but the price of a coffee isn't a bad bet on your social life." },
@@ -508,10 +529,11 @@ function Loyalty() {
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-4 py-1.5 text-xs uppercase tracking-widest text-cream">
             <Ticket className="h-3.5 w-3.5 text-gold" /> {t("The loyalty program")}
           </span>
-          <h2 className="mt-6 text-4xl lg:text-5xl font-display leading-tight text-cream">
-            <span className="inline-block whitespace-nowrap font-script text-gold text-6xl">{t("Want to get paid")}</span>{" "}
+          <h2 ref={freeRef} className="mt-8 free-gold font-script text-[5.5rem] sm:text-[8rem] lg:text-[10rem] leading-[0.9]">{t("It's free!!")}</h2>
+          <p className="mt-8 text-3xl lg:text-4xl font-display leading-tight text-cream">
+            <span className="inline-block whitespace-nowrap">{t("Want to get paid")}</span>{" "}
             <span className="inline-block whitespace-nowrap">{t("to make friends?")}</span>
-          </h2>
+          </p>
         </div>
 
         <div className="mt-8 text-center">
@@ -563,23 +585,23 @@ function Loyalty() {
             </p>
           </div>
           </div>
+          <div className="mt-10 text-center">
+            <a
+              href="https://forms.gle/XzazRPugRzwu1uWS6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-gold-foreground font-medium shadow-[var(--shadow-gold)] transition-all duration-500 overflow-hidden"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <HandHeart className="relative h-4 w-4" />
+              <span className="relative">{t("Show your interest")}</span>
+            </a>
+            <p className="mt-3 text-sm text-cream/75">
+              {t("Showing interest is")} <span className="text-cream font-medium">{t("completely free")}</span> {t("— no card, no commitment, just a raised hand.")}
+            </p>
+          </div>
         </div>}
 
-        <div className="mt-12 text-center">
-          <a
-            href="https://forms.gle/XzazRPugRzwu1uWS6"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-2 rounded-full bg-gold px-8 py-4 text-gold-foreground font-medium shadow-[var(--shadow-gold)] transition-all duration-500 overflow-hidden"
-          >
-            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-cream/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-            <HandHeart className="relative h-4 w-4" />
-            <span className="relative">{t("Show your interest")}</span>
-          </a>
-          <p className="mt-3 text-sm text-cream/75">
-            {t("Showing interest is")} <span className="text-cream font-medium">{t("completely free")}</span> {t("— no card, no commitment, just a raised hand.")}
-          </p>
-        </div>
       </div>
     </section>
   );
