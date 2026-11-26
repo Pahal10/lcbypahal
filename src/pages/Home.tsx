@@ -12,7 +12,6 @@ import { Sparkles, MessageCircleHeart, ArrowRight, Heart, Leaf, Utensils, Trendi
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { LLink, LangSwitcher, useT } from "@/lib/i18n";
 import { Button } from "@/components/ui/button";
-import { openCookieSettings } from "@/components/CookieBanner";
 const logoAsset = { url: logoPng };
 const loyaltySteps = { url: loyaltyPng };
 const aurora = { url: auroraJpg };
@@ -416,7 +415,6 @@ function Footer() {
               <a href="https://www.termsfeed.com/live/c439c7ce-dbd4-4336-88aa-f89cce03625a" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">{t("Privacy policy")}</a>
               <LLink to="/terms" className="hover:text-foreground transition-colors">{t("Terms of service")}</LLink>
               <LLink to="/refund" className="hover:text-foreground transition-colors">{t("Refund policy")}</LLink>
-              <button type="button" onClick={openCookieSettings} className="text-left hover:text-foreground transition-colors">{t("Cookie settings")}</button>
               <button type="button" onClick={() => setContactOpen(true)} className="text-left hover:text-foreground transition-colors">{t("Contact us")}</button>
             </div>
           </div>
