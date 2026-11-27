@@ -31,6 +31,7 @@ export function ResearchPage() {
       <Why />
       <Patterns />
       <Different />
+      <Evidence />
       <Journey />
       <Footer />
     </div>
@@ -239,6 +240,69 @@ function Different() {
               </p>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Evidence() {
+  const t = useT();
+  const sources = [
+    {
+      icon: Lightbulb,
+      cite: "Nicholas Epley, A Little More Social (2026)",
+      href: "https://www.penguinrandomhouse.com/books/671591/a-little-more-social-by-nicholas-epley/9780593319550",
+      finding: "We expect reaching out to go worse than it does, so we skip conversations that would have been good for us. Small, repeated choices to be a little more social add up.",
+      app: "Every task is a small, low-stakes choice to try, not a big leap.",
+    },
+    {
+      icon: MessageCircle,
+      cite: "Schroeder, Lyons & Epley, Hello, stranger? (2022)",
+      href: "https://pubmed.ncbi.nlm.nih.gov/34618536/",
+      finding: "People expect starting a conversation to be less pleasant than it actually is, mostly because they assume the other person won't be interested.",
+      app: "Nudges and framing calm the fear before you approach someone, then you see how it really went.",
+    },
+    {
+      icon: MessageCircleHeart,
+      cite: "Collins, Minson, Kristal & Brooks, Conveying and Detecting Listening (2023)",
+      href: "https://www.hks.harvard.edu/publications/conveying-and-detecting-listening-during-live-conversation",
+      finding: "Speakers overestimate how well their partners are listening. Feeling heard and being heard are not the same thing.",
+      app: "Quick Help guides focus on showing real interest, not just looking interested.",
+    },
+    {
+      icon: Users,
+      cite: "Jerry Harvey, The Abilene Paradox (1974)",
+      href: "https://palousemindfulness.com/docs/Abilene-Paradox.pdf",
+      finding: "Groups can end up doing what no one wants because each person privately assumes everyone else wants it, and nobody says so.",
+      app: "Later-stage prompts help you say the quiet part out loud, like \u201CCome over. We don't have to do anything.\u201D",
+    },
+  ];
+  return (
+    <section className="py-28 lg:py-36 bg-secondary/40 relative overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="max-w-2xl">
+          <p className="text-sm font-medium text-primary uppercase tracking-[0.2em]">{t("The evidence")}</p>
+          <h2 className="mt-4 text-4xl lg:text-5xl font-display leading-tight">
+            {t("What the research says about")} <span className="font-script text-primary text-6xl">{t("talking")}</span>
+          </h2>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            {t("Our design draws on published work in social psychology. Here is what we learned and how it shows up in the app.")}
+          </p>
+        </div>
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+          {sources.map((x, i) => (
+            <div key={i} className="rounded-3xl border border-border bg-card p-7 hover:shadow-[var(--shadow-soft)] transition-shadow duration-500">
+              <x.icon className="h-5 w-5 text-primary" />
+              <a href={x.href} target="_blank" rel="noopener noreferrer" className="mt-4 block font-display text-lg leading-snug hover:underline underline-offset-4">
+                {x.cite}
+              </a>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{t(x.finding)}</p>
+              <p className="mt-4 text-sm leading-relaxed">
+                <span className="font-medium text-primary">{t("In the app:")}</span> {t(x.app)}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
